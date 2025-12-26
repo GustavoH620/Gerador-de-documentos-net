@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <RootNamespace>Gerador_de_documentos_net</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.1" />
+    <PackageReference Include="QuestPDF" Version="2025.12.1" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.11" />
+  </ItemGroup>
+
+</Project>
