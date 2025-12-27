@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Gerador_de_Documentos_forms.Services
 {
-    internal class metodos
+    internal class Metodos
     {
         
     }

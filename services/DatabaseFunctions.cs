@@ -17,20 +17,20 @@ namespace Gerador_de_Documentos_forms.Services
         public static async Task<int> DatabaseOrcID() 
         {
             await using var connection = new SqliteConnection(dbPath);
-            await connection.OpenAsync(); // Não esqueça de abrir!
+            await connection.OpenAsync(); 
 
-            // 1. Criar Tabela
+            
             string sqlCriar = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ListaProdutos TEXT, ValorT Double, Data TEXT)";
             await using (var cmdCriar = new SqliteCommand(sqlCriar, connection))
             {
                 await cmdCriar.ExecuteNonQueryAsync();
             }
 
-            // 2. Buscar ID
+            
             string sqlBusca = "SELECT MAX(Id) FROM Orcamentos";
             await using (var cmdBusca = new SqliteCommand(sqlBusca, connection))
             {
-                // ExecuteScalarAsync retorna object (pode ser null)
+                
                 object resultado = await cmdBusca.ExecuteScalarAsync();
 
                 if (resultado != DBNull.Value && resultado != null)
@@ -39,7 +39,7 @@ namespace Gerador_de_Documentos_forms.Services
                 }
                 else
                 {
-                    return 1; // Banco vazio, começa no 1
+                    return 1; 
                 }
             }
 
@@ -52,6 +52,7 @@ namespace Gerador_de_Documentos_forms.Services
 
 
         }
+
 
     }
 }

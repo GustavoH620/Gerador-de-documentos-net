@@ -19,7 +19,7 @@ namespace Gerador_de_Documentos_forms
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            
+
 
 
         }
@@ -37,11 +37,18 @@ namespace Gerador_de_Documentos_forms
 
             }
             label1.Text = DadosGlobais.CaminhoLogo;
+            pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
+
         }
 
         private void config_Load(object sender, EventArgs e)
         {
             label1.Text = DadosGlobais.CaminhoLogo;
+        }
+
+        private void pbLogo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

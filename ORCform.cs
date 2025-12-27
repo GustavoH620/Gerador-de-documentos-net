@@ -1,5 +1,9 @@
-﻿using Gerador_de_Documentos_forms.Models.Orcamentos;
+﻿using Gerador_de_Documentos_forms.Models;
+using Gerador_de_Documentos_forms.Models.Orcamentos;
 using Gerador_de_Documentos_forms.Services;
+using Microsoft.Data.Sqlite;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
 using SQLitePCL;
 using System;
 using System.Collections.Generic;
@@ -10,13 +14,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.Sqlite;
+
 
 
 namespace Gerador_de_Documentos_forms
 {
+
     public partial class ORCform : Form
     {
+        
         List<ItemProduto> ListaItens = new List<ItemProduto>();
 
         public void AdicionarList()
@@ -48,7 +54,7 @@ namespace Gerador_de_Documentos_forms
             AtualizarTela();
 
 
-          
+
         }
 
         void AtualizarTela()
@@ -75,7 +81,7 @@ namespace Gerador_de_Documentos_forms
 
         private async void ORCform_Load(object sender, EventArgs e)
         {
-            
+
             lblData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
             lblIDorc.Text = $"ID: {await DatabaseFunctions.DatabaseOrcID()}";
         }
@@ -92,6 +98,39 @@ namespace Gerador_de_Documentos_forms
             listBoxProdutos.Items.Clear();
             listBoxProdutos.Update();
             lblValorT.Text = "Valor Total:";
+        }
+
+        private void btnGerarOrc_Click(object sender, EventArgs e)
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+            var model = questPDFOrcDataSource.PegarDadosOrc(
+                nomeCliente: txtNomeCliente.Text,
+                CPF: txtCPF.Text,
+                ValorT: ListaItens.Sum(x => x.ValorTotal),
+                ID: int.Parse(lblIDorc.Text.Replace("ID: ", "")),
+                ListaProdutos: ListaItens,
+                Comentarios: rtbComentarios.Text,
+                Rua: txtRua.Text,
+                Bairro: txtBairro.Text,
+                Cidade: txtCidade.Text,
+                Estado: cbEstado.Text,
+                Email: txtEmail.Text,
+                Telefone: txtTelefone.Text
+            );
+            
+            switch (DadosGlobais.OrcTemplateSelected) 
+            {
+                case 1:
+                    var documento = new OrcamentoT1(model);
+                    documento.GeneratePdfAndShow();
+                    break;
+
+
+
+            }
+
+
+            
         }
     }
 }

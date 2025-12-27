@@ -3,16 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gerador_de_Documentos_forms.Services;
 using QuestPDF.Helpers;
 
 namespace Gerador_de_Documentos_forms.Models.Orcamentos
 {
     public static class questPDFOrcDataSource
     {
-        public static modeloOrcamento PegarDadosOrc()
+        public static modeloOrcamento PegarDadosOrc(string nomeCliente, string CPF, decimal ValorT, int ID, List<ItemProduto> ListaProdutos, string Comentarios,
+             string Rua, string Bairro, string Cidade, string Estado, string Email, string Telefone )
         {
+            var itens = ListaProdutos.ToList();
             return new modeloOrcamento
             {
+                Cliente = nomeCliente,
+                CPF = CPF,
+                Valor = ValorT,
+                OrcID = ID,
+                DataEmissao = DateTime.Now,
+                DataExp = DateTime.Now.AddDays(30),
+                Comentarios = Comentarios,
+                EnderecoCliente = new Endereco
+                {
+                    Rua = Rua,
+                    Bairro = Bairro,
+                    Cidade = Cidade,
+                    Estado = Estado,
+                    Email = Email,
+                    Telefone = Telefone,
+                    Nome = nomeCliente
+
+                }
 
             };
         }

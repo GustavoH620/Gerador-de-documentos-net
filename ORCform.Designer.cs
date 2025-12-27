@@ -28,216 +28,408 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNomeCliente = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtEndereco = new System.Windows.Forms.TextBox();
-            this.lblData = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtProduto = new System.Windows.Forms.TextBox();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtQTD = new System.Windows.Forms.TextBox();
-            this.listBoxProdutos = new System.Windows.Forms.ListBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblValorT = new System.Windows.Forms.Label();
-            this.btnAdicionar = new System.Windows.Forms.Button();
-            this.btnLimparLista = new System.Windows.Forms.Button();
-            this.lblIDorc = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            txtNomeCliente = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            txtTelefone = new TextBox();
+            label3 = new Label();
+            txtEmail = new TextBox();
+            lblData = new Label();
+            label5 = new Label();
+            txtProduto = new TextBox();
+            txtValor = new TextBox();
+            label6 = new Label();
+            label7 = new Label();
+            txtQTD = new TextBox();
+            listBoxProdutos = new ListBox();
+            label8 = new Label();
+            lblValorT = new Label();
+            btnAdicionar = new Button();
+            btnLimparLista = new Button();
+            lblIDorc = new Label();
+            btnGerarOrc = new Button();
+            groupBox1 = new GroupBox();
+            txtCPF = new TextBox();
+            lblCPF = new Label();
+            txtRua = new TextBox();
+            label9 = new Label();
+            txtBairro = new TextBox();
+            label10 = new Label();
+            txtCidade = new TextBox();
+            label4 = new Label();
+            label11 = new Label();
+            btnCadastroCliente = new Button();
+            cbEstado = new ComboBox();
+            rtbComentarios = new RichTextBox();
+            label12 = new Label();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // txtNomeCliente
             // 
-            this.txtNomeCliente.Location = new System.Drawing.Point(12, 46);
-            this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(193, 20);
-            this.txtNomeCliente.TabIndex = 0;
+            txtNomeCliente.Location = new Point(7, 42);
+            txtNomeCliente.Margin = new Padding(4, 3, 4, 3);
+            txtNomeCliente.Name = "txtNomeCliente";
+            txtNomeCliente.Size = new Size(224, 23);
+            txtNomeCliente.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nome do cliente";
+            label1.AutoSize = true;
+            label1.Location = new Point(7, 24);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(95, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Nome do cliente";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Telefone";
+            label2.AutoSize = true;
+            label2.Location = new Point(8, 322);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(51, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Telefone";
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(12, 98);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(193, 20);
-            this.txtTelefone.TabIndex = 3;
+            txtTelefone.Location = new Point(7, 340);
+            txtTelefone.Margin = new Padding(4, 3, 4, 3);
+            txtTelefone.Name = "txtTelefone";
+            txtTelefone.Size = new Size(224, 23);
+            txtTelefone.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 141);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Endereço";
+            label3.AutoSize = true;
+            label3.Location = new Point(8, 376);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(36, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Email";
             // 
-            // txtEndereco
+            // txtEmail
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(12, 157);
-            this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(193, 20);
-            this.txtEndereco.TabIndex = 5;
+            txtEmail.Location = new Point(7, 394);
+            txtEmail.Margin = new Padding(4, 3, 4, 3);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(224, 23);
+            txtEmail.TabIndex = 5;
             // 
             // lblData
             // 
-            this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(13, 9);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(33, 13);
-            this.lblData.TabIndex = 6;
-            this.lblData.Text = "Data:";
+            lblData.AutoSize = true;
+            lblData.Location = new Point(15, 10);
+            lblData.Margin = new Padding(4, 0, 4, 0);
+            lblData.Name = "lblData";
+            lblData.Size = new Size(34, 15);
+            lblData.TabIndex = 6;
+            lblData.Text = "Data:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(331, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Produto";
+            label5.AutoSize = true;
+            label5.Location = new Point(386, 35);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(50, 15);
+            label5.TabIndex = 7;
+            label5.Text = "Produto";
             // 
             // txtProduto
             // 
-            this.txtProduto.Location = new System.Drawing.Point(334, 46);
-            this.txtProduto.Name = "txtProduto";
-            this.txtProduto.Size = new System.Drawing.Size(193, 20);
-            this.txtProduto.TabIndex = 8;
+            txtProduto.Location = new Point(390, 53);
+            txtProduto.Margin = new Padding(4, 3, 4, 3);
+            txtProduto.Name = "txtProduto";
+            txtProduto.Size = new Size(224, 23);
+            txtProduto.TabIndex = 8;
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(334, 98);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(193, 20);
-            this.txtValor.TabIndex = 9;
+            txtValor.Location = new Point(390, 113);
+            txtValor.Margin = new Padding(4, 3, 4, 3);
+            txtValor.Name = "txtValor";
+            txtValor.Size = new Size(224, 23);
+            txtValor.TabIndex = 9;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(331, 82);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Valor";
+            label6.AutoSize = true;
+            label6.Location = new Point(386, 95);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(33, 15);
+            label6.TabIndex = 10;
+            label6.Text = "Valor";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(331, 141);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Quantidade";
+            label7.AutoSize = true;
+            label7.Location = new Point(386, 163);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(69, 15);
+            label7.TabIndex = 11;
+            label7.Text = "Quantidade";
             // 
             // txtQTD
             // 
-            this.txtQTD.Location = new System.Drawing.Point(334, 157);
-            this.txtQTD.Name = "txtQTD";
-            this.txtQTD.Size = new System.Drawing.Size(193, 20);
-            this.txtQTD.TabIndex = 12;
+            txtQTD.Location = new Point(390, 181);
+            txtQTD.Margin = new Padding(4, 3, 4, 3);
+            txtQTD.Name = "txtQTD";
+            txtQTD.Size = new Size(224, 23);
+            txtQTD.TabIndex = 12;
             // 
             // listBoxProdutos
             // 
-            this.listBoxProdutos.FormattingEnabled = true;
-            this.listBoxProdutos.Location = new System.Drawing.Point(571, 44);
-            this.listBoxProdutos.Name = "listBoxProdutos";
-            this.listBoxProdutos.Size = new System.Drawing.Size(205, 134);
-            this.listBoxProdutos.TabIndex = 13;
+            listBoxProdutos.FormattingEnabled = true;
+            listBoxProdutos.ItemHeight = 15;
+            listBoxProdutos.Location = new Point(666, 51);
+            listBoxProdutos.Margin = new Padding(4, 3, 4, 3);
+            listBoxProdutos.Name = "listBoxProdutos";
+            listBoxProdutos.Size = new Size(238, 154);
+            listBoxProdutos.TabIndex = 13;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(568, 28);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Produtos adicionados";
+            label8.AutoSize = true;
+            label8.Location = new Point(663, 32);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(122, 15);
+            label8.TabIndex = 14;
+            label8.Text = "Produtos adicionados";
             // 
             // lblValorT
             // 
-            this.lblValorT.AutoSize = true;
-            this.lblValorT.Location = new System.Drawing.Point(568, 181);
-            this.lblValorT.Name = "lblValorT";
-            this.lblValorT.Size = new System.Drawing.Size(60, 13);
-            this.lblValorT.TabIndex = 15;
-            this.lblValorT.Text = "Valor total: ";
+            lblValorT.AutoSize = true;
+            lblValorT.Location = new Point(663, 209);
+            lblValorT.Margin = new Padding(4, 0, 4, 0);
+            lblValorT.Name = "lblValorT";
+            lblValorT.Size = new Size(66, 15);
+            lblValorT.TabIndex = 15;
+            lblValorT.Text = "Valor total: ";
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(335, 187);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(70, 32);
-            this.btnAdicionar.TabIndex = 16;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            btnAdicionar.Location = new Point(391, 216);
+            btnAdicionar.Margin = new Padding(4, 3, 4, 3);
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Size = new Size(82, 37);
+            btnAdicionar.TabIndex = 16;
+            btnAdicionar.Text = "Adicionar";
+            btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // btnLimparLista
             // 
-            this.btnLimparLista.Location = new System.Drawing.Point(411, 187);
-            this.btnLimparLista.Name = "btnLimparLista";
-            this.btnLimparLista.Size = new System.Drawing.Size(70, 32);
-            this.btnLimparLista.TabIndex = 17;
-            this.btnLimparLista.Text = "Limpar lista";
-            this.btnLimparLista.UseVisualStyleBackColor = true;
-            this.btnLimparLista.Click += new System.EventHandler(this.btnLimparLista_Click);
+            btnLimparLista.Location = new Point(479, 216);
+            btnLimparLista.Margin = new Padding(4, 3, 4, 3);
+            btnLimparLista.Name = "btnLimparLista";
+            btnLimparLista.Size = new Size(82, 37);
+            btnLimparLista.TabIndex = 17;
+            btnLimparLista.Text = "Limpar lista";
+            btnLimparLista.UseVisualStyleBackColor = true;
+            btnLimparLista.Click += btnLimparLista_Click;
             // 
             // lblIDorc
             // 
-            this.lblIDorc.AutoSize = true;
-            this.lblIDorc.Location = new System.Drawing.Point(121, 9);
-            this.lblIDorc.Name = "lblIDorc";
-            this.lblIDorc.Size = new System.Drawing.Size(76, 13);
-            this.lblIDorc.TabIndex = 18;
-            this.lblIDorc.Text = "ID Orçamento:";
+            lblIDorc.AutoSize = true;
+            lblIDorc.Location = new Point(141, 10);
+            lblIDorc.Margin = new Padding(4, 0, 4, 0);
+            lblIDorc.Name = "lblIDorc";
+            lblIDorc.Size = new Size(84, 15);
+            lblIDorc.TabIndex = 18;
+            lblIDorc.Text = "ID Orçamento:";
+            // 
+            // btnGerarOrc
+            // 
+            btnGerarOrc.Location = new Point(20, 568);
+            btnGerarOrc.Name = "btnGerarOrc";
+            btnGerarOrc.Size = new Size(109, 50);
+            btnGerarOrc.TabIndex = 19;
+            btnGerarOrc.Text = "Gerar";
+            btnGerarOrc.UseVisualStyleBackColor = true;
+            btnGerarOrc.Click += btnGerarOrc_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(cbEstado);
+            groupBox1.Controls.Add(btnCadastroCliente);
+            groupBox1.Controls.Add(label11);
+            groupBox1.Controls.Add(txtCidade);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(txtBairro);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(txtRua);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(txtCPF);
+            groupBox1.Controls.Add(lblCPF);
+            groupBox1.Controls.Add(txtNomeCliente);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(txtTelefone);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(txtEmail);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Location = new Point(20, 50);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(291, 493);
+            groupBox1.TabIndex = 20;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Dados do cliente";
+            // 
+            // txtCPF
+            // 
+            txtCPF.Location = new Point(7, 89);
+            txtCPF.Margin = new Padding(4, 3, 4, 3);
+            txtCPF.Name = "txtCPF";
+            txtCPF.Size = new Size(224, 23);
+            txtCPF.TabIndex = 2;
+            // 
+            // lblCPF
+            // 
+            lblCPF.AutoSize = true;
+            lblCPF.Location = new Point(7, 71);
+            lblCPF.Margin = new Padding(4, 0, 4, 0);
+            lblCPF.Name = "lblCPF";
+            lblCPF.Size = new Size(28, 15);
+            lblCPF.TabIndex = 3;
+            lblCPF.Text = "CPF";
+            // 
+            // txtRua
+            // 
+            txtRua.Location = new Point(7, 132);
+            txtRua.Margin = new Padding(4, 3, 4, 3);
+            txtRua.Name = "txtRua";
+            txtRua.Size = new Size(224, 23);
+            txtRua.TabIndex = 4;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(7, 114);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(27, 15);
+            label9.TabIndex = 5;
+            label9.Text = "Rua";
+            // 
+            // txtBairro
+            // 
+            txtBairro.Location = new Point(7, 180);
+            txtBairro.Margin = new Padding(4, 3, 4, 3);
+            txtBairro.Name = "txtBairro";
+            txtBairro.Size = new Size(224, 23);
+            txtBairro.TabIndex = 6;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(7, 162);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(38, 15);
+            label10.TabIndex = 7;
+            label10.Text = "Bairro";
+            // 
+            // txtCidade
+            // 
+            txtCidade.Location = new Point(7, 233);
+            txtCidade.Margin = new Padding(4, 3, 4, 3);
+            txtCidade.Name = "txtCidade";
+            txtCidade.Size = new Size(224, 23);
+            txtCidade.TabIndex = 8;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(7, 215);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(44, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Cidade";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(7, 267);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(42, 15);
+            label11.TabIndex = 11;
+            label11.Text = "Estado";
+            // 
+            // btnCadastroCliente
+            // 
+            btnCadastroCliente.Location = new Point(6, 437);
+            btnCadastroCliente.Name = "btnCadastroCliente";
+            btnCadastroCliente.Size = new Size(109, 50);
+            btnCadastroCliente.TabIndex = 21;
+            btnCadastroCliente.Text = "Cadastrar cliente";
+            btnCadastroCliente.UseVisualStyleBackColor = true;
+            // 
+            // cbEstado
+            // 
+            cbEstado.FormattingEnabled = true;
+            cbEstado.Items.AddRange(new object[] { "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" });
+            cbEstado.Location = new Point(7, 287);
+            cbEstado.Name = "cbEstado";
+            cbEstado.Size = new Size(224, 23);
+            cbEstado.TabIndex = 22;
+            // 
+            // rtbComentarios
+            // 
+            rtbComentarios.Location = new Point(386, 323);
+            rtbComentarios.Name = "rtbComentarios";
+            rtbComentarios.Size = new Size(518, 220);
+            rtbComentarios.TabIndex = 21;
+            rtbComentarios.Text = "";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(386, 305);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(75, 15);
+            label12.TabIndex = 22;
+            label12.Text = "Comentários";
             // 
             // ORCform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblIDorc);
-            this.Controls.Add(this.btnLimparLista);
-            this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.lblValorT);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.listBoxProdutos);
-            this.Controls.Add(this.txtQTD);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtValor);
-            this.Controls.Add(this.txtProduto);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblData);
-            this.Controls.Add(this.txtEndereco);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtTelefone);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtNomeCliente);
-            this.Name = "ORCform";
-            this.Text = "ORCform";
-            this.Load += new System.EventHandler(this.ORCform_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 644);
+            Controls.Add(label12);
+            Controls.Add(rtbComentarios);
+            Controls.Add(groupBox1);
+            Controls.Add(btnGerarOrc);
+            Controls.Add(lblIDorc);
+            Controls.Add(btnLimparLista);
+            Controls.Add(btnAdicionar);
+            Controls.Add(lblValorT);
+            Controls.Add(label8);
+            Controls.Add(listBoxProdutos);
+            Controls.Add(txtQTD);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(txtValor);
+            Controls.Add(txtProduto);
+            Controls.Add(label5);
+            Controls.Add(lblData);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "ORCform";
+            Text = "ORCform";
+            Load += ORCform_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -248,7 +440,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtEndereco;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtProduto;
@@ -262,5 +454,20 @@
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnLimparLista;
         private System.Windows.Forms.Label lblIDorc;
+        private Button btnGerarOrc;
+        private GroupBox groupBox1;
+        private TextBox txtBairro;
+        private Label label10;
+        private TextBox txtRua;
+        private Label label9;
+        private TextBox txtCPF;
+        private Label lblCPF;
+        private Label label11;
+        private TextBox txtCidade;
+        private Label label4;
+        private ComboBox cbEstado;
+        private Button btnCadastroCliente;
+        private RichTextBox rtbComentarios;
+        private Label label12;
     }
 }
