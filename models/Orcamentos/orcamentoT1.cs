@@ -66,7 +66,7 @@ namespace Gerador_de_Documentos_forms.Models.Orcamentos
                     });
 
                 });
-                row.ConstantItem(100).Height(250).Image(DadosGlobais.CaminhoLogo);
+                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(100).Height(100).Placeholder(); } else { row.ConstantItem(100).Height(100).Image(DadosGlobais.CaminhoLogo); }
             });
         }
         void ComposeContent(IContainer container)

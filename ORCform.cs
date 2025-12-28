@@ -38,7 +38,7 @@ namespace Gerador_de_Documentos_forms
             {
                 MessageBox.Show("Quantidade inválida"); return;
             }
-            if (!int.TryParse(txtValor.Text, out int valor) || valor < 0)
+            if (!decimal.TryParse(txtValor.Text, out decimal valor) || valor < 0)
             {
                 MessageBox.Show("Valor de produto inválido"); return;
             }

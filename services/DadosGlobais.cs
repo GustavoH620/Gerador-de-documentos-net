@@ -16,6 +16,7 @@ namespace Gerador_de_Documentos_forms
 
         // Variável de caminho de arquivo da logo
         public static string CaminhoLogo { get; set; } = "";
+        public static string NomeVendedor { get; set; } = "";
 
         
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gerador_de_Documentos_forms.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,17 +37,35 @@ namespace Gerador_de_Documentos_forms
                 DadosGlobais.CaminhoLogo = openFileDialog1.FileName;
 
             }
-            label1.Text = DadosGlobais.CaminhoLogo;
+            lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
             pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
 
         }
 
         private void config_Load(object sender, EventArgs e)
         {
-            label1.Text = DadosGlobais.CaminhoLogo;
+            Metodos.ChecarLogo();
+            lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
+            pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
+            txtNomeVendedor.Text = DadosGlobais.NomeVendedor;
         }
 
         private void pbLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Metodos.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

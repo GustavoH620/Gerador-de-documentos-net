@@ -25,9 +25,20 @@ namespace Gerador_de_Documentos_forms
 
         private void btnOrc_Click(object sender, EventArgs e)
         {
-            TemplatesORCForm form = new TemplatesORCForm();
-            form.Show();
-            this.Hide();
+            if (!Metodos.ChecarLogo()) 
+            {
+                Formconfig config = new Formconfig();
+                config.Show();
+            }
+            else
+            {
+                TemplatesORCForm form = new TemplatesORCForm();
+                form.Show();
+                this.Hide();
+
+            }
+
+                
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
