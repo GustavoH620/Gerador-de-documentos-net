@@ -1,4 +1,5 @@
-﻿using QuestPDF.Drawing;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
+using QuestPDF.Drawing;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -71,18 +72,81 @@ namespace Gerador_de_Documentos_forms.Models.Orcamentos
         }
         void ComposeContent(IContainer container)
         {
-            container
-                .PaddingVertical(40)
-                .Height(250)
-                .Background(Colors.Grey.Lighten3)
-                .AlignCenter()
-                .AlignMiddle()
-                .Text("Content").FontSize(16);
+            container.PaddingVertical(40).Column(column =>
+            {
+                column.Spacing(5);
+
+                column.Item().Row(row =>
+                {
+                    row.RelativeItem().Component(new AddressComponent("From", DadosGlobais.enderecoVendedor));
+                    row.ConstantItem(50);
+                    row.RelativeItem().Component(new AddressComponent("For", Modelo.EnderecoCliente));
+                });
+
+                column.Item().Element(ComposeTable);
+
+                if (!string.IsNullOrWhiteSpace(Modelo.Comentarios))
+                    column.Item().PaddingTop(25).Element(ComposeComments);
+            });
         }
 
+        void ComposeTable(IContainer container)
+        {
+            container.Table(table =>
+            {
+                table.ColumnsDefinition(columns =>
+                {
+                    columns.ConstantColumn(25);
+                    columns.RelativeColumn(3);
+                    columns.RelativeColumn();
+                    columns.RelativeColumn();
+                    columns.RelativeColumn();
+                });
 
+                table.Header(header =>
+                {
+                    header.Cell().Element(CellStyle).Text("#");
+                    header.Cell().Element(CellStyle).Text("Product");
+                    header.Cell().Element(CellStyle).AlignRight().Text("Unit price");
+                    header.Cell().Element(CellStyle).AlignRight().Text("Quantity");
+                    header.Cell().Element(CellStyle).AlignRight().Text("Total");
 
+                    static IContainer CellStyle(IContainer container)
+                    {
+                        return container.DefaultTextStyle(x => x.SemiBold()).PaddingVertical(5).BorderBottom(1).BorderColor(Colors.Black);
+                    }
+                });
 
+                foreach (var item in DadosGlobais.ListaItens)
+                {
+                    table.Cell().Element(CellStyle).Text(DadosGlobais.ListaItens.IndexOf(item) + 1);
+                    table.Cell().Element(CellStyle).Text(item.NomeProduto);
+                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.Valor}$");
+                    table.Cell().Element(CellStyle).AlignRight().Text(item.QTD);
+                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.ValorTotal}$");
 
+                    static IContainer CellStyle(IContainer container)
+                    {
+                        return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
+                    }
+                }
+            });
+        }
+
+        void ComposeComments(IContainer container)
+        {
+            container.Background(Colors.Grey.Lighten3).Padding(10).Column(column =>
+            {
+                column.Spacing(5);
+                column.Item().Text("Comments").FontSize(14);
+                column.Item().Text(Modelo.Comentarios);
+            });
+        }
     }
+
+
+
+
+
+
 }

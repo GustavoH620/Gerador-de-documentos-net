@@ -1,4 +1,6 @@
-﻿using Gerador_de_Documentos_forms.Services;
+﻿using Gerador_de_Documentos_forms.Models;
+using Gerador_de_Documentos_forms.Services;
+using Gerador_de_documentos_net.services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,10 +46,20 @@ namespace Gerador_de_Documentos_forms
 
         private void config_Load(object sender, EventArgs e)
         {
-            Metodos.ChecarLogo();
-            lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
-            pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
-            txtNomeVendedor.Text = DadosGlobais.NomeVendedor;
+            if (Metodos.ChecarInfo())
+            {
+                lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
+                pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
+                txtNomeVendedor.Text = DadosGlobais.NomeVendedor;
+                txtRua.Text = DadosGlobais.enderecoVendedor.Rua;
+                txtBairro.Text = DadosGlobais.enderecoVendedor.Bairro;
+                txtCidade.Text = DadosGlobais.enderecoVendedor.Cidade;
+                cbEstado.Text = DadosGlobais.enderecoVendedor.Estado;
+                txtEmail.Text = DadosGlobais.enderecoVendedor.Email;
+                txtTelefone.Text = DadosGlobais.enderecoVendedor.Telefone;
+
+            }
+
         }
 
         private void pbLogo_Click(object sender, EventArgs e)
@@ -57,7 +69,15 @@ namespace Gerador_de_Documentos_forms
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Metodos.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text);
+            if (Metodos.ValidacaoGeral(txtBairro,txtCidade,txtEmail,txtNomeVendedor,txtRua,txtTelefone, cbEstado))
+            {
+                Metodos.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text, txtRua.Text, 
+                txtBairro.Text, txtCidade.Text, cbEstado.Text, txtEmail.Text,txtTelefone.Text);
+
+                Messages.Confirmacao();
+
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

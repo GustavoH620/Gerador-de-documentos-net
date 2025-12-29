@@ -23,7 +23,7 @@ namespace Gerador_de_Documentos_forms
     public partial class ORCform : Form
     {
         
-        List<ItemProduto> ListaItens = new List<ItemProduto>();
+        
 
         public void AdicionarList()
         {
@@ -49,7 +49,7 @@ namespace Gerador_de_Documentos_forms
                 QTD = quantidade,
             };
 
-            ListaItens.Add(novoItem);
+            DadosGlobais.ListaItens.Add(novoItem);
 
             AtualizarTela();
 
@@ -60,11 +60,11 @@ namespace Gerador_de_Documentos_forms
         void AtualizarTela()
         {
             listBoxProdutos.Items.Clear();
-            foreach (var item in ListaItens)
+            foreach (var item in DadosGlobais.ListaItens)
             {
                 listBoxProdutos.Items.Add(item.ToString());
             }
-            decimal totalGeral = ListaItens.Sum(x => x.ValorTotal);
+            decimal totalGeral = DadosGlobais.ListaItens.Sum(x => x.ValorTotal);
             lblValorT.Text = $"Valor total: R${totalGeral.ToString("C2")}";
 
             txtProduto.Clear();
@@ -94,7 +94,7 @@ namespace Gerador_de_Documentos_forms
 
         private void btnLimparLista_Click(object sender, EventArgs e)
         {
-            ListaItens.Clear();
+            DadosGlobais.ListaItens.Clear();
             listBoxProdutos.Items.Clear();
             listBoxProdutos.Update();
             lblValorT.Text = "Valor Total:";
@@ -106,9 +106,9 @@ namespace Gerador_de_Documentos_forms
             var model = questPDFOrcDataSource.PegarDadosOrc(
                 nomeCliente: txtNomeCliente.Text,
                 CPF: txtCPF.Text,
-                ValorT: ListaItens.Sum(x => x.ValorTotal),
+                ValorT: DadosGlobais.ListaItens.Sum(x => x.ValorTotal),
                 ID: int.Parse(lblIDorc.Text.Replace("ID: ", "")),
-                ListaProdutos: ListaItens,
+                ListaProdutos: DadosGlobais.ListaItens,
                 Comentarios: rtbComentarios.Text,
                 Rua: txtRua.Text,
                 Bairro: txtBairro.Text,

@@ -28,5 +28,10 @@ namespace Gerador_de_documentos_net.services
 
 
         }
+        public static void Confirmacao()
+        {
+            MessageBox.Show("Concluído", "Informação", MessageBoxButtons.OK);
+            
+        }
     }
 }
