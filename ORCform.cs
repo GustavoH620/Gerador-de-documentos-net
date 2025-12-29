@@ -22,9 +22,22 @@ namespace Gerador_de_Documentos_forms
 
     public partial class ORCform : Form
     {
-        
-        
 
+        DateTime dataExp = DateTime.Now.AddDays(30);
+        public void DataExp()
+        {
+            if (ckbDataExp.Checked)
+            {
+                dtpDataExp.Enabled = true;
+                dataExp = dtpDataExp.Value.Date;
+
+            }
+            else
+            {
+                dtpDataExp.Enabled = false;
+                dataExp = DateTime.Now.AddDays(30);
+            }
+        }
         public void AdicionarList()
         {
             if (string.IsNullOrWhiteSpace(txtProduto.Text) ||
@@ -81,7 +94,7 @@ namespace Gerador_de_Documentos_forms
 
         private async void ORCform_Load(object sender, EventArgs e)
         {
-
+            DataExp();
             lblData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
             lblIDorc.Text = $"ID: {await DatabaseFunctions.DatabaseOrcID()}";
         }
@@ -115,10 +128,11 @@ namespace Gerador_de_Documentos_forms
                 Cidade: txtCidade.Text,
                 Estado: cbEstado.Text,
                 Email: txtEmail.Text,
-                Telefone: txtTelefone.Text
+                Telefone: txtTelefone.Text,
+                dataExp: dataExp
             );
-            
-            switch (DadosGlobais.OrcTemplateSelected) 
+
+            switch (DadosGlobais.OrcTemplateSelected)
             {
                 case 1:
                     var documento = new OrcamentoT1(model);
@@ -130,7 +144,17 @@ namespace Gerador_de_Documentos_forms
             }
 
 
-            
+
+        }
+
+        private void ckbDataExp_CheckedChanged(object sender, EventArgs e)
+        {
+            DataExp();
+        }
+
+        private void dtpDataExp_ValueChanged(object sender, EventArgs e)
+        {
+            dataExp = dtpDataExp.Value.Date;
         }
     }
 }

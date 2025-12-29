@@ -11,7 +11,7 @@ namespace Gerador_de_Documentos_forms.Models.Orcamentos
     public static class questPDFOrcDataSource
     {
         public static modeloOrcamento PegarDadosOrc(string nomeCliente, string CPF, decimal ValorT, int ID, List<ItemProduto> ListaProdutos, string Comentarios,
-             string Rua, string Bairro, string Cidade, string Estado, string Email, string Telefone )
+             string Rua, string Bairro, string Cidade, string Estado, string Email, string Telefone, DateTime dataExp )
         {
             var itens = ListaProdutos.ToList();
             return new modeloOrcamento
@@ -21,7 +21,7 @@ namespace Gerador_de_Documentos_forms.Models.Orcamentos
                 Valor = ValorT,
                 OrcID = ID,
                 DataEmissao = DateTime.Now,
-                DataExp = DateTime.Now.AddDays(30),
+                DataExp = dataExp,
                 Comentarios = Comentarios,
                 EnderecoCliente = new Endereco
                 {

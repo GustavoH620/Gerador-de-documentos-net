@@ -25,7 +25,7 @@ namespace Gerador_de_Documentos_forms
 
         private void btnOrc_Click(object sender, EventArgs e)
         {
-            if (!Metodos.ChecarInfo()) 
+            if (Metodos.ChecarInfo()) 
             {
                 Formconfig config = new Formconfig();
                 config.Show();

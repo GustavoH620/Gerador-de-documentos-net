@@ -13,6 +13,8 @@ namespace Gerador_de_Documentos_forms
         // Varíavel de armazenamento dde template selecionado orçamento
         public static int OrcTemplateSelected { get; set; } = 0;
 
+        public static bool DataExpManual { get; set; }
+
         // Variável de armazenamento de template selecionado invoice
         public static int InvTemplateSelected { get; set; } = 0;
 

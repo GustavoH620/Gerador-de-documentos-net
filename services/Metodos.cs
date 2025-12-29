@@ -1,5 +1,6 @@
 ﻿using Gerador_de_Documentos_forms.Models;
 using Gerador_de_documentos_net.services;
+using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -14,43 +15,44 @@ namespace Gerador_de_Documentos_forms.Services
 {
     public static class Metodos
     {
-        static string arquivo = "Info.csv"; 
+        static string arquivo = "Info.csv";
         public static bool ChecarInfo()
         {
             if (File.Exists(arquivo))
             {
-                
-                string[] linhas = File.ReadAllLines(arquivo);
-                if (linhas.Length > 0)
-                {
-                    StreamReader reader = null;
-                    reader = new StreamReader(File.OpenRead(arquivo));
-                    string logo = "";
-                    string nome = "";
-                    string rua = "";
-                    string bairro = "";
-                    string cidade = "";
-                    string estado = "";
-                    string email = "";
-                    string telefone = "";
-                    List<string> values = new List<string>();
-                    int c = 0;
-                    while (!reader.EndOfStream)
-                    {
-                        var linha = reader.ReadLine();
-                        values.Add($"{linha.Split(',')}");
-                        
+                string logo = "";
+                string nome = "";
+                string rua = "";
+                string bairro = "";
+                string cidade = "";
+                string estado = "";
+                string email = "";
+                string telefone = "";
 
-                        
+                using (TextFieldParser parser = new TextFieldParser(arquivo))
+                {
+                    string[] campos;
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+
+                    while (!parser.EndOfData)
+                    {
+                        campos = parser.ReadFields();
+                        if (campos.Length >= 8)
+                        {
+                            logo = campos[0];
+                            nome = campos[1];
+                            rua = campos[2];
+                            bairro = campos[3];
+                            cidade = campos[4];
+                            estado = campos[5];
+                            email = campos[6];
+                            telefone = campos[7];
+
+                        }
+
+
                     }
-                    logo = values[0];
-                    nome = values[1];
-                    rua = values[2];
-                    bairro = values[3];
-                    cidade = values[4];
-                    estado = values[5];
-                    email = values[6];
-                    telefone = values[7];
                     DadosGlobais.CaminhoLogo = logo;
                     DadosGlobais.NomeVendedor = nome;
                     DadosGlobais.enderecoVendedor = new Endereco
@@ -66,41 +68,39 @@ namespace Gerador_de_Documentos_forms.Services
 
 
                     };
-                    reader.Close();
+
                     return false;
-                    
 
                 }
-                else
-                {
-                    Console.WriteLine("Arquivo vazio, questão apresentada");
-                    if (Messages.AdicionarLogo())
-                    {
-                        return false;
 
 
-                    }
-                    else
-                    {
-                        return true;
-                    }
 
-                }
+
+
+
 
 
             }
             else
             {
-                Console.WriteLine("Arquivo não existe");
+                Console.WriteLine("Arquivo vazio ou não existente");
                 if (Messages.AdicionarLogo())
                 {
                     return false;
+
+
                 }
                 else
                 {
                     return true;
                 }
+
             }
+
+
+
+
+
 
 
         }
@@ -120,7 +120,7 @@ namespace Gerador_de_Documentos_forms.Services
                 reader.Close();
 
             }
-                
+
 
             DadosGlobais.CaminhoLogo = caminho;
             DadosGlobais.NomeVendedor = nome;
@@ -143,7 +143,7 @@ namespace Gerador_de_Documentos_forms.Services
         {
             foreach (Control control in controles)
             {
-                if (string.IsNullOrWhiteSpace(control.Text)) 
+                if (string.IsNullOrWhiteSpace(control.Text))
                 {
                     control.BackColor = Color.Pink;
                     MessageBox.Show("Preencha os campos vazios.");
@@ -155,10 +155,13 @@ namespace Gerador_de_Documentos_forms.Services
                 {
                     control.BackColor = Color.White;
                 }
-                    
+
             }
             return true;
 
         }
     }
 }
+
+
+
