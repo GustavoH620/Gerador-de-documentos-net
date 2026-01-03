@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Gerador_de_Documentos_forms.Services
+namespace Gerador_de_Documentos_net.Services
 {
     public static class DatabaseFunctions
     {

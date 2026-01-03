@@ -1,4 +1,4 @@
-﻿using Gerador_de_Documentos_forms.Services;
+﻿using Gerador_de_Documentos_net.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Gerador_de_Documentos_forms
+namespace Gerador_de_Documentos_net
 {
     public partial class HomeForm : Form
     {
@@ -25,7 +25,7 @@ namespace Gerador_de_Documentos_forms
 
         private void btnOrc_Click(object sender, EventArgs e)
         {
-            if (Metodos.ChecarInfo()) 
+            if (MetodosInfo.ChecarInfo()) 
             {
                 Formconfig config = new Formconfig();
                 config.Show();

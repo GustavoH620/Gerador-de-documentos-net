@@ -1,4 +1,4 @@
-﻿using Gerador_de_Documentos_forms.Models;
+﻿using Gerador_de_Documentos_net.Models;
 using Gerador_de_documentos_net.services;
 using Microsoft.VisualBasic.FileIO;
 using System;
@@ -11,11 +11,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Markup;
 
-namespace Gerador_de_Documentos_forms.Services
+namespace Gerador_de_Documentos_net.Services
 {
-    public static class Metodos
+    public static class MetodosInfo
     {
         static string arquivo = "Info.csv";
+
+        public static void DialogBoxInfo(OpenFileDialog openFile)
+        {
+            openFile.InitialDirectory = "c:\\";
+            openFile.Filter = "Imagens (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg";
+            openFile.FilterIndex = 2; // muda o filtro tipo para diferentes tipos de arquivo
+            openFile.RestoreDirectory = true;
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                DadosGlobais.CaminhoLogo = openFile.FileName;
+
+            }
+        }
         public static bool ChecarInfo()
         {
             if (File.Exists(arquivo))
@@ -98,11 +112,6 @@ namespace Gerador_de_Documentos_forms.Services
             }
 
 
-
-
-
-
-
         }
         public static void CadastroInfo(string caminho, string nome, string rua, string bairro, string cidade
             , string estado, string email, string telefone)
@@ -111,6 +120,7 @@ namespace Gerador_de_Documentos_forms.Services
             {
                 File.Create(arquivo);
                 File.WriteAllText(arquivo, $"{caminho},{nome},{rua},{bairro},{cidade},{estado},{email},{telefone}");
+                
             }
             else
             {

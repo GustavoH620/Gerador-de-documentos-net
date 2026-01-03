@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Gerador_de_Documentos_forms.Services;
+using Gerador_de_Documentos_net.Services;
 using QuestPDF.Helpers;
 
-namespace Gerador_de_Documentos_forms.Models.Orcamentos
+namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
     public static class questPDFOrcDataSource
     {

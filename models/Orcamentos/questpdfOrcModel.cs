@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gerador_de_Documentos_forms.Models
+namespace Gerador_de_Documentos_net.Models
 {
     public class modeloOrcamento
     {
@@ -21,13 +21,13 @@ namespace Gerador_de_Documentos_forms.Models
     }
     public class Endereco
     {
-        public required string Nome { get; set; }
-        public required string Rua { get; set; }
-        public required string Bairro { get; set; }
-        public required string Cidade { get; set; }
-        public required string Estado { get; set; }
-        public required string Email { get; set; }
-        public required string Telefone { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Rua { get; set; } = string.Empty;
+        public string Bairro { get; set; } = string.Empty;
+        public string Cidade { get; set; } = string.Empty;
+        public string Estado { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Telefone { get; set; } = string.Empty;
 
     }
 }

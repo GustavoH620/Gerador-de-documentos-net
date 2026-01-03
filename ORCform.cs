@@ -1,7 +1,9 @@
-﻿using Gerador_de_Documentos_forms.Models;
-using Gerador_de_Documentos_forms.Models.Orcamentos;
-using Gerador_de_Documentos_forms.Services;
+﻿using Gerador_de_Documentos_net.Models;
+using Gerador_de_Documentos_net.Models.Orcamentos;
+using Gerador_de_Documentos_net.Services;
+using Gerador_de_documentos_net.models.Orcamentos;
 using Microsoft.Data.Sqlite;
+using QuestPDF.Companion;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using SQLitePCL;
@@ -17,11 +19,41 @@ using System.Windows.Forms;
 
 
 
-namespace Gerador_de_Documentos_forms
+namespace Gerador_de_Documentos_net
 {
 
     public partial class ORCform : Form
     {
+        public void GerarPDFOrcamento()
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+            var model = questPDFOrcDataSource.PegarDadosOrc(
+                nomeCliente: txtNomeCliente.Text,
+                CPF: txtCPF.Text,
+                ValorT: DadosGlobais.ListaItens.Sum(x => x.ValorTotal),
+                ID: int.Parse(lblIDorc.Text.Replace("ID: ", "")),
+                ListaProdutos: DadosGlobais.ListaItens,
+                Comentarios: rtbComentarios.Text,
+                Rua: txtRua.Text,
+                Bairro: txtBairro.Text,
+                Cidade: txtCidade.Text,
+                Estado: cbEstado.Text,
+                Email: txtEmail.Text,
+                Telefone: txtTelefone.Text,
+                dataExp: dataExp
+            );
+
+            switch (DadosGlobais.OrcTemplateSelected)
+            {
+                case 1:
+                    var documento = new OrcamentoT1(model);
+                    documento.GeneratePdfAndShow();
+                    break;
+
+
+
+            }
+        }
 
         DateTime dataExp = DateTime.Now.AddDays(30);
         public void DataExp()
@@ -115,35 +147,7 @@ namespace Gerador_de_Documentos_forms
 
         private void btnGerarOrc_Click(object sender, EventArgs e)
         {
-            QuestPDF.Settings.License = LicenseType.Community;
-            var model = questPDFOrcDataSource.PegarDadosOrc(
-                nomeCliente: txtNomeCliente.Text,
-                CPF: txtCPF.Text,
-                ValorT: DadosGlobais.ListaItens.Sum(x => x.ValorTotal),
-                ID: int.Parse(lblIDorc.Text.Replace("ID: ", "")),
-                ListaProdutos: DadosGlobais.ListaItens,
-                Comentarios: rtbComentarios.Text,
-                Rua: txtRua.Text,
-                Bairro: txtBairro.Text,
-                Cidade: txtCidade.Text,
-                Estado: cbEstado.Text,
-                Email: txtEmail.Text,
-                Telefone: txtTelefone.Text,
-                dataExp: dataExp
-            );
-
-            switch (DadosGlobais.OrcTemplateSelected)
-            {
-                case 1:
-                    var documento = new OrcamentoT1(model);
-                    documento.GeneratePdfAndShow();
-                    break;
-
-
-
-            }
-
-
+            GerarPDFOrcamento();
 
         }
 

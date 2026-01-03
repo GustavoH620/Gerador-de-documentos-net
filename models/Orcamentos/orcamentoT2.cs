@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Gerador_de_documentos_net.models.Orcamentos;
 
-namespace Gerador_de_Documentos_forms.Models.Orcamentos
+namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
     public class OrcamentoT2 : IDocument
     {

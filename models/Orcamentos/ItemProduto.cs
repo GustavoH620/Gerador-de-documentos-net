@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gerador_de_Documentos_forms.Models.Orcamentos
+namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
     public class ItemProduto
     {

@@ -1,4 +1,4 @@
-﻿using Gerador_de_Documentos_forms;
+﻿using Gerador_de_Documentos_net;
 using System;
 using System.Collections.Generic;
 using System.Linq;

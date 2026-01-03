@@ -1,4 +1,4 @@
-﻿namespace Gerador_de_Documentos_forms
+﻿namespace Gerador_de_Documentos_net
 {
     partial class ORCform
     {

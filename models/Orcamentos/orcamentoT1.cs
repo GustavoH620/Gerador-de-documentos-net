@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gerador_de_Documentos_forms.Models.Orcamentos
+namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
     public class OrcamentoT1 : IDocument
     {
@@ -67,7 +67,7 @@ namespace Gerador_de_Documentos_forms.Models.Orcamentos
                     });
 
                 });
-                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(100).Height(100).Placeholder(); } else { row.ConstantItem(100).Height(100).Image(DadosGlobais.CaminhoLogo); }
+                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(100).Height(100).Placeholder(); } else { row.ConstantItem(100).Height(100).Image(DadosGlobais.CaminhoLogo).FitArea(); }
             });
         }
         void ComposeContent(IContainer container)

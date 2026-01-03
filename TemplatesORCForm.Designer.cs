@@ -1,4 +1,4 @@
-﻿namespace Gerador_de_Documentos_forms
+﻿namespace Gerador_de_Documentos_net
 {
     partial class TemplatesORCForm
     {
@@ -28,52 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(119, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(224, 229);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "template1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new Point(51, 75);
+            button1.Margin = new Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(261, 264);
+            button1.TabIndex = 0;
+            button1.Text = "template1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(383, 64);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(189, 229);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "template2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.Location = new Point(375, 75);
+            button2.Margin = new Padding(4, 3, 4, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(220, 264);
+            button2.TabIndex = 1;
+            button2.Text = "template2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(613, 65);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(189, 229);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "template3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            button3.Location = new Point(638, 75);
+            button3.Margin = new Padding(4, 3, 4, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(220, 264);
+            button3.TabIndex = 2;
+            button3.Text = "template3";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // TemplatesORCForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "TemplatesORCForm";
-            this.Text = "TemplatesORCForm";
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "TemplatesORCForm";
+            Text = "TemplatesORCForm";
+            ResumeLayout(false);
 
         }
 

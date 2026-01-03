@@ -1,5 +1,5 @@
-﻿using Gerador_de_Documentos_forms.Models;
-using Gerador_de_Documentos_forms.Services;
+﻿using Gerador_de_Documentos_net.Models;
+using Gerador_de_Documentos_net.Services;
 using Gerador_de_documentos_net.services;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Gerador_de_Documentos_forms
+namespace Gerador_de_Documentos_net
 {
     public partial class Formconfig : Form
     {
@@ -29,16 +29,7 @@ namespace Gerador_de_Documentos_forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "Imagens (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg";
-            openFileDialog1.FilterIndex = 2; // muda o filtro tipo para diferentes tipos de arquivo
-            openFileDialog1.RestoreDirectory = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                DadosGlobais.CaminhoLogo = openFileDialog1.FileName;
-
-            }
+            MetodosInfo.DialogBoxInfo(openFileDialog1);
             lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
             pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
 
@@ -46,19 +37,23 @@ namespace Gerador_de_Documentos_forms
 
         private void config_Load(object sender, EventArgs e)
         {
-            if (Metodos.ChecarInfo())
-            {
-                lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
-                pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
-                txtNomeVendedor.Text = DadosGlobais.NomeVendedor;
-                txtRua.Text = DadosGlobais.enderecoVendedor.Rua;
-                txtBairro.Text = DadosGlobais.enderecoVendedor.Bairro;
-                txtCidade.Text = DadosGlobais.enderecoVendedor.Cidade;
-                cbEstado.Text = DadosGlobais.enderecoVendedor.Estado;
-                txtEmail.Text = DadosGlobais.enderecoVendedor.Email;
-                txtTelefone.Text = DadosGlobais.enderecoVendedor.Telefone;
 
-            }
+            lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
+            pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
+            txtNomeVendedor.Text = DadosGlobais.NomeVendedor;
+            txtRua.Text = DadosGlobais.enderecoVendedor.Rua;
+            txtBairro.Text = DadosGlobais.enderecoVendedor.Bairro;
+            txtCidade.Text = DadosGlobais.enderecoVendedor.Cidade;
+            cbEstado.Text = DadosGlobais.enderecoVendedor.Estado;
+            txtEmail.Text = DadosGlobais.enderecoVendedor.Email;
+            txtTelefone.Text = DadosGlobais.enderecoVendedor.Telefone;
+
+
+
+
+
+
+
 
         }
 
@@ -69,15 +64,15 @@ namespace Gerador_de_Documentos_forms
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (Metodos.ValidacaoGeral(txtBairro,txtCidade,txtEmail,txtNomeVendedor,txtRua,txtTelefone, cbEstado))
+            if (MetodosInfo.ValidacaoGeral(txtBairro, txtCidade, txtEmail, txtNomeVendedor, txtRua, txtTelefone, cbEstado))
             {
-                Metodos.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text, txtRua.Text, 
-                txtBairro.Text, txtCidade.Text, cbEstado.Text, txtEmail.Text,txtTelefone.Text);
+                MetodosInfo.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text, txtRua.Text,
+                txtBairro.Text, txtCidade.Text, cbEstado.Text, txtEmail.Text, txtTelefone.Text);
 
                 Messages.Confirmacao();
 
             }
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)

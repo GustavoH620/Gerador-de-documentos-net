@@ -1,4 +1,4 @@
-using Gerador_de_Documentos_forms;
+using Gerador_de_Documentos_net;
 using Microsoft.Data.Sqlite;
 using SQLitePCL;
 
