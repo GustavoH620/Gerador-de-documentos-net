@@ -33,13 +33,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
 
                 page.Header().Element(ComposeHeader);
                 page.Content().Element(ComposeContent);
-                page.Footer().AlignRight().Text(txt =>
-                {
-                    txt.Span("Página ");
-                    txt.CurrentPageNumber();
-                    txt.Span(" de ");
-                    txt.TotalPages();
-                });
+                page.Footer().Element(ComposeFooter);
             });
 
         }
@@ -48,26 +42,30 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
         {
             container.Row(row =>
             {
+                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(200).Height(150).Placeholder(); } else { row.ConstantItem(200).Height(150).Image(DadosGlobais.CaminhoLogo); }
+
                 row.RelativeItem().Column(column =>
                 {
                     column.Item()
-                        .Text($"Orçamento Nº{Modelo.OrcID}")
-                        .FontSize(20).SemiBold().FontColor(Colors.Blue.Medium);
+                        .Text($"{DadosGlobais.NomeVendedor}").FontSize(15).Bold();
+                    column.Item()
+                        .Text($"Orçamento")
+                        .FontSize(15).SemiBold().FontColor(Colors.Blue.Medium);
 
                     column.Item().Text(text =>
                     {
-                        text.Span("Issue date: ").SemiBold();
+                        text.Span("Data de emissão: ").SemiBold();
                         text.Span($"{Modelo.DataEmissao:d}");
                     });
 
                     column.Item().Text(text =>
                     {
-                        text.Span("Due date: ").SemiBold();
+                        text.Span("Data de expiração:  ").SemiBold();
                         text.Span($"{Modelo.DataExp:d}");
                     });
 
                 });
-                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(100).Height(100).Placeholder(); } else { row.ConstantItem(100).Height(100).Image(DadosGlobais.CaminhoLogo); }
+                
             });
         }
         void ComposeContent(IContainer container)
@@ -78,9 +76,9 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
 
                 column.Item().Row(row =>
                 {
-                    row.RelativeItem().Component(new AddressComponent("From", DadosGlobais.enderecoVendedor));
+                    row.RelativeItem().Component(new AddressComponent("De", DadosGlobais.enderecoVendedor));
                     row.ConstantItem(50);
-                    row.RelativeItem().Component(new AddressComponent("For", Modelo.EnderecoCliente));
+                    row.RelativeItem().Component(new AddressComponent("Para", Modelo.EnderecoCliente));
                 });
 
                 column.Item().Element(ComposeTable);
@@ -106,9 +104,9 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                 table.Header(header =>
                 {
                     header.Cell().Element(CellStyle).Text("#");
-                    header.Cell().Element(CellStyle).Text("Product");
-                    header.Cell().Element(CellStyle).AlignRight().Text("Unit price");
-                    header.Cell().Element(CellStyle).AlignRight().Text("Quantity");
+                    header.Cell().Element(CellStyle).Text("Produto");
+                    header.Cell().Element(CellStyle).AlignRight().Text("Preço unitário");
+                    header.Cell().Element(CellStyle).AlignRight().Text("Quantidade");
                     header.Cell().Element(CellStyle).AlignRight().Text("Total");
 
                     static IContainer CellStyle(IContainer container)
@@ -121,9 +119,9 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                 {
                     table.Cell().Element(CellStyle).Text(DadosGlobais.ListaItens.IndexOf(item) + 1);
                     table.Cell().Element(CellStyle).Text(item.NomeProduto);
-                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.Valor}$");
+                    table.Cell().Element(CellStyle).AlignRight().Text($"R${item.Valor}");
                     table.Cell().Element(CellStyle).AlignRight().Text(item.QTD);
-                    table.Cell().Element(CellStyle).AlignRight().Text($"{item.ValorTotal}$");
+                    table.Cell().Element(CellStyle).AlignRight().Text($"R${item.ValorTotal}");
 
                     static IContainer CellStyle(IContainer container)
                     {
@@ -138,9 +136,36 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
             container.Background(Colors.Grey.Lighten3).Padding(10).Column(column =>
             {
                 column.Spacing(5);
-                column.Item().Text("Comments").FontSize(14);
+                column.Item().Text("Comentários").FontSize(14);
                 column.Item().Text(Modelo.Comentarios);
             });
+        }
+
+        void ComposeFooter(IContainer container)
+        {
+            container.Row(row =>
+                row.RelativeItem().Column(column =>
+                {
+                    column.Item()
+                        .Text($"{DadosGlobais.NomeVendedor}").AlignCenter().FontSize(15).Bold();
+                    column.Item()
+                        .Text($"{DadosGlobais.enderecoVendedor.Rua} - {DadosGlobais.enderecoVendedor.Bairro} - {DadosGlobais.enderecoVendedor.Cidade} -{DadosGlobais.enderecoVendedor.Estado} / Fone: {DadosGlobais.enderecoVendedor.Telefone}")
+                        .AlignRight();
+                    column.Item()
+                        .Text($"{DadosGlobais.enderecoVendedor.Email}").AlignCenter();
+                    column.Item()
+                        .Text(txt =>
+                        {
+                            txt.Span("Página ");
+                            txt.CurrentPageNumber();
+                            txt.Span(" de ");
+                            txt.TotalPages();
+                            txt.AlignRight();
+                            txt.AlignEnd();
+                        });
+                }
+                )
+            );
         }
     }
 }

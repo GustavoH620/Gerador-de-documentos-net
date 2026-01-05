@@ -29,24 +29,47 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnConfig = new Button();
-            lblEstagio = new Label();
             btnOrc = new Button();
             btnCom = new Button();
+            btnConfig = new Button();
+            lblEstagio = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.RosyBrown;
+            panel1.Controls.Add(btnOrc);
+            panel1.Controls.Add(btnCom);
             panel1.Controls.Add(btnConfig);
             panel1.Controls.Add(lblEstagio);
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(1, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(341, 898);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // btnOrc
+            // 
+            btnOrc.Location = new Point(36, 274);
+            btnOrc.Margin = new Padding(4, 3, 4, 3);
+            btnOrc.Name = "btnOrc";
+            btnOrc.Size = new Size(211, 78);
+            btnOrc.TabIndex = 1;
+            btnOrc.Text = "Orçamentos";
+            btnOrc.UseVisualStyleBackColor = true;
+            btnOrc.Click += btnOrc_Click;
+            // 
+            // btnCom
+            // 
+            btnCom.Location = new Point(36, 201);
+            btnCom.Margin = new Padding(4, 3, 4, 3);
+            btnCom.Name = "btnCom";
+            btnCom.Size = new Size(211, 67);
+            btnCom.TabIndex = 2;
+            btnCom.Text = "Comunicado";
+            btnCom.UseVisualStyleBackColor = true;
             // 
             // btnConfig
             // 
@@ -70,36 +93,14 @@
             lblEstagio.TabIndex = 0;
             lblEstagio.Text = "Home";
             // 
-            // btnOrc
-            // 
-            btnOrc.Location = new Point(833, 121);
-            btnOrc.Margin = new Padding(4, 3, 4, 3);
-            btnOrc.Name = "btnOrc";
-            btnOrc.Size = new Size(268, 323);
-            btnOrc.TabIndex = 1;
-            btnOrc.Text = "Orçamentos";
-            btnOrc.UseVisualStyleBackColor = true;
-            btnOrc.Click += btnOrc_Click;
-            // 
-            // btnCom
-            // 
-            btnCom.Location = new Point(479, 121);
-            btnCom.Margin = new Padding(4, 3, 4, 3);
-            btnCom.Name = "btnCom";
-            btnCom.Size = new Size(268, 323);
-            btnCom.TabIndex = 2;
-            btnCom.Text = "Comunicado";
-            btnCom.UseVisualStyleBackColor = true;
-            // 
             // HomeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tomato;
-            ClientSize = new Size(1168, 749);
-            Controls.Add(btnCom);
-            Controls.Add(btnOrc);
+            ClientSize = new Size(1168, 560);
             Controls.Add(panel1);
+            IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "HomeForm";
             Text = "Form1";

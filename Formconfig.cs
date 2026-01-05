@@ -37,7 +37,7 @@ namespace Gerador_de_Documentos_net
 
         private void config_Load(object sender, EventArgs e)
         {
-
+            MetodosInfo.ChecarInfo();
             lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
             pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
             txtNomeVendedor.Text = DadosGlobais.NomeVendedor;

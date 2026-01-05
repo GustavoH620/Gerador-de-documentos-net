@@ -42,13 +42,22 @@ namespace Gerador_de_Documentos_net
                 Telefone: txtTelefone.Text,
                 dataExp: dataExp
             );
-
+            IDocument documento;
             switch (DadosGlobais.OrcTemplateSelected)
             {
                 case 1:
-                    var documento = new OrcamentoT1(model);
+                    documento = new OrcamentoT1(model);
                     documento.GeneratePdfAndShow();
                     break;
+                case 2:
+                    documento = new OrcamentoT2(model);
+                    documento.GeneratePdfAndShow();
+                    break;
+               // case 3:
+                   // documento = new OrcamentoT3(model);
+                   // documento.GeneratePdfAndShow();
+                   // break;
+
 
 
 

@@ -34,7 +34,6 @@ namespace Gerador_de_Documentos_net
             {
                 TemplatesORCForm form = new TemplatesORCForm();
                 form.Show();
-                this.Hide();
 
             }
 

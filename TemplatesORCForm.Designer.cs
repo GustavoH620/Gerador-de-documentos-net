@@ -77,6 +77,7 @@
             Margin = new Padding(4, 3, 4, 3);
             Name = "TemplatesORCForm";
             Text = "TemplatesORCForm";
+            Load += TemplatesORCForm_Load;
             ResumeLayout(false);
 
         }

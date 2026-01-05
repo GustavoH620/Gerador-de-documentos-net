@@ -14,7 +14,7 @@ namespace Gerador_de_Documentos_net
     public partial class TemplatesORCForm : Form
     {
 
-        
+
         public TemplatesORCForm()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace Gerador_de_Documentos_net
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             ORCform orcT1 = new ORCform();
             DadosGlobais.OrcTemplateSelected = 1;
             orcT1.Show();
@@ -45,6 +45,11 @@ namespace Gerador_de_Documentos_net
             DadosGlobais.OrcTemplateSelected = 3;
             orcT1.Show();
             this.Hide();
+        }
+
+        private void TemplatesORCForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
