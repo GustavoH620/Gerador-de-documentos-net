@@ -49,6 +49,10 @@
             lblIDorc = new Label();
             btnGerarOrc = new Button();
             groupBox1 = new GroupBox();
+            txtCNPJ = new TextBox();
+            label14 = new Label();
+            txtCEP = new TextBox();
+            label13 = new Label();
             cbEstado = new ComboBox();
             btnCadastroCliente = new Button();
             label11 = new Label();
@@ -65,6 +69,8 @@
             ckbDataExp = new CheckBox();
             dtpDataExp = new DateTimePicker();
             gbProdutos = new GroupBox();
+            label15 = new Label();
+            rtbDescTecnica = new RichTextBox();
             groupBox1.SuspendLayout();
             gbProdutos.SuspendLayout();
             SuspendLayout();
@@ -194,7 +200,7 @@
             listBoxProdutos.Location = new Point(301, 42);
             listBoxProdutos.Margin = new Padding(4, 3, 4, 3);
             listBoxProdutos.Name = "listBoxProdutos";
-            listBoxProdutos.Size = new Size(238, 154);
+            listBoxProdutos.Size = new Size(334, 154);
             listBoxProdutos.TabIndex = 13;
             // 
             // label8
@@ -251,7 +257,7 @@
             // 
             // btnGerarOrc
             // 
-            btnGerarOrc.Location = new Point(20, 568);
+            btnGerarOrc.Location = new Point(20, 658);
             btnGerarOrc.Name = "btnGerarOrc";
             btnGerarOrc.Size = new Size(109, 50);
             btnGerarOrc.TabIndex = 19;
@@ -262,6 +268,10 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(txtCNPJ);
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(txtCEP);
+            groupBox1.Controls.Add(label13);
             groupBox1.Controls.Add(cbEstado);
             groupBox1.Controls.Add(btnCadastroCliente);
             groupBox1.Controls.Add(label11);
@@ -281,10 +291,46 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Location = new Point(20, 50);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(291, 493);
+            groupBox1.Size = new Size(513, 579);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados do cliente";
+            // 
+            // txtCNPJ
+            // 
+            txtCNPJ.Location = new Point(270, 89);
+            txtCNPJ.Margin = new Padding(4, 3, 4, 3);
+            txtCNPJ.Name = "txtCNPJ";
+            txtCNPJ.Size = new Size(224, 23);
+            txtCNPJ.TabIndex = 25;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(270, 71);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(34, 15);
+            label14.TabIndex = 26;
+            label14.Text = "CNPJ";
+            // 
+            // txtCEP
+            // 
+            txtCEP.Location = new Point(270, 42);
+            txtCEP.Margin = new Padding(4, 3, 4, 3);
+            txtCEP.Name = "txtCEP";
+            txtCEP.Size = new Size(224, 23);
+            txtCEP.TabIndex = 23;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(270, 24);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(28, 15);
+            label13.TabIndex = 24;
+            label13.Text = "CEP";
             // 
             // cbEstado
             // 
@@ -297,7 +343,7 @@
             // 
             // btnCadastroCliente
             // 
-            btnCadastroCliente.Location = new Point(6, 437);
+            btnCadastroCliente.Location = new Point(8, 510);
             btnCadastroCliente.Name = "btnCadastroCliente";
             btnCadastroCliente.Size = new Size(109, 50);
             btnCadastroCliente.TabIndex = 21;
@@ -388,7 +434,7 @@
             // 
             // rtbComentarios
             // 
-            rtbComentarios.Location = new Point(386, 456);
+            rtbComentarios.Location = new Point(566, 542);
             rtbComentarios.Name = "rtbComentarios";
             rtbComentarios.Size = new Size(518, 87);
             rtbComentarios.TabIndex = 21;
@@ -397,7 +443,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(386, 438);
+            label12.Location = new Point(566, 524);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(75, 15);
@@ -407,7 +453,7 @@
             // ckbDataExp
             // 
             ckbDataExp.AutoSize = true;
-            ckbDataExp.Location = new Point(386, 406);
+            ckbDataExp.Location = new Point(566, 492);
             ckbDataExp.Name = "ckbDataExp";
             ckbDataExp.Size = new Size(168, 19);
             ckbDataExp.TabIndex = 23;
@@ -417,7 +463,7 @@
             // 
             // dtpDataExp
             // 
-            dtpDataExp.Location = new Point(569, 406);
+            dtpDataExp.Location = new Point(749, 492);
             dtpDataExp.Name = "dtpDataExp";
             dtpDataExp.Size = new Size(255, 23);
             dtpDataExp.TabIndex = 24;
@@ -425,7 +471,9 @@
             // 
             // gbProdutos
             // 
+            gbProdutos.Controls.Add(label15);
             gbProdutos.Controls.Add(btnLimparLista);
+            gbProdutos.Controls.Add(rtbDescTecnica);
             gbProdutos.Controls.Add(btnAdicionar);
             gbProdutos.Controls.Add(lblValorT);
             gbProdutos.Controls.Add(label8);
@@ -436,18 +484,36 @@
             gbProdutos.Controls.Add(txtValor);
             gbProdutos.Controls.Add(txtProduto);
             gbProdutos.Controls.Add(label5);
-            gbProdutos.Location = new Point(348, 50);
+            gbProdutos.Location = new Point(540, 50);
             gbProdutos.Name = "gbProdutos";
-            gbProdutos.Size = new Size(556, 268);
+            gbProdutos.Size = new Size(655, 417);
             gbProdutos.TabIndex = 25;
             gbProdutos.TabStop = false;
             gbProdutos.Text = "Produtos e Serviços";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(25, 286);
+            label15.Margin = new Padding(4, 0, 4, 0);
+            label15.Name = "label15";
+            label15.Size = new Size(99, 15);
+            label15.TabIndex = 27;
+            label15.Text = "Descrição técnica";
+            // 
+            // rtbDescTecnica
+            // 
+            rtbDescTecnica.Location = new Point(25, 304);
+            rtbDescTecnica.Name = "rtbDescTecnica";
+            rtbDescTecnica.Size = new Size(518, 87);
+            rtbDescTecnica.TabIndex = 26;
+            rtbDescTecnica.Text = "";
             // 
             // ORCform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 644);
+            ClientSize = new Size(1207, 720);
             Controls.Add(gbProdutos);
             Controls.Add(dtpDataExp);
             Controls.Add(ckbDataExp);
@@ -509,5 +575,11 @@
         private CheckBox ckbDataExp;
         private DateTimePicker dtpDataExp;
         private GroupBox gbProdutos;
+        private TextBox txtCNPJ;
+        private Label label14;
+        private TextBox txtCEP;
+        private Label label13;
+        private Label label15;
+        private RichTextBox rtbDescTecnica;
     }
 }

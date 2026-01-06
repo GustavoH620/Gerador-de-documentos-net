@@ -1,5 +1,5 @@
-﻿using Gerador_de_Documentos_net.Models;
-using Gerador_de_documentos_net.services;
+﻿using Gerador_de_documentos_net.services;
+using Gerador_de_Documentos_net.Models;
 using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Markup;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Gerador_de_Documentos_net.Services
 {
@@ -30,7 +31,7 @@ namespace Gerador_de_Documentos_net.Services
 
             }
         }
-        public static bool ChecarInfo()
+        public static bool ChecarInfo(bool checkoverridde)
         {
             if (File.Exists(arquivo))
             {
@@ -42,6 +43,8 @@ namespace Gerador_de_Documentos_net.Services
                 string estado = "";
                 string email = "";
                 string telefone = "";
+                string cep = "";
+                string cnpj = "";
 
                 using (TextFieldParser parser = new TextFieldParser(arquivo))
                 {
@@ -62,6 +65,9 @@ namespace Gerador_de_Documentos_net.Services
                             estado = campos[5];
                             email = campos[6];
                             telefone = campos[7];
+                            cep = campos[8];
+                            cnpj = campos[9];
+                            
 
                         }
 
@@ -78,12 +84,15 @@ namespace Gerador_de_Documentos_net.Services
                         Estado = estado,
                         Email = email,
                         Telefone = telefone,
+                        CEP = cep,
+                        CNPJ = cnpj,
 
 
 
                     };
+                    parser.Close();
 
-                    return false;
+                    return true;
 
                 }
 
@@ -95,38 +104,44 @@ namespace Gerador_de_Documentos_net.Services
 
 
             }
-            else
+            else if (checkoverridde != true)
             {
                 Console.WriteLine("Arquivo vazio ou não existente");
                 if (Messages.AdicionarLogo())
                 {
-                    return false;
+                    return true;
 
 
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
 
+            }
+            else
+            {
+                return true;
             }
 
 
         }
         public static void CadastroInfo(string caminho, string nome, string rua, string bairro, string cidade
-            , string estado, string email, string telefone)
+            , string estado, string CEP, string CNPJ, string email, string telefone)
         {
             if (!File.Exists(arquivo))
             {
-                File.Create(arquivo);
-                File.WriteAllText(arquivo, $"{caminho},{nome},{rua},{bairro},{cidade},{estado},{email},{telefone}");
-                
+                StreamWriter reader = null;
+                reader = new StreamWriter(File.OpenWrite(arquivo));
+                reader.Write($"{caminho},{nome},{rua},{bairro},{cidade},{estado},{email},{telefone}, {CEP}, {CNPJ}");
+                reader.Close();
+
             }
             else
             {
                 StreamWriter reader = null;
                 reader = new StreamWriter(File.OpenWrite(arquivo));
-                reader.Write($"{caminho},{nome},{rua},{bairro},{cidade},{estado},{email},{telefone}");
+                reader.Write($"{caminho},{nome},{rua},{bairro},{cidade},{estado},{email},{telefone},{CEP},{CNPJ}");
                 reader.Close();
 
             }
@@ -143,6 +158,8 @@ namespace Gerador_de_Documentos_net.Services
                 Estado = estado,
                 Email = email,
                 Telefone = telefone,
+                CEP = CEP,
+                CNPJ = CNPJ,
 
 
 

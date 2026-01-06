@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace Gerador_de_Documentos_net.Services
 {
-    public static class DatabaseFunctions
+    public static class DatabaseFunctionsORC
     {
         static string dbPath = "Data Source=BancoOrcamentos.db";
 
+        //ID
         public static async Task<int> DatabaseOrcID() 
         {
             await using var connection = new SqliteConnection(dbPath);
@@ -44,6 +45,9 @@ namespace Gerador_de_Documentos_net.Services
             }
 
         }
+
+        //Cadastro de orçamentos
+
         public static async Task DataBaseOrcCadastro(string nome, string produtos, string vt)
         {
             await using var connection = new SqliteConnection(dbPath);

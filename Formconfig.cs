@@ -37,7 +37,7 @@ namespace Gerador_de_Documentos_net
 
         private void config_Load(object sender, EventArgs e)
         {
-            MetodosInfo.ChecarInfo();
+            MetodosInfo.ChecarInfo(true);
             lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
             pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;
             txtNomeVendedor.Text = DadosGlobais.NomeVendedor;
@@ -47,6 +47,8 @@ namespace Gerador_de_Documentos_net
             cbEstado.Text = DadosGlobais.enderecoVendedor.Estado;
             txtEmail.Text = DadosGlobais.enderecoVendedor.Email;
             txtTelefone.Text = DadosGlobais.enderecoVendedor.Telefone;
+            txtCEP.Text = DadosGlobais.enderecoVendedor.CEP;
+            txtCNPJ.Text = DadosGlobais.enderecoVendedor.CNPJ;
 
 
 
@@ -67,7 +69,7 @@ namespace Gerador_de_Documentos_net
             if (MetodosInfo.ValidacaoGeral(txtBairro, txtCidade, txtEmail, txtNomeVendedor, txtRua, txtTelefone, cbEstado))
             {
                 MetodosInfo.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text, txtRua.Text,
-                txtBairro.Text, txtCidade.Text, cbEstado.Text, txtEmail.Text, txtTelefone.Text);
+                txtBairro.Text, txtCidade.Text, cbEstado.Text, txtCEP.Text, txtCNPJ.Text, txtEmail.Text, txtTelefone.Text);
 
                 Messages.Confirmacao();
 

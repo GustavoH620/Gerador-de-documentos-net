@@ -16,6 +16,8 @@ namespace Gerador_de_Documentos_net.Models
         public DateTime DataExp { get; set; }
         public required Endereco EnderecoCliente { get; set; }
         public required string Comentarios { get; set; }
+        public required string DescricaoTecnica { get; set; }
+
 
 
     }
@@ -28,6 +30,8 @@ namespace Gerador_de_Documentos_net.Models
         public string Estado { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Telefone { get; set; } = string.Empty;
+        public string CEP { get; set; } = string.Empty;
+        public string CNPJ { get; set; } = string.Empty;
 
     }
 }

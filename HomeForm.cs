@@ -25,15 +25,17 @@ namespace Gerador_de_Documentos_net
 
         private void btnOrc_Click(object sender, EventArgs e)
         {
-            if (MetodosInfo.ChecarInfo()) 
+            if (!MetodosInfo.ChecarInfo(false)) 
             {
                 Formconfig config = new Formconfig();
                 config.Show();
+
             }
             else
             {
                 TemplatesORCForm form = new TemplatesORCForm();
                 form.Show();
+
 
             }
 

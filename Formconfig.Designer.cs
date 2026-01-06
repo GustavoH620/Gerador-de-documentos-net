@@ -49,6 +49,10 @@
             pbLogo = new PictureBox();
             label2 = new Label();
             txtNomeVendedor = new TextBox();
+            txtCNPJ = new TextBox();
+            label14 = new Label();
+            txtCEP = new TextBox();
+            label13 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
@@ -82,6 +86,10 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtCNPJ);
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(txtCEP);
+            groupBox1.Controls.Add(label13);
             groupBox1.Controls.Add(cbEstado);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(txtCidade);
@@ -264,6 +272,42 @@
             txtNomeVendedor.Size = new Size(223, 23);
             txtNomeVendedor.TabIndex = 2;
             // 
+            // txtCNPJ
+            // 
+            txtCNPJ.Location = new Point(260, 274);
+            txtCNPJ.Margin = new Padding(4, 3, 4, 3);
+            txtCNPJ.Name = "txtCNPJ";
+            txtCNPJ.Size = new Size(224, 23);
+            txtCNPJ.TabIndex = 41;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(260, 256);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(34, 15);
+            label14.TabIndex = 42;
+            label14.Text = "CNPJ";
+            // 
+            // txtCEP
+            // 
+            txtCEP.Location = new Point(260, 227);
+            txtCEP.Margin = new Padding(4, 3, 4, 3);
+            txtCEP.Name = "txtCEP";
+            txtCEP.Size = new Size(224, 23);
+            txtCEP.TabIndex = 39;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(260, 209);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(28, 15);
+            label13.TabIndex = 40;
+            label13.Text = "CEP";
+            // 
             // Formconfig
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -304,5 +348,9 @@
         private Label label5;
         private TextBox txtEmail;
         private Label label6;
+        private TextBox txtCNPJ;
+        private Label label14;
+        private TextBox txtCEP;
+        private Label label13;
     }
 }

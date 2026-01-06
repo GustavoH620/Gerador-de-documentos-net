@@ -29,13 +29,16 @@ namespace Gerador_de_documentos_net.models.Orcamentos
             {
                 column.Spacing(2);
 
-                column.Item().BorderBottom(1).PaddingBottom(5).Text(Title).SemiBold();
+                column.Item().BorderBottom(1).PaddingBottom(5).Text(Title).SemiBold().FontColor(Colors.Blue.Lighten3);
 
-                column.Item().Text(Address.Nome);
-                column.Item().Text(Address.Rua);
-                column.Item().Text($"{Address.Cidade}, {Address.Estado}");
-                column.Item().Text(Address.Email);
-                column.Item().Text(Address.Telefone);
+                column.Item().Border(1).Padding(2).Text(Address.Nome);
+                column.Item().Border(1).Padding(2).Text(Address.Rua);
+                column.Item().Border(1).Padding(2).Text($"{Address.Cidade}, {Address.Estado}");
+                column.Item().Border(1).Padding(2).Text($"CEP: {Address.CEP}, CNPJ: {Address.CNPJ}");
+                column.Item().Border(1).Padding(2).Text(Address.Email);
+                column.Item().Border(1).Padding(2).Text(Address.Telefone);
+
+                
             });
         }
     }

@@ -10,7 +10,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
     public static class questPDFOrcDataSource
     {
-        public static modeloOrcamento PegarDadosOrc(string nomeCliente, string CPF, decimal ValorT, int ID, List<ItemProduto> ListaProdutos, string Comentarios,
+        public static modeloOrcamento PegarDadosOrc(string nomeCliente, string CPF, string CNPJ, string CEP, string DescricaoTecnica, decimal ValorT, int ID, List<ItemProduto> ListaProdutos, string Comentarios,
              string Rua, string Bairro, string Cidade, string Estado, string Email, string Telefone, DateTime dataExp )
         {
             var itens = ListaProdutos.ToList();
@@ -23,6 +23,9 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                 DataEmissao = DateTime.Now,
                 DataExp = dataExp,
                 Comentarios = Comentarios,
+
+                DescricaoTecnica = DescricaoTecnica,
+
                 EnderecoCliente = new Endereco
                 {
                     Rua = Rua,
@@ -31,7 +34,9 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     Estado = Estado,
                     Email = Email,
                     Telefone = Telefone,
-                    Nome = nomeCliente
+                    Nome = nomeCliente,
+                    CNPJ = CNPJ,
+                    CEP = CEP
 
                 }
 

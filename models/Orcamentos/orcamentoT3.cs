@@ -12,7 +12,7 @@ using Gerador_de_documentos_net.models.Orcamentos;
 
 namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
-    public class OrcamentoT3
+    public class OrcamentoT3 : IDocument
     {
         public modeloOrcamento Modelo { get; }
 
@@ -33,13 +33,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
 
                 page.Header().Element(ComposeHeader);
                 page.Content().Element(ComposeContent);
-                page.Footer().AlignRight().Text(txt =>
-                {
-                    txt.Span("Página ");
-                    txt.CurrentPageNumber();
-                    txt.Span(" de ");
-                    txt.TotalPages();
-                });
+                page.Footer().Element(ComposeFooter);
             });
 
         }
@@ -48,26 +42,40 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
         {
             container.Row(row =>
             {
+                 
+
                 row.RelativeItem().Column(column =>
                 {
+                    if (DadosGlobais.CaminhoLogo == "") 
+                    { 
+                        column.Item().Height(150).Placeholder(); 
+                    }
+                    else
+                    {
+                        column.Item().AlignCenter().Width(150).Height(150).Image(DadosGlobais.CaminhoLogo);
+                    }
                     column.Item()
-                        .Text($"Orçamento Nº{Modelo.OrcID}")
-                        .FontSize(20).SemiBold().FontColor(Colors.Blue.Medium);
+                        .Text($"{DadosGlobais.NomeVendedor}").FontSize(15).Bold().AlignLeft();
+                    column.Item()
+                        .Text($"Orçamento")
+                        .FontSize(15).SemiBold().FontColor(Colors.Blue.Medium).AlignLeft();
 
                     column.Item().Text(text =>
                     {
                         text.Span("Data de emissão: ").SemiBold();
                         text.Span($"{Modelo.DataEmissao:d}");
+                        text.AlignLeft();
                     });
 
                     column.Item().Text(text =>
                     {
-                        text.Span("Data de expiração: ").SemiBold();
+                        text.Span("Data de expiração:  ").SemiBold();
                         text.Span($"{Modelo.DataExp:d}");
+                        text.AlignLeft();
                     });
 
                 });
-                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(100).Height(100).Placeholder(); } else { row.ConstantItem(100).Height(100).Image(DadosGlobais.CaminhoLogo); }
+
             });
         }
         void ComposeContent(IContainer container)
@@ -123,7 +131,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     table.Cell().Element(CellStyle).Text(item.NomeProduto);
                     table.Cell().Element(CellStyle).AlignRight().Text($"R${item.Valor}");
                     table.Cell().Element(CellStyle).AlignRight().Text(item.QTD);
-                    table.Cell().Element(CellStyle).AlignRight().Text($"R${item.ValorTotal}$");
+                    table.Cell().Element(CellStyle).AlignRight().Text($"R${item.ValorTotal}");
 
                     static IContainer CellStyle(IContainer container)
                     {
@@ -141,6 +149,33 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                 column.Item().Text("Comentários").FontSize(14);
                 column.Item().Text(Modelo.Comentarios);
             });
+        }
+
+        void ComposeFooter(IContainer container)
+        {
+            container.Row(row =>
+                row.RelativeItem().Column(column =>
+                {
+                    column.Item()
+                        .Text($"{DadosGlobais.NomeVendedor}").AlignCenter().FontSize(15).Bold();
+                    column.Item()
+                        .Text($"{DadosGlobais.enderecoVendedor.Rua} - {DadosGlobais.enderecoVendedor.Bairro} - {DadosGlobais.enderecoVendedor.Cidade} -{DadosGlobais.enderecoVendedor.Estado} / Fone: {DadosGlobais.enderecoVendedor.Telefone}")
+                        .AlignRight();
+                    column.Item()
+                        .Text($"{DadosGlobais.enderecoVendedor.Email}").AlignCenter();
+                    column.Item()
+                        .Text(txt =>
+                        {
+                            txt.Span("Página ");
+                            txt.CurrentPageNumber();
+                            txt.Span(" de ");
+                            txt.TotalPages();
+                            txt.AlignRight();
+                            txt.AlignEnd();
+                        });
+                }
+                )
+            );
         }
     }
 }

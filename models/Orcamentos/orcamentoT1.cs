@@ -78,9 +78,10 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
 
                 column.Item().Row(row =>
                 {
-                    row.RelativeItem().Component(new AddressComponent("De", DadosGlobais.enderecoVendedor));
+                    row.RelativeItem().Component(new AddressComponent("Remeter para", DadosGlobais.enderecoVendedor));
                     row.ConstantItem(50);
-                    row.RelativeItem().Component(new AddressComponent("Para", Modelo.EnderecoCliente));
+                    row.RelativeItem().Component(new AddressComponent("Faturar para", Modelo.EnderecoCliente));
+                    
                 });
 
                 column.Item().Element(ComposeTable);
@@ -94,6 +95,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
         {
             container.Table(table =>
             {
+                
                 table.ColumnsDefinition(columns =>
                 {
                     columns.ConstantColumn(25);
@@ -101,19 +103,21 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     columns.RelativeColumn();
                     columns.RelativeColumn();
                     columns.RelativeColumn();
+                    
                 });
 
                 table.Header(header =>
                 {
-                    header.Cell().Element(CellStyle).Text("#");
-                    header.Cell().Element(CellStyle).Text("Produto");
-                    header.Cell().Element(CellStyle).AlignRight().Text("Preço unitário");
-                    header.Cell().Element(CellStyle).AlignRight().Text("Quantidade");
-                    header.Cell().Element(CellStyle).AlignRight().Text("Total");
+                    header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).Text("#");
+                    header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).Text("Produto");
+                    header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).AlignRight().Text("Preço unitário");
+                    header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).AlignRight().Text("Quantidade");
+                    header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).AlignRight().Text("Total");
+                    
 
                     static IContainer CellStyle(IContainer container)
                     {
-                        return container.DefaultTextStyle(x => x.SemiBold()).PaddingVertical(5).BorderBottom(1).BorderColor(Colors.Black);
+                        return container.DefaultTextStyle(x => x.SemiBold()).PaddingVertical(1).BorderBottom(1).BorderColor(Colors.Black);
                     }
                 });
 

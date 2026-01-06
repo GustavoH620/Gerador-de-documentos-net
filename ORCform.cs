@@ -2,6 +2,7 @@
 using Gerador_de_Documentos_net.Models.Orcamentos;
 using Gerador_de_Documentos_net.Services;
 using Gerador_de_documentos_net.models.Orcamentos;
+using Gerador_de_documentos_net.services;
 using Microsoft.Data.Sqlite;
 using QuestPDF.Companion;
 using QuestPDF.Fluent;
@@ -30,10 +31,13 @@ namespace Gerador_de_Documentos_net
             var model = questPDFOrcDataSource.PegarDadosOrc(
                 nomeCliente: txtNomeCliente.Text,
                 CPF: txtCPF.Text,
+                CEP: txtCEP.Text,
+                CNPJ: txtCNPJ.Text,
                 ValorT: DadosGlobais.ListaItens.Sum(x => x.ValorTotal),
                 ID: int.Parse(lblIDorc.Text.Replace("ID: ", "")),
                 ListaProdutos: DadosGlobais.ListaItens,
                 Comentarios: rtbComentarios.Text,
+                DescricaoTecnica: rtbDescTecnica.Text,
                 Rua: txtRua.Text,
                 Bairro: txtBairro.Text,
                 Cidade: txtCidade.Text,
@@ -53,10 +57,10 @@ namespace Gerador_de_Documentos_net
                     documento = new OrcamentoT2(model);
                     documento.GeneratePdfAndShow();
                     break;
-               // case 3:
-                   // documento = new OrcamentoT3(model);
-                   // documento.GeneratePdfAndShow();
-                   // break;
+               case 3:
+                    documento = new OrcamentoT3(model);
+                    documento.GeneratePdfAndShow();
+                    break;
 
 
 
@@ -137,7 +141,7 @@ namespace Gerador_de_Documentos_net
         {
             DataExp();
             lblData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
-            lblIDorc.Text = $"ID: {await DatabaseFunctions.DatabaseOrcID()}";
+            lblIDorc.Text = $"ID: {await DatabaseFunctionsORC.DatabaseOrcID()}";
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
