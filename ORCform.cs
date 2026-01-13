@@ -27,6 +27,10 @@ namespace Gerador_de_Documentos_net
     {
         public void GerarPDFOrcamento()
         {
+            decimal ValorFrete = 0;
+            decimal.TryParse(txtValorFrete.Text, out ValorFrete);
+            decimal ValorImposto = 0;
+            decimal.TryParse(txtValorImposto.Text, out ValorImposto);
             QuestPDF.Settings.License = LicenseType.Community;
             var model = questPDFOrcDataSource.PegarDadosOrc(
                 nomeCliente: txtNomeCliente.Text,
@@ -44,7 +48,13 @@ namespace Gerador_de_Documentos_net
                 Estado: cbEstado.Text,
                 Email: txtEmail.Text,
                 Telefone: txtTelefone.Text,
-                dataExp: dataExp
+                dataExp: dataExp,
+                FormaPagamento: cbFormaPagamento.Text,
+                PrazoEntrega: dtpPrazo.Value,
+                Frete: ValorFrete,
+                ImpostoIncluso: cbImpostoIncluso.Checked,
+                ValorImposto: ValorImposto,
+                Parcelas: Parcelas
             );
             IDocument documento;
             switch (DadosGlobais.OrcTemplateSelected)
@@ -57,7 +67,7 @@ namespace Gerador_de_Documentos_net
                     documento = new OrcamentoT2(model);
                     documento.GeneratePdfAndShow();
                     break;
-               case 3:
+                case 3:
                     documento = new OrcamentoT3(model);
                     documento.GeneratePdfAndShow();
                     break;
@@ -81,6 +91,43 @@ namespace Gerador_de_Documentos_net
             {
                 dtpDataExp.Enabled = false;
                 dataExp = DateTime.Now.AddDays(30);
+            }
+        }
+        decimal ValorImposto = 0;
+        public void ImpostoIncluso()
+        {
+            if (cbImpostoIncluso.Checked)
+            {
+                txtValorImposto.Enabled = false;
+                txtValorImposto.Text = "0";
+
+            }
+            else
+            {
+
+                txtValorImposto.Enabled = true;
+
+
+            }
+        }
+        int Parcelas = 1;
+        public void MecanismoParcelas(bool controle)
+        {
+            if (!controle)
+            {
+                if (Parcelas > 1)
+                {
+                    Parcelas--;
+                    lblParcelas.Text = $"{Parcelas}X";
+                }
+            }
+            else
+            {
+                if (Parcelas < 21)
+                {
+                    Parcelas++;
+                    lblParcelas.Text = $"{Parcelas}X";
+                }
             }
         }
         public void AdicionarList()
@@ -140,6 +187,7 @@ namespace Gerador_de_Documentos_net
         private async void ORCform_Load(object sender, EventArgs e)
         {
             DataExp();
+            ImpostoIncluso();
             lblData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
             lblIDorc.Text = $"ID: {await DatabaseFunctionsORC.DatabaseOrcID()}";
         }
@@ -172,6 +220,21 @@ namespace Gerador_de_Documentos_net
         private void dtpDataExp_ValueChanged(object sender, EventArgs e)
         {
             dataExp = dtpDataExp.Value.Date;
+        }
+
+        private void cbImpostoIncluso_CheckedChanged(object sender, EventArgs e)
+        {
+            ImpostoIncluso();
+        }
+
+        private void btnADDParcela_Click(object sender, EventArgs e)
+        {
+            MecanismoParcelas(true);
+        }
+
+        private void btnSUBParcelas_Click(object sender, EventArgs e)
+        {
+            MecanismoParcelas(false);
         }
     }
 }

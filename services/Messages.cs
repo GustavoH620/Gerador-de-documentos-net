@@ -19,11 +19,11 @@ namespace Gerador_de_documentos_net.services
             resultado = MessageBox.Show(mensagem, legenda, botoes);
             if (resultado == DialogResult.Yes)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
 
 

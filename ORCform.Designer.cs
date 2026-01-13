@@ -71,8 +71,23 @@
             gbProdutos = new GroupBox();
             label15 = new Label();
             rtbDescTecnica = new RichTextBox();
+            groupBox2 = new GroupBox();
+            txtValorImposto = new TextBox();
+            label20 = new Label();
+            cbImpostoIncluso = new CheckBox();
+            txtValorFrete = new TextBox();
+            label19 = new Label();
+            label18 = new Label();
+            dtpPrazo = new DateTimePicker();
+            label17 = new Label();
+            btnSUBParcelas = new Button();
+            btnADDParcela = new Button();
+            lblParcelas = new Label();
+            cbFormaPagamento = new ComboBox();
+            label16 = new Label();
             groupBox1.SuspendLayout();
             gbProdutos.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // txtNomeCliente
@@ -291,14 +306,14 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Location = new Point(20, 50);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(513, 579);
+            groupBox1.Size = new Size(270, 595);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados do cliente";
             // 
             // txtCNPJ
             // 
-            txtCNPJ.Location = new Point(270, 89);
+            txtCNPJ.Location = new Point(7, 491);
             txtCNPJ.Margin = new Padding(4, 3, 4, 3);
             txtCNPJ.Name = "txtCNPJ";
             txtCNPJ.Size = new Size(224, 23);
@@ -307,7 +322,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(270, 71);
+            label14.Location = new Point(7, 473);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(34, 15);
@@ -316,7 +331,7 @@
             // 
             // txtCEP
             // 
-            txtCEP.Location = new Point(270, 42);
+            txtCEP.Location = new Point(7, 444);
             txtCEP.Margin = new Padding(4, 3, 4, 3);
             txtCEP.Name = "txtCEP";
             txtCEP.Size = new Size(224, 23);
@@ -325,7 +340,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(270, 24);
+            label13.Location = new Point(7, 426);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new Size(28, 15);
@@ -343,7 +358,7 @@
             // 
             // btnCadastroCliente
             // 
-            btnCadastroCliente.Location = new Point(8, 510);
+            btnCadastroCliente.Location = new Point(8, 539);
             btnCadastroCliente.Name = "btnCadastroCliente";
             btnCadastroCliente.Size = new Size(109, 50);
             btnCadastroCliente.TabIndex = 21;
@@ -434,16 +449,16 @@
             // 
             // rtbComentarios
             // 
-            rtbComentarios.Location = new Point(566, 542);
+            rtbComentarios.Location = new Point(565, 541);
             rtbComentarios.Name = "rtbComentarios";
-            rtbComentarios.Size = new Size(518, 87);
+            rtbComentarios.Size = new Size(518, 35);
             rtbComentarios.TabIndex = 21;
             rtbComentarios.Text = "";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(566, 524);
+            label12.Location = new Point(565, 523);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(75, 15);
@@ -509,11 +524,159 @@
             rtbDescTecnica.TabIndex = 26;
             rtbDescTecnica.Text = "";
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(txtValorImposto);
+            groupBox2.Controls.Add(label20);
+            groupBox2.Controls.Add(cbImpostoIncluso);
+            groupBox2.Controls.Add(txtValorFrete);
+            groupBox2.Controls.Add(label19);
+            groupBox2.Controls.Add(label18);
+            groupBox2.Controls.Add(dtpPrazo);
+            groupBox2.Controls.Add(label17);
+            groupBox2.Controls.Add(btnSUBParcelas);
+            groupBox2.Controls.Add(btnADDParcela);
+            groupBox2.Controls.Add(lblParcelas);
+            groupBox2.Controls.Add(cbFormaPagamento);
+            groupBox2.Controls.Add(label16);
+            groupBox2.Location = new Point(298, 50);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(235, 595);
+            groupBox2.TabIndex = 26;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Dados de Pagamento e Frete";
+            // 
+            // txtValorImposto
+            // 
+            txtValorImposto.Location = new Point(7, 314);
+            txtValorImposto.Margin = new Padding(4, 3, 4, 3);
+            txtValorImposto.Name = "txtValorImposto";
+            txtValorImposto.Size = new Size(208, 23);
+            txtValorImposto.TabIndex = 34;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(7, 296);
+            label20.Margin = new Padding(4, 0, 4, 0);
+            label20.Name = "label20";
+            label20.Size = new Size(97, 15);
+            label20.TabIndex = 35;
+            label20.Text = "Valor do Imposto";
+            // 
+            // cbImpostoIncluso
+            // 
+            cbImpostoIncluso.AutoSize = true;
+            cbImpostoIncluso.Location = new Point(7, 263);
+            cbImpostoIncluso.Name = "cbImpostoIncluso";
+            cbImpostoIncluso.Size = new Size(111, 19);
+            cbImpostoIncluso.TabIndex = 27;
+            cbImpostoIncluso.Text = "Imposto Incluso\r\n";
+            cbImpostoIncluso.UseVisualStyleBackColor = true;
+            cbImpostoIncluso.CheckedChanged += cbImpostoIncluso_CheckedChanged;
+            // 
+            // txtValorFrete
+            // 
+            txtValorFrete.Location = new Point(5, 221);
+            txtValorFrete.Margin = new Padding(4, 3, 4, 3);
+            txtValorFrete.Name = "txtValorFrete";
+            txtValorFrete.Size = new Size(208, 23);
+            txtValorFrete.TabIndex = 27;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(5, 203);
+            label19.Margin = new Padding(4, 0, 4, 0);
+            label19.Name = "label19";
+            label19.Size = new Size(78, 15);
+            label19.TabIndex = 28;
+            label19.Text = "Valor de Frete";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(5, 151);
+            label18.Margin = new Padding(4, 0, 4, 0);
+            label18.Name = "label18";
+            label18.Size = new Size(95, 15);
+            label18.TabIndex = 33;
+            label18.Text = "Prazo de entrega";
+            // 
+            // dtpPrazo
+            // 
+            dtpPrazo.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtpPrazo.Location = new Point(5, 169);
+            dtpPrazo.MinDate = new DateTime(2026, 1, 7, 0, 0, 0, 0);
+            dtpPrazo.Name = "dtpPrazo";
+            dtpPrazo.Size = new Size(224, 22);
+            dtpPrazo.TabIndex = 27;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(6, 86);
+            label17.Margin = new Padding(4, 0, 4, 0);
+            label17.Name = "label17";
+            label17.Size = new Size(50, 15);
+            label17.TabIndex = 32;
+            label17.Text = "Parcelas";
+            // 
+            // btnSUBParcelas
+            // 
+            btnSUBParcelas.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSUBParcelas.Location = new Point(65, 110);
+            btnSUBParcelas.Name = "btnSUBParcelas";
+            btnSUBParcelas.Size = new Size(26, 17);
+            btnSUBParcelas.TabIndex = 31;
+            btnSUBParcelas.Text = "V";
+            btnSUBParcelas.UseVisualStyleBackColor = true;
+            btnSUBParcelas.Click += btnSUBParcelas_Click;
+            // 
+            // btnADDParcela
+            // 
+            btnADDParcela.Location = new Point(33, 110);
+            btnADDParcela.Name = "btnADDParcela";
+            btnADDParcela.Size = new Size(26, 17);
+            btnADDParcela.TabIndex = 30;
+            btnADDParcela.Text = "^\r\n";
+            btnADDParcela.UseVisualStyleBackColor = true;
+            btnADDParcela.Click += btnADDParcela_Click;
+            // 
+            // lblParcelas
+            // 
+            lblParcelas.AutoSize = true;
+            lblParcelas.Location = new Point(7, 110);
+            lblParcelas.Name = "lblParcelas";
+            lblParcelas.Size = new Size(20, 15);
+            lblParcelas.TabIndex = 29;
+            lblParcelas.Text = "1X";
+            // 
+            // cbFormaPagamento
+            // 
+            cbFormaPagamento.FormattingEnabled = true;
+            cbFormaPagamento.Items.AddRange(new object[] { "Dinheiro", "Cartão de crédito", "Cartão de débito", "Pix" });
+            cbFormaPagamento.Location = new Point(6, 44);
+            cbFormaPagamento.Name = "cbFormaPagamento";
+            cbFormaPagamento.Size = new Size(207, 23);
+            cbFormaPagamento.TabIndex = 28;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(6, 24);
+            label16.Margin = new Padding(4, 0, 4, 0);
+            label16.Name = "label16";
+            label16.Size = new Size(121, 15);
+            label16.TabIndex = 27;
+            label16.Text = "Forma de Pagamento";
+            // 
             // ORCform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1207, 720);
+            ClientSize = new Size(1207, 718);
+            Controls.Add(groupBox2);
             Controls.Add(gbProdutos);
             Controls.Add(dtpDataExp);
             Controls.Add(ckbDataExp);
@@ -531,6 +694,8 @@
             groupBox1.PerformLayout();
             gbProdutos.ResumeLayout(false);
             gbProdutos.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -581,5 +746,19 @@
         private Label label13;
         private Label label15;
         private RichTextBox rtbDescTecnica;
+        private GroupBox groupBox2;
+        private Button btnADDParcela;
+        private Label lblParcelas;
+        private ComboBox cbFormaPagamento;
+        private Label label16;
+        private Label label18;
+        private DateTimePicker dtpPrazo;
+        private Label label17;
+        private Button btnSUBParcelas;
+        private TextBox txtValorImposto;
+        private Label label20;
+        private CheckBox cbImpostoIncluso;
+        private TextBox txtValorFrete;
+        private Label label19;
     }
 }
