@@ -85,6 +85,7 @@
             lblParcelas = new Label();
             cbFormaPagamento = new ComboBox();
             label16 = new Label();
+            btnSalvarOrc = new Button();
             groupBox1.SuspendLayout();
             gbProdutos.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -274,7 +275,7 @@
             // 
             btnGerarOrc.Location = new Point(20, 658);
             btnGerarOrc.Name = "btnGerarOrc";
-            btnGerarOrc.Size = new Size(109, 50);
+            btnGerarOrc.Size = new Size(109, 38);
             btnGerarOrc.TabIndex = 19;
             btnGerarOrc.Text = "Gerar";
             btnGerarOrc.UseVisualStyleBackColor = true;
@@ -671,11 +672,22 @@
             label16.TabIndex = 27;
             label16.Text = "Forma de Pagamento";
             // 
+            // btnSalvarOrc
+            // 
+            btnSalvarOrc.Location = new Point(142, 658);
+            btnSalvarOrc.Name = "btnSalvarOrc";
+            btnSalvarOrc.Size = new Size(109, 38);
+            btnSalvarOrc.TabIndex = 27;
+            btnSalvarOrc.Text = "Salvar orçamento";
+            btnSalvarOrc.UseVisualStyleBackColor = true;
+            btnSalvarOrc.Click += btnSalvarOrc_Click;
+            // 
             // ORCform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1207, 718);
+            Controls.Add(btnSalvarOrc);
             Controls.Add(groupBox2);
             Controls.Add(gbProdutos);
             Controls.Add(dtpDataExp);
@@ -760,5 +772,6 @@
         private CheckBox cbImpostoIncluso;
         private TextBox txtValorFrete;
         private Label label19;
+        private Button btnSalvarOrc;
     }
 }

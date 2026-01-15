@@ -25,6 +25,7 @@ namespace Gerador_de_Documentos_net
 
     public partial class ORCform : Form
     {
+
         public void GerarPDFOrcamento()
         {
             decimal ValorFrete = 0;
@@ -162,6 +163,7 @@ namespace Gerador_de_Documentos_net
 
         }
 
+        decimal totalGeral = 0;
         void AtualizarTela()
         {
             listBoxProdutos.Items.Clear();
@@ -169,7 +171,7 @@ namespace Gerador_de_Documentos_net
             {
                 listBoxProdutos.Items.Add(item.ToString());
             }
-            decimal totalGeral = DadosGlobais.ListaItens.Sum(x => x.ValorTotal);
+            totalGeral = DadosGlobais.ListaItens.Sum(x => x.ValorTotal);
             lblValorT.Text = $"Valor total: R${totalGeral.ToString("C2")}";
 
             txtProduto.Clear();
@@ -183,13 +185,14 @@ namespace Gerador_de_Documentos_net
         {
             InitializeComponent();
         }
-
+        int id = 0;
         private async void ORCform_Load(object sender, EventArgs e)
         {
             DataExp();
             ImpostoIncluso();
             lblData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
-            lblIDorc.Text = $"ID: {await DatabaseFunctionsORC.DatabaseOrcID()}";
+            id = await DatabaseFunctionsORC.DatabaseOrcID();
+            lblIDorc.Text = $"ID: {id}";
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -235,6 +238,14 @@ namespace Gerador_de_Documentos_net
         private void btnSUBParcelas_Click(object sender, EventArgs e)
         {
             MecanismoParcelas(false);
+        }
+
+        private async void btnSalvarOrc_Click(object sender, EventArgs e)
+        {
+            await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id);
+            lblIDorc.Text = $"ID: {await DatabaseFunctionsORC.DatabaseOrcID()}";
+            id = await DatabaseFunctionsORC.DatabaseOrcID();
+            Messages.Confirmacao();
         }
     }
 }

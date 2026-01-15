@@ -48,9 +48,10 @@ namespace Gerador_de_Documentos_net
             formconfig.Show();
         }
 
-        private void HomeForm_Load(object sender, EventArgs e)
+        private async void HomeForm_Load(object sender, EventArgs e)
         {
-            
+            this.WindowState = FormWindowState.Maximized;
+            await DatabaseFunctionsORC.InicializarBancos();
         }
     }
 }
