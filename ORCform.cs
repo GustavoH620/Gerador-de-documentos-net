@@ -188,6 +188,7 @@ namespace Gerador_de_Documentos_net
         int id = 0;
         private async void ORCform_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             DataExp();
             ImpostoIncluso();
             lblData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
@@ -246,6 +247,16 @@ namespace Gerador_de_Documentos_net
             lblIDorc.Text = $"ID: {await DatabaseFunctionsORC.DatabaseOrcID()}";
             id = await DatabaseFunctionsORC.DatabaseOrcID();
             Messages.Confirmacao();
+        }
+
+        private async void btnCadastroCliente_Click(object sender, EventArgs e)
+        {
+            await DatabaseFunctionsORC.CadastroCliente(txtCPF.Text, txtNomeCliente.Text, txtRua.Text, txtBairro.Text, txtCidade.Text, cbEstado.Text, txtTelefone.Text, txtEmail.Text, txtCNPJ.Text, txtCEP.Text);
+        }
+
+        private void btnImportarCliente_Click(object sender, EventArgs e)
+        {
+            DadosBuscaGlobal.BuscaCliente();
         }
     }
 }

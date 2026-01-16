@@ -13,7 +13,33 @@ namespace Gerador_de_Documentos_net
 {
     public partial class TemplatesORCForm : Form
     {
+        public void OrcLogic(int check)
+        {
+            switch (check)
+            {
+                case 0:
 
+                    ORCform orcT1 = new ORCform();
+                    DadosGlobais.OrcTemplateSelected = 1;
+                    orcT1.Show();
+                    break;
+                case 1:
+
+                    ORCform orcT2 = new ORCform();
+                    DadosGlobais.OrcTemplateSelected = 2;
+                    orcT2.Show();
+                    break;
+                case 2:
+
+                    ORCform orcT3 = new ORCform();
+                    DadosGlobais.OrcTemplateSelected = 3;
+                    orcT3.Show();
+                    break;
+
+            }
+            this.Close();
+
+        }
 
         public TemplatesORCForm()
         {
@@ -22,29 +48,19 @@ namespace Gerador_de_Documentos_net
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            ORCform orcT1 = new ORCform();
-            DadosGlobais.OrcTemplateSelected = 1;
-            orcT1.Show();
-            this.Hide();
+            OrcLogic(0);
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ORCform orcT1 = new ORCform();
-            DadosGlobais.OrcTemplateSelected = 2;
-            orcT1.Show();
-            this.Hide();
+            OrcLogic(1);
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ORCform orcT1 = new ORCform();
-            DadosGlobais.OrcTemplateSelected = 3;
-            orcT1.Show();
-            this.Hide();
+            OrcLogic(2);
         }
 
         private void TemplatesORCForm_Load(object sender, EventArgs e)

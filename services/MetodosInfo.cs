@@ -20,9 +20,9 @@ namespace Gerador_de_Documentos_net.Services
 
         public static void DialogBoxInfo(OpenFileDialog openFile)
         {
-            openFile.InitialDirectory = "c:\\";
+            openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             openFile.Filter = "Imagens (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg";
-            openFile.FilterIndex = 2; // muda o filtro tipo para diferentes tipos de arquivo
+            openFile.FilterIndex = 1; // muda o filtro tipo para diferentes tipos de arquivo
             openFile.RestoreDirectory = true;
 
             if (openFile.ShowDialog() == DialogResult.OK)

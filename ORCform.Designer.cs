@@ -86,6 +86,7 @@
             cbFormaPagamento = new ComboBox();
             label16 = new Label();
             btnSalvarOrc = new Button();
+            btnImportarCliente = new Button();
             groupBox1.SuspendLayout();
             gbProdutos.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -284,6 +285,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(btnImportarCliente);
             groupBox1.Controls.Add(txtCNPJ);
             groupBox1.Controls.Add(label14);
             groupBox1.Controls.Add(txtCEP);
@@ -365,6 +367,7 @@
             btnCadastroCliente.TabIndex = 21;
             btnCadastroCliente.Text = "Cadastrar cliente";
             btnCadastroCliente.UseVisualStyleBackColor = true;
+            btnCadastroCliente.Click += btnCadastroCliente_Click;
             // 
             // label11
             // 
@@ -682,6 +685,16 @@
             btnSalvarOrc.UseVisualStyleBackColor = true;
             btnSalvarOrc.Click += btnSalvarOrc_Click;
             // 
+            // btnImportarCliente
+            // 
+            btnImportarCliente.Location = new Point(123, 539);
+            btnImportarCliente.Name = "btnImportarCliente";
+            btnImportarCliente.Size = new Size(109, 50);
+            btnImportarCliente.TabIndex = 27;
+            btnImportarCliente.Text = "Importar cliente";
+            btnImportarCliente.UseVisualStyleBackColor = true;
+            btnImportarCliente.Click += btnImportarCliente_Click;
+            // 
             // ORCform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -773,5 +786,6 @@
         private TextBox txtValorFrete;
         private Label label19;
         private Button btnSalvarOrc;
+        private Button btnImportarCliente;
     }
 }

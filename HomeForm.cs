@@ -1,4 +1,5 @@
-﻿using Gerador_de_Documentos_net.Services;
+﻿using Gerador_de_documentos_net;
+using Gerador_de_Documentos_net.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,23 @@ namespace Gerador_de_Documentos_net
 {
     public partial class HomeForm : Form
     {
+        public void OrcLogic()
+        {
+            if (!MetodosInfo.ChecarInfo(false))
+            {
+                Formconfig config = new Formconfig();
+                config.Show();
+
+            }
+            else
+            {
+                FormOrcOpcoes form = new FormOrcOpcoes();
+                form.Show();
+
+
+            }
+
+        }
         public HomeForm()
         {
             InitializeComponent();
@@ -25,19 +43,7 @@ namespace Gerador_de_Documentos_net
 
         private void btnOrc_Click(object sender, EventArgs e)
         {
-            if (!MetodosInfo.ChecarInfo(false)) 
-            {
-                Formconfig config = new Formconfig();
-                config.Show();
-
-            }
-            else
-            {
-                TemplatesORCForm form = new TemplatesORCForm();
-                form.Show();
-
-
-            }
+            OrcLogic();
 
                 
         }

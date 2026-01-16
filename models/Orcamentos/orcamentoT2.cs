@@ -82,6 +82,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                 });
 
                 column.Item().Element(ComposeTable);
+                column.Item().Component(new PagamentoFreteComponent(Modelo.PagamentoCliente, Modelo.Valor));
 
                 if (!string.IsNullOrWhiteSpace(Modelo.Comentarios))
                     column.Item().PaddingTop(25).Element(ComposeComments);
@@ -130,6 +131,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                 }
             });
         }
+
 
         void ComposeComments(IContainer container)
         {
