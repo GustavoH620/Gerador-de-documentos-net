@@ -32,5 +32,10 @@ namespace Gerador_de_documentos_net
         {
             OrcLogic(true);
         }
+
+        private void FormOrcOpcoes_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

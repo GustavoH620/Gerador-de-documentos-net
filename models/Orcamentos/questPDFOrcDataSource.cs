@@ -44,13 +44,13 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
 
                 EnderecoCliente = new Endereco
                 {
+                    NomeCliente = nomeCliente,
                     Rua = Rua,
                     Bairro = Bairro,
                     Cidade = Cidade,
                     Estado = Estado,
                     Email = Email,
                     Telefone = Telefone,
-                    Nome = nomeCliente,
                     CNPJ = CNPJ,
                     CEP = CEP
 

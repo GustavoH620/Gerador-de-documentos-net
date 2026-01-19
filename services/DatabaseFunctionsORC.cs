@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gerador_de_Documentos_net.Models.Orcamentos;
 using System.Security.Cryptography;
+using Gerador_de_Documentos_net.Models;
+using Gerador_de_documentos_net.services;
 
 namespace Gerador_de_Documentos_net.Services
 {
@@ -18,7 +20,7 @@ namespace Gerador_de_Documentos_net.Services
 
         static string sqlTOrcprodutos = "CREATE TABLE IF NOT EXISTS OrcProdutos (IdOrcamento INTEGER, NomeProduto TEXT, Preco Double, QT INTEGER)";
         static string sqlTOrcamentos = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ValorT Double, Data TEXT)";
-        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (CPF INTEGER PRIMARY KEY, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
+        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (CPF TEXT PRIMARY KEY, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
 
         //ID
         public static async Task<int> DatabaseOrcID() 
@@ -98,25 +100,61 @@ namespace Gerador_de_Documentos_net.Services
 
         public static async Task CadastroCliente(string cpf, string nome, string rua, string bairro, string cidade, string estado, string telefone, string email, string cnpj, string cep)
         {
-            int i = 0;
-            int.TryParse(cpf ,out i);
-            await using var connection = new SqliteConnection(dbPath);
-            await connection.OpenAsync();
-            string sqlInsertion = "INSERT INTO Clientes (CPF, NomeCliente, Rua, Bairro, Cidade, Estado, Telefone, Email, CNPJ, CEP) VALUES (@cpf, @nome, @rua, @bairro, @cidade, @estado, @telefone, @email, @cnpj, @cep)";
-            await using var cmd = new SqliteCommand( sqlInsertion, connection);
-            cmd.Parameters.AddWithValue("@cpf", i);
-            cmd.Parameters.AddWithValue("@nome", nome);
-            cmd.Parameters.AddWithValue("@rua", rua);
-            cmd.Parameters.AddWithValue("@bairro", bairro);
-            cmd.Parameters.AddWithValue("@cidade", cidade);
-            cmd.Parameters.AddWithValue("@estado", estado);
-            cmd.Parameters.AddWithValue("@telefone", telefone);
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@cnpj", cnpj);
-            cmd.Parameters.AddWithValue("@cep", cep);
+            if (cpf == "")
+            {
+                Messages.Aviso("Campo de CPF vazio");
+            }
+            else
+            {
+                await using var connection = new SqliteConnection(dbPath);
+                await connection.OpenAsync();
+                string sqlInsertion = "INSERT INTO Clientes (CPF, NomeCliente, Rua, Bairro, Cidade, Estado, Telefone, Email, CNPJ, CEP) VALUES (@cpf, @nome, @rua, @bairro, @cidade, @estado, @telefone, @email, @cnpj, @cep)";
+                await using var cmd = new SqliteCommand(sqlInsertion, connection);
+                cmd.Parameters.AddWithValue("@cpf", cpf);
+                cmd.Parameters.AddWithValue("@nome", nome);
+                cmd.Parameters.AddWithValue("@rua", rua);
+                cmd.Parameters.AddWithValue("@bairro", bairro);
+                cmd.Parameters.AddWithValue("@cidade", cidade);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@telefone", telefone);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@cnpj", cnpj);
+                cmd.Parameters.AddWithValue("@cep", cep);
 
-            await cmd.ExecuteNonQueryAsync();
-            connection.Close();
+                var validacaoCPF = await QueryCliente(cpf);
+                if (validacaoCPF == null)
+                {
+                    await cmd.ExecuteNonQueryAsync();
+                    connection.Close();
+                    Messages.Confirmacao();
+                }
+                else
+                {
+                    Messages.Aviso("CPF já cadastrado");
+                }
+
+            }
+
+        }
+        public static async Task<Endereco> QueryCliente(string CPF)
+        {
+            if (CPF == null)
+            {
+                Messages.Aviso("Campo de CPF vazio");
+                return null;
+            }
+            else
+            {
+                await using var connection = new SqliteConnection(dbPath);
+                connection.OpenAsync();
+                string sqlClienteQuery = "SELECT * FROM Clientes WHERE CPF = @cpf ";
+                await using var cmd = new SqliteCommand(sqlClienteQuery, connection);
+                var cliente = await connection.QueryFirstOrDefaultAsync<Endereco>(sqlClienteQuery, new { cpf = CPF });
+                connection.Close();
+                DadosBuscaGlobal.CPFSel = CPF;
+                return cliente;
+
+            }
 
 
 

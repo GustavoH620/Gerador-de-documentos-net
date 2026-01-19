@@ -60,6 +60,7 @@
             Controls.Add(btnCarregar);
             Name = "FormOrcOpcoes";
             Text = "FormOrcOpcoes";
+            Load += FormOrcOpcoes_Load;
             ResumeLayout(false);
         }
 

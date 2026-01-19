@@ -65,7 +65,7 @@ namespace Gerador_de_Documentos_net
 
         private void TemplatesORCForm_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

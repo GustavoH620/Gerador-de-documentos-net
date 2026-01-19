@@ -77,7 +77,7 @@ namespace Gerador_de_Documentos_net.Services
                     DadosGlobais.NomeVendedor = nome;
                     DadosGlobais.enderecoVendedor = new Endereco
                     {
-                        Nome = nome,
+                        NomeCliente = nome,
                         Rua = rua,
                         Bairro = bairro,
                         Cidade = cidade,
@@ -151,7 +151,7 @@ namespace Gerador_de_Documentos_net.Services
             DadosGlobais.NomeVendedor = nome;
             DadosGlobais.enderecoVendedor = new Endereco
             {
-                Nome = nome,
+                NomeCliente = nome,
                 Rua = rua,
                 Bairro = bairro,
                 Cidade = cidade,

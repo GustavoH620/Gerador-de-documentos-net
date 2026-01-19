@@ -37,7 +37,7 @@ namespace Gerador_de_Documentos_net.Models
     }
     public class Endereco
     {
-        public string Nome { get; set; } = string.Empty;
+        public string NomeCliente { get; set; } = string.Empty;
         public string Rua { get; set; } = string.Empty;
         public string Bairro { get; set; } = string.Empty;
         public string Cidade { get; set; } = string.Empty;

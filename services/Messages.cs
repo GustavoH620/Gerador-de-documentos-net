@@ -33,5 +33,9 @@ namespace Gerador_de_documentos_net.services
             MessageBox.Show("Concluído", "Informação", MessageBoxButtons.OK);
             
         }
+        public static void Aviso(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }

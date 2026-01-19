@@ -37,6 +37,7 @@ namespace Gerador_de_Documentos_net
 
         private void config_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             MetodosInfo.ChecarInfo(true);
             lblCaminhoLogo.Text = DadosGlobais.CaminhoLogo;
             pbLogo.ImageLocation = DadosGlobais.CaminhoLogo;

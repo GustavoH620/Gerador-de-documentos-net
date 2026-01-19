@@ -25,6 +25,21 @@ namespace Gerador_de_Documentos_net
 
     public partial class ORCform : Form
     {
+        public void ImportarCliente(Endereco cliente)
+        {
+            txtNomeCliente.Text = cliente.NomeCliente;
+            txtNomeCliente.Text = cliente.NomeCliente;
+            txtRua.Text = cliente.Rua;
+            txtBairro.Text = cliente.Bairro;
+            txtCidade.Text = cliente.Cidade;
+            cbEstado.Text = cliente.Estado;
+            txtTelefone.Text = cliente.Telefone;
+            txtEmail.Text = cliente.Email;
+            txtCEP.Text = cliente.CEP;
+            txtCNPJ.Text = cliente.CNPJ;
+            txtCPF.Text = DadosBuscaGlobal.CPFSel;
+
+        }
 
         public void GerarPDFOrcamento()
         {

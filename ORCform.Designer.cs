@@ -49,6 +49,7 @@
             lblIDorc = new Label();
             btnGerarOrc = new Button();
             groupBox1 = new GroupBox();
+            btnImportarCliente = new Button();
             txtCNPJ = new TextBox();
             label14 = new Label();
             txtCEP = new TextBox();
@@ -86,10 +87,11 @@
             cbFormaPagamento = new ComboBox();
             label16 = new Label();
             btnSalvarOrc = new Button();
-            btnImportarCliente = new Button();
+            groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
             gbProdutos.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // txtNomeCliente
@@ -314,6 +316,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados do cliente";
             // 
+            // btnImportarCliente
+            // 
+            btnImportarCliente.Location = new Point(123, 539);
+            btnImportarCliente.Name = "btnImportarCliente";
+            btnImportarCliente.Size = new Size(109, 50);
+            btnImportarCliente.TabIndex = 27;
+            btnImportarCliente.Text = "Importar cliente";
+            btnImportarCliente.UseVisualStyleBackColor = true;
+            btnImportarCliente.Click += btnImportarCliente_Click;
+            // 
             // txtCNPJ
             // 
             txtCNPJ.Location = new Point(7, 491);
@@ -453,7 +465,7 @@
             // 
             // rtbComentarios
             // 
-            rtbComentarios.Location = new Point(565, 541);
+            rtbComentarios.Location = new Point(20, 113);
             rtbComentarios.Name = "rtbComentarios";
             rtbComentarios.Size = new Size(518, 35);
             rtbComentarios.TabIndex = 21;
@@ -462,7 +474,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(565, 523);
+            label12.Location = new Point(20, 95);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(75, 15);
@@ -472,7 +484,7 @@
             // ckbDataExp
             // 
             ckbDataExp.AutoSize = true;
-            ckbDataExp.Location = new Point(566, 492);
+            ckbDataExp.Location = new Point(20, 20);
             ckbDataExp.Name = "ckbDataExp";
             ckbDataExp.Size = new Size(168, 19);
             ckbDataExp.TabIndex = 23;
@@ -482,7 +494,7 @@
             // 
             // dtpDataExp
             // 
-            dtpDataExp.Location = new Point(749, 492);
+            dtpDataExp.Location = new Point(20, 41);
             dtpDataExp.Name = "dtpDataExp";
             dtpDataExp.Size = new Size(255, 23);
             dtpDataExp.TabIndex = 24;
@@ -685,28 +697,29 @@
             btnSalvarOrc.UseVisualStyleBackColor = true;
             btnSalvarOrc.Click += btnSalvarOrc_Click;
             // 
-            // btnImportarCliente
+            // groupBox3
             // 
-            btnImportarCliente.Location = new Point(123, 539);
-            btnImportarCliente.Name = "btnImportarCliente";
-            btnImportarCliente.Size = new Size(109, 50);
-            btnImportarCliente.TabIndex = 27;
-            btnImportarCliente.Text = "Importar cliente";
-            btnImportarCliente.UseVisualStyleBackColor = true;
-            btnImportarCliente.Click += btnImportarCliente_Click;
+            groupBox3.Controls.Add(ckbDataExp);
+            groupBox3.Controls.Add(label12);
+            groupBox3.Controls.Add(rtbComentarios);
+            groupBox3.Controls.Add(dtpDataExp);
+            groupBox3.Location = new Point(540, 476);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(655, 169);
+            groupBox3.TabIndex = 28;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Extras";
             // 
             // ORCform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.RosyBrown;
             ClientSize = new Size(1207, 718);
+            Controls.Add(groupBox3);
             Controls.Add(btnSalvarOrc);
             Controls.Add(groupBox2);
             Controls.Add(gbProdutos);
-            Controls.Add(dtpDataExp);
-            Controls.Add(ckbDataExp);
-            Controls.Add(label12);
-            Controls.Add(rtbComentarios);
             Controls.Add(groupBox1);
             Controls.Add(btnGerarOrc);
             Controls.Add(lblIDorc);
@@ -721,6 +734,8 @@
             gbProdutos.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -787,5 +802,6 @@
         private Label label19;
         private Button btnSalvarOrc;
         private Button btnImportarCliente;
+        private GroupBox groupBox3;
     }
 }
