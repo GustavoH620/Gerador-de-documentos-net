@@ -1,6 +1,6 @@
 ﻿namespace Gerador_de_documentos_net
 {
-    partial class FormBusca
+    partial class FormBuscaCliente
     {
         /// <summary>
         /// Required designer variable.

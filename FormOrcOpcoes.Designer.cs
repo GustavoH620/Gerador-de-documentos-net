@@ -40,6 +40,7 @@
             btnCarregar.TabIndex = 0;
             btnCarregar.Text = "Carregar Orçamento";
             btnCarregar.UseVisualStyleBackColor = true;
+            btnCarregar.Click += btnCarregar_Click;
             // 
             // btnNovoOrc
             // 

@@ -156,7 +156,61 @@ namespace Gerador_de_Documentos_net.Services
 
             }
 
+         
 
+
+
+        }
+
+        public static async Task<List<DadosBuscaGlobal.modeloBuscaOrcamento>> QueryOrc()
+        {
+            await using var connection = new SqliteConnection(dbPath);
+            connection.OpenAsync();
+            string sqlQueryorc = "SELECT * FROM Orcamentos";
+
+            await using var cmd = new SqliteCommand(sqlQueryorc, connection);
+            await using var reader = await cmd.ExecuteReaderAsync();
+            List<DadosBuscaGlobal.modeloBuscaOrcamento> listaOrcamento = new List<DadosBuscaGlobal.modeloBuscaOrcamento>();
+            while(await reader.ReadAsync())
+            {
+                DadosBuscaGlobal.modeloBuscaOrcamento Orcamento = new DadosBuscaGlobal.modeloBuscaOrcamento()
+                {
+                    ID = Convert.ToInt32(reader["Id"]),
+                    nomeCliente = Convert.ToString(reader["NomeCliente"]),
+                    valorT = Convert.ToDouble(reader["ValorT"]),
+                    data = Convert.ToDateTime(reader["Data"])
+
+                };
+                listaOrcamento.Add(Orcamento);
+                
+            }
+            connection.Close();
+            return listaOrcamento;
+
+        }
+
+        public static async Task<List<ItemProduto>> QueryProdutos()
+        {
+            await using var connection = new SqliteConnection(dbPath);
+            connection.OpenAsync();
+            string sqlQueryProdutos = "SELECT * FROM OrcProdutos WHERE IdOrcamento = @id";
+
+            await using var cmd = new SqliteCommand(sqlQueryProdutos, connection);
+            await using var reader = await cmd.ExecuteReaderAsync();
+            List<ItemProduto> listaProdutos = new List<ItemProduto>();
+            while(await reader.ReadAsync())
+            {
+                ItemProduto item = new ItemProduto()
+                { 
+                    NomeProduto = Convert.ToString(reader["NomeProduto"]),
+                    Valor = Convert.ToDecimal(reader["Preco"]),
+                    QTD = Convert.ToInt32(reader["QT"])
+                    
+                };
+                listaProdutos.Add(item);
+            }
+            connection.Close();
+            return listaProdutos;
 
         }
 

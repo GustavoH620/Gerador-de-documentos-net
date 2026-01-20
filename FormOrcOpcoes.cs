@@ -1,4 +1,5 @@
-﻿using Gerador_de_Documentos_net;
+﻿using Gerador_de_documentos_net.services;
+using Gerador_de_Documentos_net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,10 @@ namespace Gerador_de_documentos_net
                 formTemplates.ShowDialog();
                 this.Close();
             }
+            else
+            {
+                DadosBuscaGlobal.BuscaOrcamento();
+            }
         }
         public FormOrcOpcoes()
         {
@@ -36,6 +41,11 @@ namespace Gerador_de_documentos_net
         private void FormOrcOpcoes_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnCarregar_Click(object sender, EventArgs e)
+        {
+            OrcLogic(false);
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Gerador_de_documentos_net
 {
-    public partial class FormBusca : Form
+    public partial class FormBuscaCliente : Form
     {
         public async Task Buscar(int check)
         {
@@ -60,7 +60,7 @@ namespace Gerador_de_documentos_net
             OrcForm.ImportarCliente(DadosBuscaGlobal.DadosClienteSel);
             this.Close();
         }
-        public FormBusca()
+        public FormBuscaCliente()
         {
             InitializeComponent();
         }
