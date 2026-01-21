@@ -26,6 +26,7 @@ namespace Gerador_de_documentos_net
             else
             {
                 DadosBuscaGlobal.BuscaOrcamento();
+                this.Close();
             }
         }
         public FormOrcOpcoes()
@@ -40,6 +41,7 @@ namespace Gerador_de_documentos_net
 
         private void FormOrcOpcoes_Load(object sender, EventArgs e)
         {
+            DadosGlobais.LimparListaProdutos();
             this.WindowState = FormWindowState.Maximized;
         }
 

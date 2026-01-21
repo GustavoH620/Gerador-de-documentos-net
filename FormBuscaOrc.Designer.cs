@@ -32,16 +32,16 @@
             btnSelecionar = new Button();
             txtBusca = new TextBox();
             listBox1 = new ListBox();
-            listBox2 = new ListBox();
+            lbProdutos = new ListBox();
             label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            txtNome = new TextBox();
+            txtCPF = new TextBox();
+            txtCNPJ = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            textBox4 = new TextBox();
+            txtID = new TextBox();
             dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -57,12 +57,13 @@
             // 
             // btnSelecionar
             // 
-            btnSelecionar.Location = new Point(634, 456);
+            btnSelecionar.Location = new Point(660, 467);
             btnSelecionar.Name = "btnSelecionar";
             btnSelecionar.Size = new Size(154, 31);
             btnSelecionar.TabIndex = 6;
-            btnSelecionar.Text = "Selecionar e voltar";
+            btnSelecionar.Text = "Selecionar e continuar";
             btnSelecionar.UseVisualStyleBackColor = true;
+            btnSelecionar.Click += btnSelecionar_Click;
             // 
             // txtBusca
             // 
@@ -82,14 +83,14 @@
             listBox1.TabIndex = 8;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
-            // listBox2
+            // lbProdutos
             // 
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(660, 78);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(523, 139);
-            listBox2.TabIndex = 9;
+            lbProdutos.FormattingEnabled = true;
+            lbProdutos.ItemHeight = 15;
+            lbProdutos.Location = new Point(660, 78);
+            lbProdutos.Name = "lbProdutos";
+            lbProdutos.Size = new Size(523, 139);
+            lbProdutos.TabIndex = 9;
             // 
             // label1
             // 
@@ -100,26 +101,26 @@
             label1.TabIndex = 10;
             label1.Text = "Itens do Orçamento";
             // 
-            // textBox1
+            // txtNome
             // 
-            textBox1.Location = new Point(660, 260);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(179, 23);
-            textBox1.TabIndex = 11;
+            txtNome.Location = new Point(660, 260);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(179, 23);
+            txtNome.TabIndex = 11;
             // 
-            // textBox2
+            // txtCPF
             // 
-            textBox2.Location = new Point(660, 325);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(179, 23);
-            textBox2.TabIndex = 12;
+            txtCPF.Location = new Point(660, 325);
+            txtCPF.Name = "txtCPF";
+            txtCPF.Size = new Size(179, 23);
+            txtCPF.TabIndex = 12;
             // 
-            // textBox3
+            // txtCNPJ
             // 
-            textBox3.Location = new Point(660, 388);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(179, 23);
-            textBox3.TabIndex = 13;
+            txtCNPJ.Location = new Point(660, 388);
+            txtCNPJ.Name = "txtCNPJ";
+            txtCNPJ.Size = new Size(179, 23);
+            txtCNPJ.TabIndex = 13;
             // 
             // label2
             // 
@@ -157,20 +158,28 @@
             label5.TabIndex = 18;
             label5.Text = "ID";
             // 
-            // textBox4
+            // txtID
             // 
-            textBox4.Location = new Point(881, 260);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(86, 23);
-            textBox4.TabIndex = 17;
+            txtID.Location = new Point(881, 260);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(86, 23);
+            txtID.TabIndex = 17;
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 107);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(551, 150);
             dataGridView1.TabIndex = 19;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // FormBuscaOrc
             // 
@@ -179,15 +188,15 @@
             ClientSize = new Size(1195, 749);
             Controls.Add(dataGridView1);
             Controls.Add(label5);
-            Controls.Add(textBox4);
+            Controls.Add(txtID);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtCNPJ);
+            Controls.Add(txtCPF);
+            Controls.Add(txtNome);
             Controls.Add(label1);
-            Controls.Add(listBox2);
+            Controls.Add(lbProdutos);
             Controls.Add(listBox1);
             Controls.Add(btnBuscar);
             Controls.Add(btnSelecionar);
@@ -206,16 +215,16 @@
         private Button btnSelecionar;
         private TextBox txtBusca;
         private ListBox listBox1;
-        private ListBox listBox2;
+        private ListBox lbProdutos;
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox txtNome;
+        private TextBox txtCPF;
+        private TextBox txtCNPJ;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox txtID;
         private DataGridView dataGridView1;
     }
 }

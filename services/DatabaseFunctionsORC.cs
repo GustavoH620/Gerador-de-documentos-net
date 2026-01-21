@@ -156,8 +156,32 @@ namespace Gerador_de_Documentos_net.Services
 
             }
 
-         
 
+        }
+        public static async Task QueryClienteNome(string nome)
+        {
+            if (nome == null)
+            {
+                Messages.Aviso("Campo de nome vazio");
+            }
+            else
+            {
+                await using var connection = new SqliteConnection(dbPath);
+                connection.OpenAsync();
+                string sqlClienteQuery = "SELECT * FROM Clientes WHERE NomeCliente = @nome ";
+                await using var cmd = new SqliteCommand(sqlClienteQuery, connection);
+                cmd.Parameters.AddWithValue("nome", nome);
+                await using var reader = await cmd.ExecuteReaderAsync();
+                
+                if(await reader.ReadAsync())
+                {
+                    DadosBuscaGlobal.CPFSel = Convert.ToString(reader["CPF"]);
+                }
+                connection.Close();
+
+                return;
+
+            }
 
 
         }
@@ -189,13 +213,14 @@ namespace Gerador_de_Documentos_net.Services
 
         }
 
-        public static async Task<List<ItemProduto>> QueryProdutos()
+        public static async Task<List<ItemProduto>> QueryProdutos(int id)
         {
             await using var connection = new SqliteConnection(dbPath);
             connection.OpenAsync();
             string sqlQueryProdutos = "SELECT * FROM OrcProdutos WHERE IdOrcamento = @id";
 
             await using var cmd = new SqliteCommand(sqlQueryProdutos, connection);
+            cmd.Parameters.AddWithValue("id", id);
             await using var reader = await cmd.ExecuteReaderAsync();
             List<ItemProduto> listaProdutos = new List<ItemProduto>();
             while(await reader.ReadAsync())

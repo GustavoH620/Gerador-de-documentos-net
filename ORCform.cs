@@ -40,6 +40,11 @@ namespace Gerador_de_Documentos_net
             txtCPF.Text = DadosBuscaGlobal.CPFSel;
 
         }
+        public async Task ImportarOrcamento(int ID)
+        {
+            DadosGlobais.ListaItens = await DatabaseFunctionsORC.QueryProdutos(ID);
+            AtualizarTela();
+        }
 
         public void GerarPDFOrcamento()
         {

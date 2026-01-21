@@ -26,6 +26,11 @@ namespace Gerador_de_Documentos_net
 
         public static List<ItemProduto> ListaItens = new List<ItemProduto>();
 
+        public static void LimparListaProdutos()
+        {
+            ListaItens.Clear();
+        }
+
 
 
 
