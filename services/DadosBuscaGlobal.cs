@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Gerador_de_documentos_net.services
+namespace Gerador_de_documentos_net.Services
 {
     public static class DadosBuscaGlobal
     {
@@ -15,16 +14,21 @@ namespace Gerador_de_documentos_net.services
         public static int checkBusca { get; set; } = 0;
         public static Endereco DadosClienteSel { get; set; } = new Endereco();
 
-        public class modeloBuscaOrcamento()
+        public class modeloBuscaOrcamento
         {
             public int ID { get; set; } = 0;
             public string nomeCliente { get; set; } = string.Empty;
-
-            public  double valorT { get; set; } = 0;
+            public double valorT { get; set; } = 0;
             public DateTime data { get; set; }
+            // property names chosen to match the DataGridView cell keys used elsewhere
+            public string fPagamento { get; set; } = string.Empty;
+            public int Template { get; set; } = 0;
+            public string DescricaoT { get; set; } = string.Empty;
+            public string Comentarios { get; set; } = string.Empty;
+
             public override string ToString()
             {
-                return $"ID: {ID} Nome do Cliente: {nomeCliente} Data: {data}";
+                return $"ID: {ID} Nome do Cliente: {nomeCliente} Data: {data:d}";
             }
         }
         public static void BuscaCliente()
@@ -33,8 +37,6 @@ namespace Gerador_de_documentos_net.services
             checkBusca = 0;
             FormBuscaCliente busca = new FormBuscaCliente();
             busca.ShowDialog();
-
-
         }
         public static void BuscaOrcamento()
         {

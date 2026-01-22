@@ -1,16 +1,17 @@
-﻿using Microsoft.Data.Sqlite;
-using Dapper;
+﻿using Dapper;
+using Gerador_de_documentos_net.services;
+using Gerador_de_documentos_net.Services;
+using Gerador_de_Documentos_net.Models;
+using Gerador_de_Documentos_net.Models.Orcamentos;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Gerador_de_Documentos_net.Models.Orcamentos;
-using System.Security.Cryptography;
-using Gerador_de_Documentos_net.Models;
-using Gerador_de_documentos_net.services;
 
 namespace Gerador_de_Documentos_net.Services
 {
@@ -19,7 +20,7 @@ namespace Gerador_de_Documentos_net.Services
         static string dbPath = "Data Source=BancoDados.db";
 
         static string sqlTOrcprodutos = "CREATE TABLE IF NOT EXISTS OrcProdutos (IdOrcamento INTEGER, NomeProduto TEXT, Preco Double, QT INTEGER)";
-        static string sqlTOrcamentos = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ValorT Double, Data TEXT)";
+        static string sqlTOrcamentos = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ValorT Double, Data TEXT, FormaPagamento TEXT, Template INTEGER, DescricaoT TEXT, Comentarios TEXT)";
         static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (CPF TEXT PRIMARY KEY, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
 
         //ID
@@ -61,16 +62,20 @@ namespace Gerador_de_Documentos_net.Services
 
         }
 
-        public static async Task DataBaseOrcCadastro(string nome, string vt, List<ItemProduto> ListaProdutos, int id)
+        public static async Task DataBaseOrcCadastro(string nome, string vt, List<ItemProduto> ListaProdutos, int id, string fpagamento, int template, string descricaot, string comentarios)
         {
             await using var connection = new SqliteConnection(dbPath);
             await connection.OpenAsync();
-            string sqlInsertion = "INSERT INTO Orcamentos (NomeCliente, ValorT, Data) VALUES (@nome, @valort, @data)";
+            string sqlInsertion = "INSERT INTO Orcamentos (NomeCliente, ValorT, Data, FormaPagamento, Template, DescricaoT, Comentarios) VALUES (@nome, @valort, @data, @fpagamento, @template, @descricaot, @comentarios)";
             await using var cmd = new SqliteCommand(sqlInsertion, connection);
 
             cmd.Parameters.AddWithValue("@nome", nome);
             cmd.Parameters.AddWithValue("@valort", vt);
             cmd.Parameters.AddWithValue("@data", DateTime.Now);
+            cmd.Parameters.AddWithValue("@fpagamento", fpagamento);
+            cmd.Parameters.AddWithValue("@template", template);
+            cmd.Parameters.AddWithValue("@descricaot", descricaot);
+            cmd.Parameters.AddWithValue("@comentarios", comentarios);
             await cmd.ExecuteNonQueryAsync();
 
 
@@ -202,7 +207,11 @@ namespace Gerador_de_Documentos_net.Services
                     ID = Convert.ToInt32(reader["Id"]),
                     nomeCliente = Convert.ToString(reader["NomeCliente"]),
                     valorT = Convert.ToDouble(reader["ValorT"]),
-                    data = Convert.ToDateTime(reader["Data"])
+                    data = Convert.ToDateTime(reader["Data"]),
+                    fPagamento = Convert.ToString(reader["FormaPagamento"]),
+                    Template = Convert.ToInt32(reader["Template"]),
+                    DescricaoT = Convert.ToString(reader["DescricaoT"]),
+                    Comentarios = Convert.ToString(reader["Comentarios"])
 
                 };
                 listaOrcamento.Add(Orcamento);

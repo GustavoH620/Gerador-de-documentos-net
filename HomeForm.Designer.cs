@@ -52,7 +52,8 @@
             // 
             // btnOrc
             // 
-            btnOrc.Location = new Point(36, 274);
+            btnOrc.FlatStyle = FlatStyle.System;
+            btnOrc.Location = new Point(36, 201);
             btnOrc.Margin = new Padding(4, 3, 4, 3);
             btnOrc.Name = "btnOrc";
             btnOrc.Size = new Size(211, 78);
@@ -63,20 +64,21 @@
             // 
             // btnCom
             // 
-            btnCom.Location = new Point(36, 201);
+            btnCom.Location = new Point(36, 285);
             btnCom.Margin = new Padding(4, 3, 4, 3);
             btnCom.Name = "btnCom";
-            btnCom.Size = new Size(211, 67);
+            btnCom.Size = new Size(211, 78);
             btnCom.TabIndex = 2;
             btnCom.Text = "Comunicado";
             btnCom.UseVisualStyleBackColor = true;
+            btnCom.Visible = false;
             // 
             // btnConfig
             // 
-            btnConfig.Location = new Point(36, 141);
+            btnConfig.Location = new Point(36, 117);
             btnConfig.Margin = new Padding(4, 3, 4, 3);
             btnConfig.Name = "btnConfig";
-            btnConfig.Size = new Size(211, 54);
+            btnConfig.Size = new Size(211, 78);
             btnConfig.TabIndex = 1;
             btnConfig.Text = "Configurações";
             btnConfig.UseVisualStyleBackColor = true;

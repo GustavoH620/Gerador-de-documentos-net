@@ -1,8 +1,9 @@
-﻿using Gerador_de_Documentos_net.Models;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
+using Gerador_de_documentos_net.services;
+using Gerador_de_documentos_net.Services;
+using Gerador_de_Documentos_net.Models;
 using Gerador_de_Documentos_net.Models.Orcamentos;
 using Gerador_de_Documentos_net.Services;
-using Gerador_de_documentos_net.models.Orcamentos;
-using Gerador_de_documentos_net.services;
 using Microsoft.Data.Sqlite;
 using QuestPDF.Companion;
 using QuestPDF.Fluent;
@@ -40,9 +41,13 @@ namespace Gerador_de_Documentos_net
             txtCPF.Text = DadosBuscaGlobal.CPFSel;
 
         }
-        public async Task ImportarOrcamento(int ID)
+        public async Task ImportarOrcamento(int ID, string formaPagamento, string descricaoT, string comentarios, int template)
         {
             DadosGlobais.ListaItens = await DatabaseFunctionsORC.QueryProdutos(ID);
+            cbFormaPagamento.Text = formaPagamento;
+            rtbDescTecnica.Text = descricaoT;
+            rtbComentarios.Text = comentarios;
+            DadosGlobais.OrcTemplateSelected = template;
             AtualizarTela();
         }
 
@@ -263,7 +268,7 @@ namespace Gerador_de_Documentos_net
 
         private async void btnSalvarOrc_Click(object sender, EventArgs e)
         {
-            await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id);
+            await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id, cbFormaPagamento.Text, DadosGlobais.OrcTemplateSelected, rtbDescTecnica.Text, rtbComentarios.Text);
             lblIDorc.Text = $"ID: {await DatabaseFunctionsORC.DatabaseOrcID()}";
             id = await DatabaseFunctionsORC.DatabaseOrcID();
             Messages.Confirmacao();

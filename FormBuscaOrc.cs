@@ -1,4 +1,5 @@
 ﻿using Gerador_de_documentos_net.services;
+using Gerador_de_documentos_net.Services;
 using Gerador_de_Documentos_net;
 using Gerador_de_Documentos_net.Services;
 using System;
@@ -17,6 +18,10 @@ namespace Gerador_de_documentos_net
     public partial class FormBuscaOrc : Form
     {
         int ID = 0;
+        int templateSelecionadoBusca = 0;
+        string descricaoTecnica = "";
+        string comentarios = "";
+        string formaPagamento = "";
         List<DadosBuscaGlobal.modeloBuscaOrcamento> listaOrcamentos = new List<DadosBuscaGlobal.modeloBuscaOrcamento>();
         public async void CarregarOrcs()
         {
@@ -48,6 +53,11 @@ namespace Gerador_de_documentos_net
                 await DatabaseFunctionsORC.QueryClienteNome(txtNome.Text);
                 txtCPF.Text = DadosBuscaGlobal.CPFSel;
                 ID = int.Parse(txtID.Text);
+                formaPagamento = dataGridView1.Rows[e.RowIndex].Cells["fPagamento"].Value.ToString();
+                descricaoTecnica = dataGridView1.Rows[e.RowIndex].Cells["DescricaoT"].Value.ToString();
+                comentarios = dataGridView1.Rows[e.RowIndex].Cells["Comentarios"].Value.ToString();
+                string template = dataGridView1.Rows[e.RowIndex].Cells["Template"].Value.ToString();
+                templateSelecionadoBusca = int.Parse(template);
                 lbProdutos.Items.Clear();
                 CarregarProdutos(e, lbProdutos);
                 lbProdutos.Update();
@@ -77,7 +87,7 @@ namespace Gerador_de_documentos_net
                     oRCform.Show();
                     var OrcForm = Application.OpenForms.OfType<ORCform>().FirstOrDefault();
                     OrcForm.ImportarCliente(DadosBuscaGlobal.DadosClienteSel);
-                    OrcForm.ImportarOrcamento(ID);
+                    OrcForm.ImportarOrcamento(ID, formaPagamento, descricaoTecnica, comentarios, templateSelecionadoBusca);
                     this.Close();
                 }
                 else
