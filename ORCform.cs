@@ -38,7 +38,7 @@ namespace Gerador_de_Documentos_net
             txtEmail.Text = cliente.Email;
             txtCEP.Text = cliente.CEP;
             txtCNPJ.Text = cliente.CNPJ;
-            txtCPF.Text = DadosBuscaGlobal.CPFSel;
+            txtCPF.Text = cliente.CPF;
 
         }
         public async Task ImportarOrcamento(int ID, string formaPagamento, string descricaoT, string comentarios, int template)

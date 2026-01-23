@@ -19,7 +19,6 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
             return new modeloOrcamento
             {
                 Cliente = nomeCliente,
-                CPF = CPF,
                 Valor = ValorT,
                 OrcID = ID,
                 DataEmissao = DateTime.Now,
@@ -52,7 +51,8 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     Email = Email,
                     Telefone = Telefone,
                     CNPJ = CNPJ,
-                    CEP = CEP
+                    CEP = CEP,
+                    CPF = CPF
 
                 }
 

@@ -53,14 +53,16 @@
             label2 = new Label();
             txtEmail = new TextBox();
             label3 = new Label();
+            dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // txtBusca
             // 
             txtBusca.Location = new Point(6, 21);
             txtBusca.Name = "txtBusca";
-            txtBusca.Size = new Size(784, 23);
+            txtBusca.Size = new Size(1145, 23);
             txtBusca.TabIndex = 1;
             txtBusca.TextChanged += txtBusca_TextChanged;
             // 
@@ -75,9 +77,9 @@
             // 
             // btnSelecionar
             // 
-            btnSelecionar.Location = new Point(636, 465);
+            btnSelecionar.Location = new Point(554, 476);
             btnSelecionar.Name = "btnSelecionar";
-            btnSelecionar.Size = new Size(154, 31);
+            btnSelecionar.Size = new Size(154, 203);
             btnSelecionar.TabIndex = 3;
             btnSelecionar.Text = "Selecionar e voltar";
             btnSelecionar.UseVisualStyleBackColor = true;
@@ -87,7 +89,7 @@
             // 
             btnBuscar.Location = new Point(6, 50);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(154, 31);
+            btnBuscar.Size = new Size(154, 40);
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -116,7 +118,7 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(6, 87);
+            groupBox1.Location = new Point(6, 344);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(521, 338);
             groupBox1.TabIndex = 21;
@@ -305,21 +307,40 @@
             label3.TabIndex = 4;
             label3.Text = "Email";
             // 
-            // FormBusca
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(6, 96);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1145, 242);
+            dataGridView1.TabIndex = 22;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // FormBuscaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 508);
+            ClientSize = new Size(1226, 749);
+            Controls.Add(dataGridView1);
             Controls.Add(groupBox1);
             Controls.Add(btnBuscar);
             Controls.Add(btnSelecionar);
             Controls.Add(lblTopico);
             Controls.Add(txtBusca);
-            Name = "FormBusca";
+            Name = "FormBuscaCliente";
             Text = "FormBusca";
             Load += FormBusca_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -350,5 +371,6 @@
         private Label label2;
         private TextBox txtEmail;
         private Label label3;
+        private DataGridView dataGridView1;
     }
 }

@@ -20,7 +20,6 @@ namespace Gerador_de_documentos_net.Services
             public string nomeCliente { get; set; } = string.Empty;
             public double valorT { get; set; } = 0;
             public DateTime data { get; set; }
-            // property names chosen to match the DataGridView cell keys used elsewhere
             public string fPagamento { get; set; } = string.Empty;
             public int Template { get; set; } = 0;
             public string DescricaoT { get; set; } = string.Empty;

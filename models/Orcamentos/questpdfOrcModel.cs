@@ -9,7 +9,6 @@ namespace Gerador_de_Documentos_net.Models
     public class modeloOrcamento
     {
         public required string Cliente { get; set; }
-        public required string CPF { get; set; }
         public decimal Valor { get; set; }
         public int OrcID { get; set; }
         public DateTime DataEmissao { get; set; }
@@ -46,6 +45,8 @@ namespace Gerador_de_Documentos_net.Models
         public string Telefone { get; set; } = string.Empty;
         public string CEP { get; set; } = string.Empty;
         public string CNPJ { get; set; } = string.Empty;
+
+        public string CPF { get; set; } = string.Empty;
 
     }
 }

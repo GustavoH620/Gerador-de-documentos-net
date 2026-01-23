@@ -99,6 +99,17 @@ namespace Gerador_de_documentos_net
 
             
         }
+        public void BuscaDataGrid()
+        {
+            string textoDigitado = txtBusca.Text.ToLower();
+            var listaFiltrada = listaOrcamentos
+                .Where(p => p.ID.ToString().Contains(textoDigitado) ||
+                            p.nomeCliente.ToLower().Contains(textoDigitado))
+                .ToList();
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listaFiltrada;
+        }
         public FormBuscaOrc()
         {
             InitializeComponent();
@@ -119,15 +130,7 @@ namespace Gerador_de_documentos_net
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
-            string textoDigitado = txtBusca.Text.ToLower();
-            var listaFiltrada = listaOrcamentos
-                .Where(p => p.ID.ToString().Contains(textoDigitado) ||
-                            p.nomeCliente.ToLower().Contains(textoDigitado))
-                .ToList();
-
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = listaFiltrada;
-
+            BuscaDataGrid();
 
         }
 

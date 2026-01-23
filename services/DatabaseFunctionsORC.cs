@@ -6,6 +6,7 @@ using Gerador_de_Documentos_net.Models.Orcamentos;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -189,6 +190,37 @@ namespace Gerador_de_Documentos_net.Services
             }
 
 
+        }
+
+        public static async Task<List<Endereco>> QueryListClientes()
+        {
+            await using var connection = new SqliteConnection(dbPath);
+            connection.OpenAsync();
+            string sqlQueryListClientes = "SELECT * FROM Clientes";
+
+            await using var cmd = new SqliteCommand( sqlQueryListClientes, connection);
+            await using var reader = await cmd.ExecuteReaderAsync();
+            List<Endereco> list = new List<Endereco>();
+            while(await reader.ReadAsync())
+            {
+                Endereco endereco = new Endereco()
+                {
+                    NomeCliente = Convert.ToString(reader["nomeCliente"]),
+                    Rua = Convert.ToString(reader["Rua"]),
+                    Bairro = Convert.ToString(reader["Bairro"]),
+                    Cidade = Convert.ToString(reader["Cidade"]),
+                    Estado = Convert.ToString(reader["Estado"]),
+                    Telefone = Convert.ToString(reader["Telefone"]),
+                    Email = Convert.ToString(reader["Email"]),
+                    CEP = Convert.ToString(reader["CEP"]),
+                    CNPJ = Convert.ToString(reader["CNPJ"]),
+                    CPF = Convert.ToString(reader["CPF"])
+                };
+                list.Add(endereco);
+            }
+            connection.Close();
+            return list;
+            
         }
 
         public static async Task<List<DadosBuscaGlobal.modeloBuscaOrcamento>> QueryOrc()
