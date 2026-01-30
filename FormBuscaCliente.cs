@@ -91,19 +91,26 @@ namespace Gerador_de_documentos_net
         }
         public async Task Concluir()
         {
-            DadosBuscaGlobal.DadosClienteSel.NomeCliente = txtNomeCliente.Text;
-            DadosBuscaGlobal.DadosClienteSel.Rua = txtRua.Text;
-            DadosBuscaGlobal.DadosClienteSel.Bairro = txtBairro.Text;
-            DadosBuscaGlobal.DadosClienteSel.Cidade = txtCidade.Text;
-            DadosBuscaGlobal.DadosClienteSel.Estado = cbEstado.Text;
-            DadosBuscaGlobal.DadosClienteSel.Telefone = txtTelefone.Text;
-            DadosBuscaGlobal.DadosClienteSel.Email = txtEmail.Text;
-            DadosBuscaGlobal.DadosClienteSel.CEP = txtCEP.Text;
-            DadosBuscaGlobal.DadosClienteSel.CNPJ = txtCNPJ.Text;
-            DadosBuscaGlobal.DadosClienteSel.CPF = txtCPF.Text;
-            var OrcForm = Application.OpenForms.OfType<ORCform>().FirstOrDefault();
-            OrcForm.ImportarCliente(DadosBuscaGlobal.DadosClienteSel);
-            this.Close();
+            if (string.IsNullOrEmpty(txtNomeCliente.Text))
+            {
+                Messages.Aviso("Escolha um registro!");
+            }
+            else
+            {
+                DadosBuscaGlobal.DadosClienteSel.NomeCliente = txtNomeCliente.Text;
+                DadosBuscaGlobal.DadosClienteSel.Rua = txtRua.Text;
+                DadosBuscaGlobal.DadosClienteSel.Bairro = txtBairro.Text;
+                DadosBuscaGlobal.DadosClienteSel.Cidade = txtCidade.Text;
+                DadosBuscaGlobal.DadosClienteSel.Estado = cbEstado.Text;
+                DadosBuscaGlobal.DadosClienteSel.Telefone = txtTelefone.Text;
+                DadosBuscaGlobal.DadosClienteSel.Email = txtEmail.Text;
+                DadosBuscaGlobal.DadosClienteSel.CEP = txtCEP.Text;
+                DadosBuscaGlobal.DadosClienteSel.CNPJ = txtCNPJ.Text;
+                DadosBuscaGlobal.DadosClienteSel.CPF = txtCPF.Text;
+                var OrcForm = Application.OpenForms.OfType<ORCform>().FirstOrDefault();
+                OrcForm.ImportarCliente(DadosBuscaGlobal.DadosClienteSel);
+                this.Close();
+            }
         }
         public FormBuscaCliente()
         {

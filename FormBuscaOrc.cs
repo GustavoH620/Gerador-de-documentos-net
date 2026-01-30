@@ -27,7 +27,7 @@ namespace Gerador_de_documentos_net
         {
             foreach (var item in await DatabaseFunctionsORC.QueryOrc())
             {
-                listBox1.Items.Add(item.ToString());
+                //listBox1.Items.Add(item.ToString());
             }
             listaOrcamentos = await DatabaseFunctionsORC.QueryOrc();
             dataGridView1.DataSource = listaOrcamentos;
@@ -69,31 +69,40 @@ namespace Gerador_de_documentos_net
         {
             if (txtCPF.Text != null)
             {
-
-                var cliente = await DatabaseFunctionsORC.QueryCliente(txtCPF.Text);
-                if (cliente != null)
+                if (string.IsNullOrEmpty(txtNome.Text))
                 {
-                    DadosBuscaGlobal.DadosClienteSel.NomeCliente = cliente.NomeCliente;
-                    DadosBuscaGlobal.DadosClienteSel.Rua = cliente.Rua;
-                    DadosBuscaGlobal.DadosClienteSel.Bairro = cliente.Bairro;
-                    DadosBuscaGlobal.DadosClienteSel.Cidade = cliente.Cidade;
-                    DadosBuscaGlobal.DadosClienteSel.Estado = cliente.Estado;
-                    DadosBuscaGlobal.DadosClienteSel.Telefone = cliente.Telefone;
-                    DadosBuscaGlobal.DadosClienteSel.Email = cliente.Email;
-                    DadosBuscaGlobal.DadosClienteSel.CEP = cliente.CEP;
-                    DadosBuscaGlobal.DadosClienteSel.CNPJ = cliente.CNPJ;
-                    DadosBuscaGlobal.CPFSel = txtCPF.Text;
-                    ORCform oRCform = new ORCform();
-                    oRCform.Show();
-                    var OrcForm = Application.OpenForms.OfType<ORCform>().FirstOrDefault();
-                    OrcForm.ImportarCliente(DadosBuscaGlobal.DadosClienteSel);
-                    OrcForm.ImportarOrcamento(ID, formaPagamento, descricaoTecnica, comentarios, templateSelecionadoBusca);
-                    this.Close();
+                    Messages.Aviso("Escolha um registro!");
                 }
                 else
                 {
-                    Messages.Aviso("Cliente não encontrado");
+                    var cliente = await DatabaseFunctionsORC.QueryCliente(txtCPF.Text);
+                    if (cliente != null)
+                    {
+                        DadosBuscaGlobal.DadosClienteSel.NomeCliente = cliente.NomeCliente;
+                        DadosBuscaGlobal.DadosClienteSel.Rua = cliente.Rua;
+                        DadosBuscaGlobal.DadosClienteSel.Bairro = cliente.Bairro;
+                        DadosBuscaGlobal.DadosClienteSel.Cidade = cliente.Cidade;
+                        DadosBuscaGlobal.DadosClienteSel.Estado = cliente.Estado;
+                        DadosBuscaGlobal.DadosClienteSel.Telefone = cliente.Telefone;
+                        DadosBuscaGlobal.DadosClienteSel.Email = cliente.Email;
+                        DadosBuscaGlobal.DadosClienteSel.CEP = cliente.CEP;
+                        DadosBuscaGlobal.DadosClienteSel.CNPJ = cliente.CNPJ;
+                        DadosBuscaGlobal.CPFSel = txtCPF.Text;
+                        ORCform oRCform = new ORCform();
+                        oRCform.Show();
+                        var OrcForm = Application.OpenForms.OfType<ORCform>().FirstOrDefault();
+                        OrcForm.ImportarCliente(DadosBuscaGlobal.DadosClienteSel);
+                        OrcForm.ImportarOrcamento(ID, formaPagamento, descricaoTecnica, comentarios, templateSelecionadoBusca);
+                        this.Close();
+                    }
+                    else
+                    {
+                        Messages.Aviso("Cliente não encontrado");
+                    }
+
                 }
+
+
             }
             
 
@@ -118,6 +127,7 @@ namespace Gerador_de_documentos_net
         private async void FormBuscaOrc_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            groupBox1.Enabled = false;
             CarregarOrcs();
 
 
@@ -125,7 +135,7 @@ namespace Gerador_de_documentos_net
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox1.SelectedIndex.ToString();
+
         }
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
@@ -143,7 +153,8 @@ namespace Gerador_de_documentos_net
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
-            Concluir();
+
+                Concluir();
         }
     }
 }

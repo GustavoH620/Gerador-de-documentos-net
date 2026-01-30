@@ -333,6 +333,7 @@
             txtCNPJ.Name = "txtCNPJ";
             txtCNPJ.Size = new Size(224, 23);
             txtCNPJ.TabIndex = 25;
+            txtCNPJ.TextChanged += txtCNPJ_TextChanged;
             // 
             // label14
             // 
@@ -351,6 +352,7 @@
             txtCEP.Name = "txtCEP";
             txtCEP.Size = new Size(224, 23);
             txtCEP.TabIndex = 23;
+            txtCEP.TextChanged += txtCEP_TextChanged;
             // 
             // label13
             // 
@@ -452,6 +454,7 @@
             txtCPF.Name = "txtCPF";
             txtCPF.Size = new Size(224, 23);
             txtCPF.TabIndex = 2;
+            txtCPF.TextChanged += txtCPF_TextChanged;
             // 
             // lblCPF
             // 

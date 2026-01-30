@@ -283,5 +283,20 @@ namespace Gerador_de_Documentos_net
         {
             DadosBuscaGlobal.BuscaCliente();
         }
+
+        private void txtCPF_TextChanged(object sender, EventArgs e)
+        {
+            //MetodosValidacao.ValidacaoNumeros(txtCPF);
+        }
+
+        private void txtCNPJ_TextChanged(object sender, EventArgs e)
+        {
+            //MetodosValidacao.ValidacaoNumeros(txtCNPJ);
+        }
+
+        private void txtCEP_TextChanged(object sender, EventArgs e)
+        {
+            //MetodosValidacao.ValidacaoNumeros(txtCEP);
+        }
     }
 }

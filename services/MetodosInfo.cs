@@ -166,27 +166,7 @@ namespace Gerador_de_Documentos_net.Services
             };
 
         }
-        public static bool ValidacaoGeral(params Control[] controles)
-        {
-            foreach (Control control in controles)
-            {
-                if (string.IsNullOrWhiteSpace(control.Text))
-                {
-                    control.BackColor = Color.Pink;
-                    MessageBox.Show("Preencha os campos vazios.");
-                    return false;
 
-
-                }
-                else
-                {
-                    control.BackColor = Color.White;
-                }
-
-            }
-            return true;
-
-        }
     }
 }
 
