@@ -26,6 +26,14 @@ namespace Gerador_de_Documentos_net
 
     public partial class ORCform : Form
     {
+        public async void SalvarOrc()
+        {
+            await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id, cbFormaPagamento.Text, DadosGlobais.OrcTemplateSelected, rtbDescTecnica.Text, rtbComentarios.Text);
+            lblUorcamento.Text = $"Último orçamento salvo: {await DatabaseFunctionsORC.DatabaseOrcID()}";
+            id = await DatabaseFunctionsORC.DatabaseOrcID();
+            Messages.Confirmacao($"Orçamento salvo com ID: {id}");
+
+        }
         public void ImportarCliente(Endereco cliente)
         {
             txtNomeCliente.Text = cliente.NomeCliente;
@@ -64,7 +72,7 @@ namespace Gerador_de_Documentos_net
                 CEP: txtCEP.Text,
                 CNPJ: txtCNPJ.Text,
                 ValorT: DadosGlobais.ListaItens.Sum(x => x.ValorTotal),
-                ID: int.Parse(lblIDorc.Text.Replace("ID: ", "")),
+                ID: 0,
                 ListaProdutos: DadosGlobais.ListaItens,
                 Comentarios: rtbComentarios.Text,
                 DescricaoTecnica: rtbDescTecnica.Text,
@@ -218,7 +226,7 @@ namespace Gerador_de_Documentos_net
             ImpostoIncluso();
             lblData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
             id = await DatabaseFunctionsORC.DatabaseOrcID();
-            lblIDorc.Text = $"ID: {id}";
+            lblIDorc.Text = $"ID: (novo)";
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -268,10 +276,8 @@ namespace Gerador_de_Documentos_net
 
         private async void btnSalvarOrc_Click(object sender, EventArgs e)
         {
-            await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id, cbFormaPagamento.Text, DadosGlobais.OrcTemplateSelected, rtbDescTecnica.Text, rtbComentarios.Text);
-            lblIDorc.Text = $"ID: {await DatabaseFunctionsORC.DatabaseOrcID()}";
-            id = await DatabaseFunctionsORC.DatabaseOrcID();
-            Messages.Confirmacao();
+            SalvarOrc();
+
         }
 
         private async void btnCadastroCliente_Click(object sender, EventArgs e)

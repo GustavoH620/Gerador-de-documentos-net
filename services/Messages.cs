@@ -28,9 +28,9 @@ namespace Gerador_de_documentos_net.services
 
 
         }
-        public static void Confirmacao()
+        public static void Confirmacao(string mensagem)
         {
-            MessageBox.Show("Concluído", "Informação", MessageBoxButtons.OK);
+            MessageBox.Show(mensagem, "Concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
         }
         public static void Aviso(string mensagem)

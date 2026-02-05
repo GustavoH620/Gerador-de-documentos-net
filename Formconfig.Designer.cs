@@ -32,6 +32,10 @@
             button1 = new Button();
             lblCaminhoLogo = new Label();
             groupBox1 = new GroupBox();
+            txtCNPJ = new TextBox();
+            label14 = new Label();
+            txtCEP = new TextBox();
+            label13 = new Label();
             cbEstado = new ComboBox();
             label11 = new Label();
             txtCidade = new TextBox();
@@ -49,10 +53,6 @@
             pbLogo = new PictureBox();
             label2 = new Label();
             txtNomeVendedor = new TextBox();
-            txtCNPJ = new TextBox();
-            label14 = new Label();
-            txtCEP = new TextBox();
-            label13 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
@@ -111,11 +111,47 @@
             groupBox1.Controls.Add(button1);
             groupBox1.Location = new Point(14, 14);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(881, 723);
+            groupBox1.Size = new Size(1068, 723);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Informações da Empresa / Vendedor";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // txtCNPJ
+            // 
+            txtCNPJ.Location = new Point(260, 274);
+            txtCNPJ.Margin = new Padding(4, 3, 4, 3);
+            txtCNPJ.Name = "txtCNPJ";
+            txtCNPJ.Size = new Size(224, 23);
+            txtCNPJ.TabIndex = 41;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(260, 256);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(34, 15);
+            label14.TabIndex = 42;
+            label14.Text = "CNPJ";
+            // 
+            // txtCEP
+            // 
+            txtCEP.Location = new Point(260, 227);
+            txtCEP.Margin = new Padding(4, 3, 4, 3);
+            txtCEP.Name = "txtCEP";
+            txtCEP.Size = new Size(224, 23);
+            txtCEP.TabIndex = 39;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(260, 209);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(28, 15);
+            label13.TabIndex = 40;
+            label13.Text = "CEP";
             // 
             // cbEstado
             // 
@@ -248,10 +284,10 @@
             // 
             // pbLogo
             // 
-            pbLogo.Location = new Point(554, 40);
+            pbLogo.Location = new Point(523, 40);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(305, 210);
-            pbLogo.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbLogo.Size = new Size(500, 281);
+            pbLogo.SizeMode = PictureBoxSizeMode.AutoSize;
             pbLogo.TabIndex = 4;
             pbLogo.TabStop = false;
             pbLogo.Click += pbLogo_Click;
@@ -272,47 +308,11 @@
             txtNomeVendedor.Size = new Size(223, 23);
             txtNomeVendedor.TabIndex = 2;
             // 
-            // txtCNPJ
-            // 
-            txtCNPJ.Location = new Point(260, 274);
-            txtCNPJ.Margin = new Padding(4, 3, 4, 3);
-            txtCNPJ.Name = "txtCNPJ";
-            txtCNPJ.Size = new Size(224, 23);
-            txtCNPJ.TabIndex = 41;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(260, 256);
-            label14.Margin = new Padding(4, 0, 4, 0);
-            label14.Name = "label14";
-            label14.Size = new Size(34, 15);
-            label14.TabIndex = 42;
-            label14.Text = "CNPJ";
-            // 
-            // txtCEP
-            // 
-            txtCEP.Location = new Point(260, 227);
-            txtCEP.Margin = new Padding(4, 3, 4, 3);
-            txtCEP.Name = "txtCEP";
-            txtCEP.Size = new Size(224, 23);
-            txtCEP.TabIndex = 39;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(260, 209);
-            label13.Margin = new Padding(4, 0, 4, 0);
-            label13.Name = "label13";
-            label13.Size = new Size(28, 15);
-            label13.TabIndex = 40;
-            label13.Text = "CEP";
-            // 
             // Formconfig
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 749);
+            ClientSize = new Size(1094, 749);
             Controls.Add(groupBox1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "Formconfig";

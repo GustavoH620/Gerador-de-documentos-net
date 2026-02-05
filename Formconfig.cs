@@ -51,7 +51,7 @@ namespace Gerador_de_Documentos_net
             txtCEP.Text = DadosGlobais.enderecoVendedor.CEP;
             txtCNPJ.Text = DadosGlobais.enderecoVendedor.CNPJ;
 
-
+            
 
 
 
@@ -72,7 +72,7 @@ namespace Gerador_de_Documentos_net
                 MetodosInfo.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text, txtRua.Text,
                 txtBairro.Text, txtCidade.Text, cbEstado.Text, txtCEP.Text, txtCNPJ.Text, txtEmail.Text, txtTelefone.Text);
 
-                Messages.Confirmacao();
+                Messages.Confirmacao("Informações salvas com sucesso");
 
             }
 

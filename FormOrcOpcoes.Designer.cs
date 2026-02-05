@@ -34,9 +34,9 @@
             // 
             // btnCarregar
             // 
-            btnCarregar.Location = new Point(137, 145);
+            btnCarregar.Location = new Point(225, 145);
             btnCarregar.Name = "btnCarregar";
-            btnCarregar.Size = new Size(108, 81);
+            btnCarregar.Size = new Size(218, 333);
             btnCarregar.TabIndex = 0;
             btnCarregar.Text = "Carregar Orçamento";
             btnCarregar.UseVisualStyleBackColor = true;
@@ -44,9 +44,9 @@
             // 
             // btnNovoOrc
             // 
-            btnNovoOrc.Location = new Point(361, 145);
+            btnNovoOrc.Location = new Point(707, 145);
             btnNovoOrc.Name = "btnNovoOrc";
-            btnNovoOrc.Size = new Size(108, 81);
+            btnNovoOrc.Size = new Size(218, 333);
             btnNovoOrc.TabIndex = 1;
             btnNovoOrc.Text = "Novo Orçamento";
             btnNovoOrc.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1021, 565);
             Controls.Add(btnNovoOrc);
             Controls.Add(btnCarregar);
             Name = "FormOrcOpcoes";

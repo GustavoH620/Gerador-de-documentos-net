@@ -88,6 +88,7 @@
             label16 = new Label();
             btnSalvarOrc = new Button();
             groupBox3 = new GroupBox();
+            lblUorcamento = new Label();
             groupBox1.SuspendLayout();
             gbProdutos.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -713,12 +714,23 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Extras";
             // 
+            // lblUorcamento
+            // 
+            lblUorcamento.AutoSize = true;
+            lblUorcamento.Location = new Point(303, 10);
+            lblUorcamento.Margin = new Padding(4, 0, 4, 0);
+            lblUorcamento.Name = "lblUorcamento";
+            lblUorcamento.Size = new Size(142, 15);
+            lblUorcamento.TabIndex = 29;
+            lblUorcamento.Text = "Último Orçamento salvo: ";
+            // 
             // ORCform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RosyBrown;
             ClientSize = new Size(1207, 718);
+            Controls.Add(lblUorcamento);
             Controls.Add(groupBox3);
             Controls.Add(btnSalvarOrc);
             Controls.Add(groupBox2);
@@ -806,5 +818,6 @@
         private Button btnSalvarOrc;
         private Button btnImportarCliente;
         private GroupBox groupBox3;
+        private Label lblUorcamento;
     }
 }

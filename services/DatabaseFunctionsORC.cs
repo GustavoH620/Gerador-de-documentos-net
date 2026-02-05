@@ -38,7 +38,7 @@ namespace Gerador_de_Documentos_net.Services
 
                 if (resultado != DBNull.Value && resultado != null)
                 {
-                    return Convert.ToInt32(resultado) + 1;
+                    return Convert.ToInt32(resultado);
                 }
                 else
                 {
@@ -132,7 +132,7 @@ namespace Gerador_de_Documentos_net.Services
                 {
                     await cmd.ExecuteNonQueryAsync();
                     connection.Close();
-                    Messages.Confirmacao();
+                    Messages.Confirmacao("Cliente salvo com sucesso");
                 }
                 else
                 {
