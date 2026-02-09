@@ -37,7 +37,7 @@ namespace Gerador_de_documentos_net
         public async Task<ListBox> CarregarProdutos(DataGridViewCellEventArgs e, ListBox lb)
         {
 
-            var listProdutos = await DatabaseFunctionsORC.QueryProdutos(int.Parse(dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+            var listProdutos = await DatabaseFunctionsORC.QueryProdutos(int.Parse(txtID.Text)-1);
             foreach (var item in listProdutos)
             {
                 lb.Items.Add(item.ToString());

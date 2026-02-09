@@ -56,7 +56,7 @@ namespace Gerador_de_Documentos_net
         }
         public async Task ImportarOrcamento(int ID, string formaPagamento, string descricaoT, string comentarios, int template)
         {
-            DadosGlobais.ListaItens = await DatabaseFunctionsORC.QueryProdutos(ID);
+            DadosGlobais.ListaItens = await DatabaseFunctionsORC.QueryProdutos(ID - 1);
             cbFormaPagamento.Text = formaPagamento;
             rtbDescTecnica.Text = descricaoT;
             rtbComentarios.Text = comentarios;
@@ -115,6 +115,7 @@ namespace Gerador_de_Documentos_net
 
 
             }
+
         }
 
         DateTime dataExp = DateTime.Now.AddDays(30);
