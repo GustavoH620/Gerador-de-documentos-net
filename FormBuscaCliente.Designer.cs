@@ -322,7 +322,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1145, 242);
             dataGridView1.TabIndex = 22;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // FormBuscaCliente
             // 
@@ -337,6 +337,7 @@
             Controls.Add(txtBusca);
             Name = "FormBuscaCliente";
             Text = "FormBusca";
+            FormClosed += FormBuscaCliente_FormClosed;
             Load += FormBusca_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

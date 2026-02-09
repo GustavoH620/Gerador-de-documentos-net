@@ -48,6 +48,7 @@ namespace Gerador_de_documentos_net
         {
             if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null || dataGridView1.Rows[e.RowIndex].Index != -1)
             {
+                groupBox1.Enabled = true;
                 txtNome.Text = dataGridView1.Rows[e.RowIndex].Cells["nomeCliente"].Value.ToString();
                 txtID.Text = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
                 await DatabaseFunctionsORC.QueryClienteNome(txtNome.Text);
@@ -61,6 +62,7 @@ namespace Gerador_de_documentos_net
                 lbProdutos.Items.Clear();
                 CarregarProdutos(e, lbProdutos);
                 lbProdutos.Update();
+                groupBox1.Enabled = false;
             }
 
 
@@ -104,9 +106,9 @@ namespace Gerador_de_documentos_net
 
 
             }
-            
 
-            
+
+
         }
         public void BuscaDataGrid()
         {
@@ -144,17 +146,17 @@ namespace Gerador_de_documentos_net
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == -1 || e.ColumnIndex != 3)
-                return;
-            DisplayConteudo(e);
-        }
+
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
 
-                Concluir();
+            Concluir();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DisplayConteudo(e);
         }
     }
 }

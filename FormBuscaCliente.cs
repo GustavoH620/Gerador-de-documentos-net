@@ -150,9 +150,14 @@ namespace Gerador_de_documentos_net
             Concluir();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DisplayConteudo(e);
+        }
+
+        private void FormBuscaCliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

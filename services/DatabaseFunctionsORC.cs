@@ -22,7 +22,7 @@ namespace Gerador_de_Documentos_net.Services
 
         static string sqlTOrcprodutos = "CREATE TABLE IF NOT EXISTS OrcProdutos (IdOrcamento INTEGER, NomeProduto TEXT, Preco Double, QT INTEGER)";
         static string sqlTOrcamentos = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ValorT Double, Data TEXT, FormaPagamento TEXT, Template INTEGER, DescricaoT TEXT, Comentarios TEXT)";
-        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (CPF TEXT PRIMARY KEY, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
+        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (CPF TEXT, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
 
         //ID
         public static async Task<int> DatabaseOrcID() 

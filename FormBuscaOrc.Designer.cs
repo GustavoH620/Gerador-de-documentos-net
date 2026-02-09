@@ -40,10 +40,10 @@
             label4 = new Label();
             label5 = new Label();
             txtID = new TextBox();
-            dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // btnSelecionar
@@ -146,22 +146,6 @@
             txtID.Size = new Size(86, 23);
             txtID.TabIndex = 17;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 107);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1154, 150);
-            dataGridView1.TabIndex = 19;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(txtCPF);
@@ -179,13 +163,32 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados do cliente";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.RaisedVertical;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(4, 50);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1145, 180);
+            dataGridView1.TabIndex = 23;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+
+            // 
             // FormBuscaOrc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1195, 749);
-            Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
+            Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(lbProdutos);
             Controls.Add(btnSelecionar);
@@ -193,9 +196,9 @@
             Name = "FormBuscaOrc";
             Text = "FormBuscaOrc";
             Load += FormBuscaOrc_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -213,7 +216,7 @@
         private Label label4;
         private Label label5;
         private TextBox txtID;
-        private DataGridView dataGridView1;
         private GroupBox groupBox1;
+        private DataGridView dataGridView1;
     }
 }

@@ -28,10 +28,15 @@ namespace Gerador_de_Documentos_net
     {
         public async void SalvarOrc()
         {
-            await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id, cbFormaPagamento.Text, DadosGlobais.OrcTemplateSelected, rtbDescTecnica.Text, rtbComentarios.Text);
-            lblUorcamento.Text = $"Último orçamento salvo: {await DatabaseFunctionsORC.DatabaseOrcID()}";
-            id = await DatabaseFunctionsORC.DatabaseOrcID();
-            Messages.Confirmacao($"Orçamento salvo com ID: {id}");
+            if (MetodosValidacao.ValidacaoVazio(txtNomeCliente))
+            {
+                await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id, cbFormaPagamento.Text, DadosGlobais.OrcTemplateSelected, rtbDescTecnica.Text, rtbComentarios.Text);
+                lblUorcamento.Text = $"Último orçamento salvo: {await DatabaseFunctionsORC.DatabaseOrcID()}";
+                id = await DatabaseFunctionsORC.DatabaseOrcID();
+                Messages.Confirmacao($"Orçamento salvo com ID: {id}");
+            }
+
+
 
         }
         public void ImportarCliente(Endereco cliente)
