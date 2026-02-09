@@ -1,4 +1,5 @@
 ﻿using Gerador_de_documentos_net;
+using Gerador_de_documentos_net.services;
 using Gerador_de_Documentos_net.Services;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,43 @@ namespace Gerador_de_Documentos_net
         {
             if (!MetodosInfo.ChecarInfo(false))
             {
-                Formconfig config = new Formconfig();
-                config.Show();
+                var config = Application.OpenForms.OfType<Formconfig>().FirstOrDefault();
+
+                if (config != null)
+                {
+                    Messages.Aviso("Já há uma janela de configuração aberta!");
+                    config.Focus();
+                }
+                else
+                {
+                    Formconfig Formconfig = new Formconfig();
+                    Formconfig.Show();
+                }
+
+
+
 
             }
             else
             {
-                FormOrcOpcoes form = new FormOrcOpcoes();
-                form.Show();
+                var OrcForm = Application.OpenForms.OfType<ORCform>().FirstOrDefault();
+                var FormOpcoes = Application.OpenForms.OfType<FormOrcOpcoes>().FirstOrDefault();
+                var TemplatesOrcForm = Application.OpenForms.OfType<TemplatesORCForm>().FirstOrDefault();
+
+                if (OrcForm != null || FormOpcoes != null || TemplatesOrcForm != null)
+                {
+
+                    Messages.Aviso("Já há uma janela de criação aberta!");
+                    if (OrcForm != null) OrcForm.Focus();
+                    if (FormOpcoes != null) FormOpcoes.Focus();
+                    if (TemplatesOrcForm != null) TemplatesOrcForm.Focus();
+                }
+                else
+                {
+                    FormOrcOpcoes form = new FormOrcOpcoes();
+                    form.Show();
+                }
+
 
 
             }
@@ -50,8 +80,19 @@ namespace Gerador_de_Documentos_net
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            Formconfig formconfig = new Formconfig();
-            formconfig.Show();
+            var config = Application.OpenForms.OfType<Formconfig>().FirstOrDefault();
+
+            if (config != null)
+            {
+                Messages.Aviso("Já há uma janela de configuração aberta!");
+                config.Focus();
+            }
+            else
+            {
+                Formconfig Formconfig = new Formconfig();
+                Formconfig.Show();
+            }
+
         }
 
         private async void HomeForm_Load(object sender, EventArgs e)
