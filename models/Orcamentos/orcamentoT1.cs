@@ -67,7 +67,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     });
 
                 });
-                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(100).Height(100).Placeholder(); } else { row.ConstantItem(100).Height(100).Image(DadosGlobais.CaminhoLogo).FitArea(); }
+                if (DadosGlobais.CaminhoLogo == "") { row.ConstantItem(100).Height(100).Placeholder(); } else { row.ConstantItem(150).AlignTop().Height(150).Image(DadosGlobais.CaminhoLogo).FitArea(); }
             });
         }
         void ComposeContent(IContainer container)
