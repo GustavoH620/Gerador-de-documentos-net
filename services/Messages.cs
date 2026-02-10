@@ -12,11 +12,12 @@ namespace Gerador_de_documentos_net.services
         public static bool AdicionarLogo()
         {
             string mensagem = "Deseja adicionar uma logo?";
-            string legenda = "Nehuma logo encontrada.";
+            string legenda = "Nenhuma logo encontrada.";
             MessageBoxButtons botoes = MessageBoxButtons.YesNo;
+            MessageBoxIcon icon = MessageBoxIcon.Question;
             DialogResult resultado;
 
-            resultado = MessageBox.Show(mensagem, legenda, botoes);
+            resultado = MessageBox.Show(mensagem, legenda, botoes, icon );
             if (resultado == DialogResult.Yes)
             {
                 return false;
@@ -27,6 +28,20 @@ namespace Gerador_de_documentos_net.services
             }
 
 
+        }
+
+        public static bool Questao(string mensagem)
+        {
+            DialogResult resultado;
+            resultado = MessageBox.Show(mensagem, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(resultado == DialogResult.Yes)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public static void Confirmacao(string mensagem)
         {

@@ -28,12 +28,24 @@ namespace Gerador_de_Documentos_net
     {
         public async void SalvarOrc()
         {
-            if (MetodosValidacao.ValidacaoVazio(txtNomeCliente))
+            if (MetodosValidacao.ValidacaoVazio(true, txtNomeCliente))
             {
+                if(!MetodosValidacao.ValidacaoVazio(false, txtCPF, txtCNPJ))
+                {
+                    if(!Messages.Questao("Algumas informações não foram preenchidas, continuar?"))
+                    {
+                        MetodosValidacao.Limpeza(txtCPF,txtCNPJ);
+                        return;
+
+                    }
+
+
+                }
                 await DatabaseFunctionsORC.DataBaseOrcCadastro(txtNomeCliente.Text, $"{totalGeral}", DadosGlobais.ListaItens, id, cbFormaPagamento.Text, DadosGlobais.OrcTemplateSelected, rtbDescTecnica.Text, rtbComentarios.Text);
                 lblUorcamento.Text = $"Último orçamento salvo: {await DatabaseFunctionsORC.DatabaseOrcID()}";
                 id = await DatabaseFunctionsORC.DatabaseOrcID();
                 Messages.Confirmacao($"Orçamento salvo com ID: {id}");
+                MetodosValidacao.Limpeza(txtCPF, txtCNPJ);
             }
 
 

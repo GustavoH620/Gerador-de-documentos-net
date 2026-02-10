@@ -67,7 +67,7 @@ namespace Gerador_de_Documentos_net
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (MetodosValidacao.ValidacaoVazio(txtBairro, txtCidade, txtEmail, txtNomeVendedor, txtRua, txtTelefone, cbEstado))
+            if (MetodosValidacao.ValidacaoVazio(true, txtBairro, txtCidade, txtEmail, txtNomeVendedor, txtRua, txtTelefone, cbEstado))
             {
                 MetodosInfo.CadastroInfo(lblCaminhoLogo.Text, txtNomeVendedor.Text, txtRua.Text,
                 txtBairro.Text, txtCidade.Text, cbEstado.Text, txtCEP.Text, txtCNPJ.Text, txtEmail.Text, txtTelefone.Text);

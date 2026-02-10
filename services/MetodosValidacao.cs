@@ -8,14 +8,18 @@ namespace Gerador_de_documentos_net.services
 {
     internal class MetodosValidacao
     {
-        public static bool ValidacaoVazio(params Control[] controles)
+        public static bool ValidacaoVazio(bool Nada, params Control[] controles)
         {
             foreach (Control control in controles)
             {
                 if (string.IsNullOrWhiteSpace(control.Text))
                 {
                     control.BackColor = Color.Pink;
-                    MessageBox.Show("Preencha os campos vazios.");
+                    if (Nada)
+                    {
+                        MessageBox.Show("Preencha os campos vazios.");
+                    }
+
                     return false;
 
 
@@ -28,6 +32,14 @@ namespace Gerador_de_documentos_net.services
             }
             return true;
 
+        }
+
+        public static void Limpeza(params Control[] controles)
+        {
+            foreach(Control control in controles)
+            {
+                control.BackColor = Color.White;
+            }
         }
         public static bool ValidacaoNumeros(params Control[] controles)
         {
