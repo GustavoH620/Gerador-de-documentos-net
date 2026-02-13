@@ -46,25 +46,31 @@ namespace Gerador_de_documentos_net
         }
         public async void DisplayConteudo(DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null || dataGridView1.Rows[e.RowIndex].Index != -1)
+            try
             {
-                groupBox1.Enabled = true;
-                txtNome.Text = dataGridView1.Rows[e.RowIndex].Cells["nomeCliente"].Value.ToString();
-                txtID.Text = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
-                await DatabaseFunctionsORC.QueryClienteNome(txtNome.Text);
-                txtCPF.Text = DadosBuscaGlobal.CPFSel;
-                ID = int.Parse(txtID.Text);
-                formaPagamento = dataGridView1.Rows[e.RowIndex].Cells["fPagamento"].Value.ToString();
-                descricaoTecnica = dataGridView1.Rows[e.RowIndex].Cells["DescricaoT"].Value.ToString();
-                comentarios = dataGridView1.Rows[e.RowIndex].Cells["Comentarios"].Value.ToString();
-                string template = dataGridView1.Rows[e.RowIndex].Cells["Template"].Value.ToString();
-                templateSelecionadoBusca = int.Parse(template);
-                lbProdutos.Items.Clear();
-                CarregarProdutos(e, lbProdutos);
-                lbProdutos.Update();
-                groupBox1.Enabled = false;
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null || dataGridView1.Rows[e.RowIndex].Index != -1)
+                {
+                    groupBox1.Enabled = true;
+                    txtNome.Text = dataGridView1.Rows[e.RowIndex].Cells["nomeCliente"].Value.ToString();
+                    txtID.Text = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                    await DatabaseFunctionsORC.QueryClienteNome(txtNome.Text);
+                    txtCPF.Text = DadosBuscaGlobal.CPFSel;
+                    ID = int.Parse(txtID.Text);
+                    formaPagamento = dataGridView1.Rows[e.RowIndex].Cells["fPagamento"].Value.ToString();
+                    descricaoTecnica = dataGridView1.Rows[e.RowIndex].Cells["DescricaoT"].Value.ToString();
+                    comentarios = dataGridView1.Rows[e.RowIndex].Cells["Comentarios"].Value.ToString();
+                    string template = dataGridView1.Rows[e.RowIndex].Cells["Template"].Value.ToString();
+                    templateSelecionadoBusca = int.Parse(template);
+                    lbProdutos.Items.Clear();
+                    CarregarProdutos(e, lbProdutos);
+                    lbProdutos.Update();
+                    groupBox1.Enabled = false;
+                }
             }
-
+            catch
+            {
+                Console.WriteLine("");
+            }
 
         }
         public async void Concluir()

@@ -72,23 +72,31 @@ namespace Gerador_de_documentos_net
         */
         public async void DisplayConteudo(DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null || dataGridView1.Rows[e.RowIndex].Index != -1)
+            try
             {
-                txtNomeCliente.Text = dataGridView1.Rows[e.RowIndex].Cells["nomeCliente"].Value.ToString();
-                txtRua.Text = dataGridView1.Rows[e.RowIndex].Cells["Rua"].Value.ToString();
-                txtBairro.Text = dataGridView1.Rows[e.RowIndex].Cells["Bairro"].Value.ToString();
-                txtCidade.Text = dataGridView1.Rows[e.RowIndex].Cells["Cidade"].Value.ToString();
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null || dataGridView1.Rows[e.RowIndex].Index != -1)
+                {
+                    txtNomeCliente.Text = dataGridView1.Rows[e.RowIndex].Cells["nomeCliente"].Value.ToString();
+                    txtRua.Text = dataGridView1.Rows[e.RowIndex].Cells["Rua"].Value.ToString();
+                    txtBairro.Text = dataGridView1.Rows[e.RowIndex].Cells["Bairro"].Value.ToString();
+                    txtCidade.Text = dataGridView1.Rows[e.RowIndex].Cells["Cidade"].Value.ToString();
 
 
 
 
-                cbEstado.Text = dataGridView1.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
-                txtTelefone.Text = dataGridView1.Rows[e.RowIndex].Cells["Telefone"].Value.ToString();
-                txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells["Email"].Value.ToString();
-                txtCEP.Text = dataGridView1.Rows[e.RowIndex].Cells["CEP"].Value.ToString();
-                txtCNPJ.Text = dataGridView1.Rows[e.RowIndex].Cells["CNPJ"].Value.ToString();
-                txtCPF.Text = dataGridView1.Rows[e.RowIndex].Cells["CPF"].Value.ToString();
-                groupBox1.Enabled = false;
+                    cbEstado.Text = dataGridView1.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
+                    txtTelefone.Text = dataGridView1.Rows[e.RowIndex].Cells["Telefone"].Value.ToString();
+                    txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells["Email"].Value.ToString();
+                    txtCEP.Text = dataGridView1.Rows[e.RowIndex].Cells["CEP"].Value.ToString();
+                    txtCNPJ.Text = dataGridView1.Rows[e.RowIndex].Cells["CNPJ"].Value.ToString();
+                    txtCPF.Text = dataGridView1.Rows[e.RowIndex].Cells["CPF"].Value.ToString();
+                    groupBox1.Enabled = false;
+
+                }
+            }
+            catch
+            {
+                Console.WriteLine("");
 
             }
 
@@ -161,6 +169,11 @@ namespace Gerador_de_documentos_net
         }
 
         private void FormBuscaCliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
