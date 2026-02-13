@@ -77,7 +77,7 @@ namespace Gerador_de_documentos_net
                 }
                 else
                 {
-                    var cliente = await DatabaseFunctionsORC.QueryCliente(txtCPF.Text);
+                    var cliente = await DatabaseFunctionsORC.QueryCliente(txtCPF.Text, txtCNPJ.Text);
                     if (cliente != null)
                     {
                         DadosBuscaGlobal.DadosClienteSel.NomeCliente = cliente.NomeCliente;

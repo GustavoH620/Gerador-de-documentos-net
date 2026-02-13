@@ -26,6 +26,28 @@ namespace Gerador_de_Documentos_net
 
     public partial class ORCform : Form
     {
+        public async void CadastrarCliente()
+        {
+            if (MetodosValidacao.ValidacaoVazio(false, txtNomeCliente))
+            {
+                await DatabaseFunctionsORC.CadastroCliente(txtCPF.Text, txtNomeCliente.Text, txtRua.Text, txtBairro.Text, txtCidade.Text, cbEstado.Text, txtTelefone.Text, txtEmail.Text, txtCNPJ.Text, txtCEP.Text);
+                /*
+                if (string.IsNullOrEmpty(txtCPF.Text) && string.IsNullOrEmpty(txtCNPJ.Text))
+                {
+                    
+                }
+                else
+                {
+                    Messages.Aviso("Preencha o campo de CPF ou de CNPJ!");
+                }
+                */
+            }
+            else
+            {
+                Messages.Aviso("Nome do cliente está vazio!");
+            }
+            
+        }
         public async void SalvarOrc()
         {
             if (MetodosValidacao.ValidacaoVazio(true, txtNomeCliente))
@@ -300,7 +322,8 @@ namespace Gerador_de_Documentos_net
 
         private async void btnCadastroCliente_Click(object sender, EventArgs e)
         {
-            await DatabaseFunctionsORC.CadastroCliente(txtCPF.Text, txtNomeCliente.Text, txtRua.Text, txtBairro.Text, txtCidade.Text, cbEstado.Text, txtTelefone.Text, txtEmail.Text, txtCNPJ.Text, txtCEP.Text);
+            CadastrarCliente();
+            
         }
 
         private void btnImportarCliente_Click(object sender, EventArgs e)

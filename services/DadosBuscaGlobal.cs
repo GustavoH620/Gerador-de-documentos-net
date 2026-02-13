@@ -9,6 +9,7 @@ namespace Gerador_de_documentos_net.Services
     public static class DadosBuscaGlobal
     {
         public static string CPFSel { get; set; } = string.Empty;
+        public static string CPNJsel { get; set; } = string.Empty;
         public static string IDSel { get; set; } = string.Empty;
         public static string TopicoBusca { get; set; } = string.Empty;
         public static int checkBusca { get; set; } = 0;

@@ -38,7 +38,7 @@ namespace Gerador_de_documentos_net
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = listaFiltrada;
         }
-        public async Task Buscar(int check)
+        /*public async Task Buscar(int check)
         {
             if (check == 0)
             {
@@ -69,6 +69,7 @@ namespace Gerador_de_documentos_net
 
             }
         }
+        */
         public async void DisplayConteudo(DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null || dataGridView1.Rows[e.RowIndex].Index != -1)
@@ -141,7 +142,7 @@ namespace Gerador_de_documentos_net
 
         private async void btnBuscar_Click(object sender, EventArgs e)
         {
-            Buscar(DadosBuscaGlobal.checkBusca);
+            //Buscar(DadosBuscaGlobal.checkBusca);
         }
 
         private void btnSelecionar_Click(object sender, EventArgs e)

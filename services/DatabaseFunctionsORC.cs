@@ -117,9 +117,9 @@ namespace Gerador_de_Documentos_net.Services
 
         public static async Task CadastroCliente(string cpf, string nome, string rua, string bairro, string cidade, string estado, string telefone, string email, string cnpj, string cep)
         {
-            if (cpf == "")
+            if (string.IsNullOrEmpty(cpf) && string.IsNullOrEmpty(cnpj))
             {
-                Messages.Aviso("Campo de CPF vazio");
+                Messages.Aviso("Campo de CPF ou CNPJ vazio");
             }
             else
             {
@@ -138,8 +138,8 @@ namespace Gerador_de_Documentos_net.Services
                 cmd.Parameters.AddWithValue("@cnpj", cnpj);
                 cmd.Parameters.AddWithValue("@cep", cep);
 
-                var validacaoCPF = await QueryCliente(cpf);
-                if (validacaoCPF == null)
+                var validacao = await QueryCliente(cpf, cnpj);
+                if (validacao == null)
                 {
                     await cmd.ExecuteNonQueryAsync();
                     connection.Close();
@@ -147,28 +147,47 @@ namespace Gerador_de_Documentos_net.Services
                 }
                 else
                 {
-                    Messages.Aviso("CPF já cadastrado");
+                    Messages.Aviso("CPF ou CNPJ já cadastrado");
                 }
 
             }
 
         }
-        public static async Task<Endereco> QueryCliente(string CPF)
+        public static async Task<Endereco> QueryCliente(string CPF, string CNPJ)
         {
-            if (CPF == null)
+            await using var connection = new SqliteConnection(dbPath);
+            connection.OpenAsync();
+
+            if (string.IsNullOrWhiteSpace(CPF))
             {
-                Messages.Aviso("Campo de CPF vazio");
-                return null;
+                string sqlClienteQuery = "SELECT * FROM Clientes WHERE CNPJ = @cnpj ";
+                await using var cmd = new SqliteCommand(sqlClienteQuery, connection);
+                var cliente = await connection.QueryFirstOrDefaultAsync<Endereco>(sqlClienteQuery, new { cnpj = CNPJ });
+                DadosBuscaGlobal.CPNJsel = CNPJ;
+                connection.Close();
+                return cliente;
             }
-            else
+            else if (string.IsNullOrWhiteSpace(CNPJ))
             {
-                await using var connection = new SqliteConnection(dbPath);
-                connection.OpenAsync();
+
+
                 string sqlClienteQuery = "SELECT * FROM Clientes WHERE CPF = @cpf ";
                 await using var cmd = new SqliteCommand(sqlClienteQuery, connection);
                 var cliente = await connection.QueryFirstOrDefaultAsync<Endereco>(sqlClienteQuery, new { cpf = CPF });
-                connection.Close();
                 DadosBuscaGlobal.CPFSel = CPF;
+                connection.Close();
+                return cliente;
+
+            }
+            else
+            {
+
+                string sqlClienteQuery = "SELECT * FROM Clientes WHERE CPF = @cpf AND CNPJ = @cnpj";
+                await using var cmd = new SqliteCommand(sqlClienteQuery, connection);
+                var cliente = await connection.QueryFirstOrDefaultAsync<Endereco>(sqlClienteQuery, new { cpf = CPF , cnpj = CNPJ});
+                DadosBuscaGlobal.CPFSel = CPF;
+                DadosBuscaGlobal.CPNJsel = CNPJ;
+                connection.Close();
                 return cliente;
 
             }
