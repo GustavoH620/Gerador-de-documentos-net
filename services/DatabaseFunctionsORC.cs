@@ -18,7 +18,18 @@ namespace Gerador_de_Documentos_net.Services
 {
     public static class DatabaseFunctionsORC
     {
-        static string dbPath = "Data Source=BancoDados.db";
+        public static string CriarBanco()
+        {
+            string pastaAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Gerador setup 1");
+            if (!Directory.Exists(pastaAppData))
+            {
+                Directory.CreateDirectory(pastaAppData);
+            }
+            string caminhoBanco = Path.Combine(pastaAppData, "BancoDados.db");
+            return caminhoBanco;
+        }
+
+        static string dbPath = $"Data Source={CriarBanco()}";
 
         static string sqlTOrcprodutos = "CREATE TABLE IF NOT EXISTS OrcProdutos (IdOrcamento INTEGER, NomeProduto TEXT, Preco Double, QT INTEGER)";
         static string sqlTOrcamentos = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ValorT Double, Data TEXT, FormaPagamento TEXT, Template INTEGER, DescricaoT TEXT, Comentarios TEXT)";

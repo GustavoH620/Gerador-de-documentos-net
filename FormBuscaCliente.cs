@@ -77,6 +77,10 @@ namespace Gerador_de_documentos_net
                 txtRua.Text = dataGridView1.Rows[e.RowIndex].Cells["Rua"].Value.ToString();
                 txtBairro.Text = dataGridView1.Rows[e.RowIndex].Cells["Bairro"].Value.ToString();
                 txtCidade.Text = dataGridView1.Rows[e.RowIndex].Cells["Cidade"].Value.ToString();
+
+
+
+
                 cbEstado.Text = dataGridView1.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
                 txtTelefone.Text = dataGridView1.Rows[e.RowIndex].Cells["Telefone"].Value.ToString();
                 txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells["Email"].Value.ToString();
