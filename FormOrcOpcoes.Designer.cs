@@ -30,11 +30,14 @@
         {
             btnCarregar = new Button();
             btnNovoOrc = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnCarregar
             // 
-            btnCarregar.Location = new Point(225, 145);
+            btnCarregar.Anchor = AnchorStyles.None;
+            btnCarregar.Location = new Point(146, 116);
             btnCarregar.Name = "btnCarregar";
             btnCarregar.Size = new Size(218, 333);
             btnCarregar.TabIndex = 0;
@@ -44,7 +47,8 @@
             // 
             // btnNovoOrc
             // 
-            btnNovoOrc.Location = new Point(707, 145);
+            btnNovoOrc.Anchor = AnchorStyles.None;
+            btnNovoOrc.Location = new Point(656, 116);
             btnNovoOrc.Name = "btnNovoOrc";
             btnNovoOrc.Size = new Size(218, 333);
             btnNovoOrc.TabIndex = 1;
@@ -52,16 +56,32 @@
             btnNovoOrc.UseVisualStyleBackColor = true;
             btnNovoOrc.Click += btnNovoOrc_Click;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(btnCarregar, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnNovoOrc, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(1021, 565);
+            tableLayoutPanel1.TabIndex = 2;
+            // 
             // FormOrcOpcoes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1021, 565);
-            Controls.Add(btnNovoOrc);
-            Controls.Add(btnCarregar);
+            Controls.Add(tableLayoutPanel1);
             Name = "FormOrcOpcoes";
             Text = "FormOrcOpcoes";
             Load += FormOrcOpcoes_Load;
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -69,5 +89,6 @@
 
         private Button btnCarregar;
         private Button btnNovoOrc;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

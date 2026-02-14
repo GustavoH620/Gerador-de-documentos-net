@@ -134,7 +134,7 @@ namespace Gerador_de_documentos_net
         {
             CarregarClientes();
             this.WindowState = FormWindowState.Maximized;
-            btnBuscar.Focus();
+
             lblTopico.Text = DadosBuscaGlobal.TopicoBusca;
             if (DadosBuscaGlobal.checkBusca == 0)
             {

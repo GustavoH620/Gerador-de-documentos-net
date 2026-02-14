@@ -44,6 +44,7 @@ namespace Gerador_de_documentos_net
         {
             DadosGlobais.LimparListaProdutos();
             this.WindowState = FormWindowState.Maximized;
+            
         }
 
         private void btnCarregar_Click(object sender, EventArgs e)

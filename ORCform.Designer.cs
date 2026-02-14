@@ -87,12 +87,16 @@
             cbFormaPagamento = new ComboBox();
             label16 = new Label();
             btnSalvarOrc = new Button();
-            groupBox3 = new GroupBox();
             lblUorcamento = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            tableLayoutPanel3 = new TableLayoutPanel();
             groupBox1.SuspendLayout();
             gbProdutos.SuspendLayout();
             groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
             // txtNomeCliente
@@ -152,7 +156,7 @@
             // lblData
             // 
             lblData.AutoSize = true;
-            lblData.Location = new Point(15, 10);
+            lblData.Location = new Point(4, 0);
             lblData.Margin = new Padding(4, 0, 4, 0);
             lblData.Name = "lblData";
             lblData.Size = new Size(34, 15);
@@ -268,7 +272,7 @@
             // lblIDorc
             // 
             lblIDorc.AutoSize = true;
-            lblIDorc.Location = new Point(141, 10);
+            lblIDorc.Location = new Point(395, 0);
             lblIDorc.Margin = new Padding(4, 0, 4, 0);
             lblIDorc.Name = "lblIDorc";
             lblIDorc.Size = new Size(84, 15);
@@ -277,7 +281,7 @@
             // 
             // btnGerarOrc
             // 
-            btnGerarOrc.Location = new Point(20, 658);
+            btnGerarOrc.Location = new Point(3, 3);
             btnGerarOrc.Name = "btnGerarOrc";
             btnGerarOrc.Size = new Size(109, 38);
             btnGerarOrc.TabIndex = 19;
@@ -310,9 +314,9 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(20, 50);
+            groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(270, 595);
+            groupBox1.Size = new Size(270, 590);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados do cliente";
@@ -469,7 +473,7 @@
             // 
             // rtbComentarios
             // 
-            rtbComentarios.Location = new Point(20, 113);
+            rtbComentarios.Location = new Point(21, 512);
             rtbComentarios.Name = "rtbComentarios";
             rtbComentarios.Size = new Size(518, 35);
             rtbComentarios.TabIndex = 21;
@@ -478,7 +482,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(20, 95);
+            label12.Location = new Point(21, 494);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(75, 15);
@@ -488,7 +492,7 @@
             // ckbDataExp
             // 
             ckbDataExp.AutoSize = true;
-            ckbDataExp.Location = new Point(20, 20);
+            ckbDataExp.Location = new Point(21, 422);
             ckbDataExp.Name = "ckbDataExp";
             ckbDataExp.Size = new Size(168, 19);
             ckbDataExp.TabIndex = 23;
@@ -498,7 +502,7 @@
             // 
             // dtpDataExp
             // 
-            dtpDataExp.Location = new Point(20, 41);
+            dtpDataExp.Location = new Point(21, 444);
             dtpDataExp.Name = "dtpDataExp";
             dtpDataExp.Size = new Size(255, 23);
             dtpDataExp.TabIndex = 24;
@@ -506,7 +510,11 @@
             // 
             // gbProdutos
             // 
+            gbProdutos.Controls.Add(label12);
+            gbProdutos.Controls.Add(rtbComentarios);
+            gbProdutos.Controls.Add(ckbDataExp);
             gbProdutos.Controls.Add(label15);
+            gbProdutos.Controls.Add(dtpDataExp);
             gbProdutos.Controls.Add(btnLimparLista);
             gbProdutos.Controls.Add(rtbDescTecnica);
             gbProdutos.Controls.Add(btnAdicionar);
@@ -519,9 +527,9 @@
             gbProdutos.Controls.Add(txtValor);
             gbProdutos.Controls.Add(txtProduto);
             gbProdutos.Controls.Add(label5);
-            gbProdutos.Location = new Point(540, 50);
+            gbProdutos.Location = new Point(530, 3);
             gbProdutos.Name = "gbProdutos";
-            gbProdutos.Size = new Size(655, 417);
+            gbProdutos.Size = new Size(651, 590);
             gbProdutos.TabIndex = 25;
             gbProdutos.TabStop = false;
             gbProdutos.Text = "Produtos e Serviços";
@@ -559,9 +567,9 @@
             groupBox2.Controls.Add(lblParcelas);
             groupBox2.Controls.Add(cbFormaPagamento);
             groupBox2.Controls.Add(label16);
-            groupBox2.Location = new Point(298, 50);
+            groupBox2.Location = new Point(292, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(235, 595);
+            groupBox2.Size = new Size(232, 590);
             groupBox2.TabIndex = 26;
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados de Pagamento e Frete";
@@ -693,7 +701,7 @@
             // 
             // btnSalvarOrc
             // 
-            btnSalvarOrc.Location = new Point(142, 658);
+            btnSalvarOrc.Location = new Point(137, 3);
             btnSalvarOrc.Name = "btnSalvarOrc";
             btnSalvarOrc.Size = new Size(109, 38);
             btnSalvarOrc.TabIndex = 27;
@@ -701,28 +709,63 @@
             btnSalvarOrc.UseVisualStyleBackColor = true;
             btnSalvarOrc.Click += btnSalvarOrc_Click;
             // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(ckbDataExp);
-            groupBox3.Controls.Add(label12);
-            groupBox3.Controls.Add(rtbComentarios);
-            groupBox3.Controls.Add(dtpDataExp);
-            groupBox3.Location = new Point(540, 476);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(655, 169);
-            groupBox3.TabIndex = 28;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Extras";
-            // 
             // lblUorcamento
             // 
             lblUorcamento.AutoSize = true;
-            lblUorcamento.Location = new Point(303, 10);
+            lblUorcamento.Location = new Point(786, 0);
             lblUorcamento.Margin = new Padding(4, 0, 4, 0);
             lblUorcamento.Name = "lblUorcamento";
             lblUorcamento.Size = new Size(142, 15);
             lblUorcamento.TabIndex = 29;
             lblUorcamento.Text = "Último Orçamento salvo: ";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Controls.Add(lblData, 0, 0);
+            tableLayoutPanel1.Controls.Add(lblIDorc, 1, 0);
+            tableLayoutPanel1.Controls.Add(lblUorcamento, 2, 0);
+            tableLayoutPanel1.Location = new Point(20, 12);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(1175, 28);
+            tableLayoutPanel1.TabIndex = 30;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.408783F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.10135F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55.4898643F));
+            tableLayoutPanel2.Controls.Add(groupBox1, 0, 0);
+            tableLayoutPanel2.Controls.Add(groupBox2, 1, 0);
+            tableLayoutPanel2.Controls.Add(gbProdutos, 2, 0);
+            tableLayoutPanel2.Location = new Point(21, 49);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Size = new Size(1184, 596);
+            tableLayoutPanel2.TabIndex = 31;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.470665F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.529335F));
+            tableLayoutPanel3.Controls.Add(btnSalvarOrc, 1, 0);
+            tableLayoutPanel3.Controls.Add(btnGerarOrc, 0, 0);
+            tableLayoutPanel3.Location = new Point(20, 651);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 1;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(767, 55);
+            tableLayoutPanel3.TabIndex = 32;
             // 
             // ORCform
             // 
@@ -730,16 +773,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RosyBrown;
             ClientSize = new Size(1207, 718);
-            Controls.Add(lblUorcamento);
-            Controls.Add(groupBox3);
-            Controls.Add(btnSalvarOrc);
-            Controls.Add(groupBox2);
-            Controls.Add(gbProdutos);
-            Controls.Add(groupBox1);
-            Controls.Add(btnGerarOrc);
-            Controls.Add(lblIDorc);
-            Controls.Add(lblData);
+            Controls.Add(tableLayoutPanel3);
+            Controls.Add(tableLayoutPanel1);
+            Controls.Add(tableLayoutPanel2);
+            HelpButton = true;
             Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
             Name = "ORCform";
             Text = "ORCform";
             Load += ORCform_Load;
@@ -749,10 +788,11 @@
             gbProdutos.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
 
         }
 
@@ -817,7 +857,9 @@
         private Label label19;
         private Button btnSalvarOrc;
         private Button btnImportarCliente;
-        private GroupBox groupBox3;
         private Label lblUorcamento;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
     }
 }
