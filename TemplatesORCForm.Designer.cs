@@ -28,28 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            button1 = new Button();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(51, 75);
-            button1.Margin = new Padding(4, 3, 4, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(261, 264);
-            button1.TabIndex = 0;
-            button1.Text = "template1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(375, 75);
+            button2.Dock = DockStyle.Fill;
+            button2.Location = new Point(314, 3);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
-            button2.Size = new Size(220, 264);
+            button2.Size = new Size(302, 513);
             button2.TabIndex = 1;
             button2.Text = "template2";
             button2.UseVisualStyleBackColor = true;
@@ -57,35 +49,65 @@
             // 
             // button3
             // 
-            button3.Location = new Point(638, 75);
+            button3.Dock = DockStyle.Fill;
+            button3.Location = new Point(624, 3);
             button3.Margin = new Padding(4, 3, 4, 3);
             button3.Name = "button3";
-            button3.Size = new Size(220, 264);
+            button3.Size = new Size(305, 513);
             button3.TabIndex = 2;
             button3.Text = "template3";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Controls.Add(button3, 2, 0);
+            tableLayoutPanel1.Controls.Add(button2, 1, 0);
+            tableLayoutPanel1.Controls.Add(button1, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(933, 519);
+            tableLayoutPanel1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Fill;
+            button1.Location = new Point(4, 3);
+            button1.Margin = new Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(302, 513);
+            button1.TabIndex = 0;
+            button1.Text = "template1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // TemplatesORCForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(933, 519);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(tableLayoutPanel1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "TemplatesORCForm";
             Text = "TemplatesORCForm";
             Load += TemplatesORCForm_Load;
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button button1;
     }
 }

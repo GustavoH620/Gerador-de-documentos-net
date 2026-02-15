@@ -36,10 +36,10 @@
             // 
             // btnCarregar
             // 
-            btnCarregar.Anchor = AnchorStyles.None;
-            btnCarregar.Location = new Point(146, 116);
+            btnCarregar.Dock = DockStyle.Fill;
+            btnCarregar.Location = new Point(3, 3);
             btnCarregar.Name = "btnCarregar";
-            btnCarregar.Size = new Size(218, 333);
+            btnCarregar.Size = new Size(504, 559);
             btnCarregar.TabIndex = 0;
             btnCarregar.Text = "Carregar Orçamento";
             btnCarregar.UseVisualStyleBackColor = true;
@@ -47,10 +47,10 @@
             // 
             // btnNovoOrc
             // 
-            btnNovoOrc.Anchor = AnchorStyles.None;
-            btnNovoOrc.Location = new Point(656, 116);
+            btnNovoOrc.Dock = DockStyle.Fill;
+            btnNovoOrc.Location = new Point(513, 3);
             btnNovoOrc.Name = "btnNovoOrc";
-            btnNovoOrc.Size = new Size(218, 333);
+            btnNovoOrc.Size = new Size(505, 559);
             btnNovoOrc.TabIndex = 1;
             btnNovoOrc.Text = "Novo Orçamento";
             btnNovoOrc.UseVisualStyleBackColor = true;
