@@ -16,7 +16,19 @@ namespace Gerador_de_Documentos_net.Services
 {
     public static class MetodosInfo
     {
-        static string arquivo = "Info.csv";
+        public static string CriarInfo()
+        {
+            string pastaAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Gerador setup 1");
+            if (!Directory.Exists(pastaAppData))
+            {
+                Directory.CreateDirectory(pastaAppData);
+            }
+            string arquivo = Path.Combine(pastaAppData, "Info.csv");
+            return arquivo;
+        }
+        static string arquivo = CriarInfo();
+        
+
 
         public static void DialogBoxInfo(OpenFileDialog openFile)
         {

@@ -58,9 +58,9 @@ namespace Gerador_de_documentos_net.models.Orcamentos
 
                 }
                 table.Cell().Element(CellStyle).Text("Total Geral: ").FontSize(tamanho);
-                table.Cell().Element(CellStyle).Text($"R${totalGeral + PagamentoFrete.ValorImposto}").FontSize(tamanho).AlignRight();
+                table.Cell().Element(CellStyle).Text($"R${Math.Round(totalGeral + PagamentoFrete.ValorImposto, 2)}").FontSize(tamanho).AlignRight();
                 table.Cell().Element(CellStyle).Text($"Em {PagamentoFrete.Parcelas} vezes de: ").FontSize(tamanho);
-                table.Cell().Element(CellStyle).Text($"R${totalGeral / PagamentoFrete.Parcelas}").FontSize(tamanho).AlignRight();
+                table.Cell().Element(CellStyle).Text($"R${Math.Round(totalGeral / PagamentoFrete.Parcelas, 2)}").FontSize(tamanho).AlignRight();
 
 
 
