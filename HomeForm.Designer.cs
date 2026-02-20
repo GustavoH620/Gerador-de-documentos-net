@@ -30,7 +30,7 @@
         {
             panel1 = new Panel();
             btnOrc = new Button();
-            btnCom = new Button();
+            btnGer = new Button();
             btnConfig = new Button();
             lblEstagio = new Label();
             panel1.SuspendLayout();
@@ -40,7 +40,7 @@
             // 
             panel1.BackColor = Color.RosyBrown;
             panel1.Controls.Add(btnOrc);
-            panel1.Controls.Add(btnCom);
+            panel1.Controls.Add(btnGer);
             panel1.Controls.Add(btnConfig);
             panel1.Controls.Add(lblEstagio);
             panel1.Location = new Point(1, 0);
@@ -62,16 +62,16 @@
             btnOrc.UseVisualStyleBackColor = true;
             btnOrc.Click += btnOrc_Click;
             // 
-            // btnCom
+            // btnGer
             // 
-            btnCom.Location = new Point(36, 285);
-            btnCom.Margin = new Padding(4, 3, 4, 3);
-            btnCom.Name = "btnCom";
-            btnCom.Size = new Size(211, 78);
-            btnCom.TabIndex = 2;
-            btnCom.Text = "Comunicado";
-            btnCom.UseVisualStyleBackColor = true;
-            btnCom.Visible = false;
+            btnGer.Location = new Point(36, 285);
+            btnGer.Margin = new Padding(4, 3, 4, 3);
+            btnGer.Name = "btnGer";
+            btnGer.Size = new Size(211, 78);
+            btnGer.TabIndex = 2;
+            btnGer.Text = "Gerenciamento";
+            btnGer.UseVisualStyleBackColor = true;
+            btnGer.Click += btnGer_Click;
             // 
             // btnConfig
             // 
@@ -118,7 +118,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblEstagio;
         private System.Windows.Forms.Button btnOrc;
-        private System.Windows.Forms.Button btnCom;
+        private System.Windows.Forms.Button btnGer;
         private System.Windows.Forms.Button btnConfig;
     }
 }

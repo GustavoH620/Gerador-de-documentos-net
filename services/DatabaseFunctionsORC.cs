@@ -33,7 +33,7 @@ namespace Gerador_de_Documentos_net.Services
 
         static string sqlTOrcprodutos = "CREATE TABLE IF NOT EXISTS OrcProdutos (IdOrcamento INTEGER, NomeProduto TEXT, Preco Double, QT INTEGER)";
         static string sqlTOrcamentos = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ValorT Double, Data TEXT, FormaPagamento TEXT, Template INTEGER, DescricaoT TEXT, Comentarios TEXT)";
-        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (CPF TEXT, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
+        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (ID INTEGER PRIMARY KEY AUTOINCREMENT CPF TEXT, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
 
         //ID
         public static async Task<int> DatabaseOrcID() 
@@ -153,6 +153,47 @@ namespace Gerador_de_Documentos_net.Services
             }
 
         }
+        public static async Task UpdateCliente(string cpf, string nome, string rua, string bairro, string cidade, string estado, string telefone, string email, string cnpj, string cep)
+        {
+            if (string.IsNullOrEmpty(cpf) && string.IsNullOrEmpty(cnpj))
+            {
+                Messages.Aviso("Campo de CPF ou CNPJ vazio");
+            }
+            else
+            {
+                string sqlInsertion = "UPDATE ClientesSET NomeCliente = @nome,  Rua = @rua,   Bairro = @bairro,   Cidade = @cidade,    Estado = @estado,  Telefone = @telefone,  Email = @email,  CEP = @cep WHERE CPF = @cpf OR CNPJ = @cnpj;";
+                await using var connection = new SqliteConnection(dbPath);
+                await connection.OpenAsync();
+
+                await using var cmd = new SqliteCommand(sqlInsertion, connection);
+                cmd.Parameters.AddWithValue("@cpf", cpf);
+                cmd.Parameters.AddWithValue("@nome", nome);
+                cmd.Parameters.AddWithValue("@rua", rua);
+                cmd.Parameters.AddWithValue("@bairro", bairro);
+                cmd.Parameters.AddWithValue("@cidade", cidade);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@telefone", telefone);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@cnpj", cnpj);
+                cmd.Parameters.AddWithValue("@cep", cep);
+
+                var validacao = await QueryCliente(cpf, cnpj);
+                if (validacao == null)
+                {
+                    await cmd.ExecuteNonQueryAsync();
+                    connection.Close();
+                    Messages.Confirmacao("Cliente não existente");
+                }
+                else
+                {
+                    Messages.Aviso("Cliente atualizado");
+                }
+
+            }
+
+        }
+
+
         public static async Task<Endereco> QueryCliente(string CPF, string CNPJ)
         {
             await using var connection = new SqliteConnection(dbPath);

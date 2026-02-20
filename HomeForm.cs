@@ -75,7 +75,7 @@ namespace Gerador_de_Documentos_net
         {
             OrcLogic();
 
-                
+
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
@@ -99,6 +99,24 @@ namespace Gerador_de_Documentos_net
         {
             this.WindowState = FormWindowState.Maximized;
             await DatabaseFunctionsORC.InicializarBancos();
+        }
+
+        private void btnGer_Click(object sender, EventArgs e)
+        {
+            var gerenciamento = Application.OpenForms.OfType<FormGerenciamento>().FirstOrDefault();
+
+            if (gerenciamento != null)
+            {
+                Messages.Aviso("Já há uma janela de gerenciamento aberta!");
+                gerenciamento.Focus();
+            }
+            else
+            {
+                FormGerenciamento form = new FormGerenciamento();
+                form.Show();
+
+
+            }
         }
     }
 }

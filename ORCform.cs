@@ -31,16 +31,7 @@ namespace Gerador_de_Documentos_net
             if (MetodosValidacao.ValidacaoVazio(false, txtNomeCliente))
             {
                 await DatabaseFunctionsORC.CadastroCliente(txtCPF.Text, txtNomeCliente.Text, txtRua.Text, txtBairro.Text, txtCidade.Text, cbEstado.Text, txtTelefone.Text, txtEmail.Text, txtCNPJ.Text, txtCEP.Text);
-                /*
-                if (string.IsNullOrEmpty(txtCPF.Text) && string.IsNullOrEmpty(txtCNPJ.Text))
-                {
-                    
-                }
-                else
-                {
-                    Messages.Aviso("Preencha o campo de CPF ou de CNPJ!");
-                }
-                */
+
             }
             else
             {
