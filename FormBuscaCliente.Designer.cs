@@ -83,25 +83,25 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1220, 685);
+            dataGridView1.Size = new Size(646, 685);
             dataGridView1.TabIndex = 22;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.40425F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.5957451F));
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Controls.Add(btnSelecionar, 0, 1);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel1.Controls.Add(btnSelecionar, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(0, 356);
+            tableLayoutPanel1.Location = new Point(652, 61);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1226, 393);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 350F));
+            tableLayoutPanel1.Size = new Size(574, 688);
             tableLayoutPanel1.TabIndex = 23;
             // 
             // groupBox1
@@ -130,7 +130,7 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(624, 387);
+            groupBox1.Size = new Size(568, 332);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados do cliente";
@@ -320,9 +320,9 @@
             // btnSelecionar
             // 
             btnSelecionar.Dock = DockStyle.Fill;
-            btnSelecionar.Location = new Point(633, 3);
+            btnSelecionar.Location = new Point(3, 341);
             btnSelecionar.Name = "btnSelecionar";
-            btnSelecionar.Size = new Size(590, 387);
+            btnSelecionar.Size = new Size(568, 344);
             btnSelecionar.TabIndex = 3;
             btnSelecionar.Text = "Selecionar e voltar";
             btnSelecionar.UseVisualStyleBackColor = true;
@@ -344,13 +344,13 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Controls.Add(dataGridView1, 0, 1);
             tableLayoutPanel2.Controls.Add(lblTopico, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Dock = DockStyle.Left;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 7.743658F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 92.25634F));
-            tableLayoutPanel2.Size = new Size(1226, 749);
+            tableLayoutPanel2.Size = new Size(652, 749);
             tableLayoutPanel2.TabIndex = 24;
             // 
             // FormBuscaCliente

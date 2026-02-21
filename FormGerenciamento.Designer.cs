@@ -71,6 +71,7 @@
             btnOrcamentos.TabIndex = 1;
             btnOrcamentos.Text = "Gerenciamento de orçamentos";
             btnOrcamentos.UseVisualStyleBackColor = true;
+            btnOrcamentos.Click += btnOrcamentos_Click;
             // 
             // FormGerenciamento
             // 

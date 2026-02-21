@@ -38,6 +38,7 @@
             // button2
             // 
             button2.Dock = DockStyle.Fill;
+            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.Location = new Point(314, 3);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
@@ -50,6 +51,7 @@
             // button3
             // 
             button3.Dock = DockStyle.Fill;
+            button3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.Location = new Point(624, 3);
             button3.Margin = new Padding(4, 3, 4, 3);
             button3.Name = "button3";
@@ -80,6 +82,7 @@
             // button1
             // 
             button1.Dock = DockStyle.Fill;
+            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Location = new Point(4, 3);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";

@@ -16,6 +16,19 @@ namespace Gerador_de_documentos_net
 {
     public partial class Gclientesform : Form
     {
+        public void Limpar()
+        {
+            foreach (Control controle in groupBox1.Controls)
+            {
+                if (controle is TextBox || controle is ComboBox)
+                {
+                    controle.Text = "";
+                    controle.Enabled = true;
+                }
+                lblID.Text = "";
+
+            }
+        }
         public async void CadastrarCliente()
         {
             if (MetodosValidacao.ValidacaoVazio(false, txtNomeCliente))
@@ -33,7 +46,7 @@ namespace Gerador_de_documentos_net
         {
             if (MetodosValidacao.ValidacaoVazio(false, txtNomeCliente))
             {
-                await DatabaseFunctionsORC.UpdateCliente(txtCPF.Text, txtNomeCliente.Text, txtRua.Text, txtBairro.Text, txtCidade.Text, cbEstado.Text, txtTelefone.Text, txtEmail.Text, txtCNPJ.Text, txtCEP.Text);
+                await DatabaseFunctionsORC.UpdateCliente(txtCPF.Text, txtNomeCliente.Text, txtRua.Text, txtBairro.Text, txtCidade.Text, cbEstado.Text, txtTelefone.Text, txtEmail.Text, txtCNPJ.Text, txtCEP.Text, int.Parse(lblID.Text));
                 CarregarClientes();
             }
             else
@@ -42,7 +55,21 @@ namespace Gerador_de_documentos_net
             }
 
         }
-        
+        public async void DeletarCLiente()
+        {
+            if (MetodosValidacao.ValidacaoVazio(false, txtNomeCliente))
+            {
+                await DatabaseFunctionsORC.DeletarCliente(int.Parse(lblID.Text));
+                CarregarClientes();
+                Limpar();
+            }
+            else
+            {
+                Messages.Aviso("Selecione um registro!");
+            }
+
+        }
+
         List<Endereco> listaClientes = new List<Endereco>();
         public async void CarregarClientes()
         {
@@ -74,23 +101,23 @@ namespace Gerador_de_documentos_net
                     txtRua.Text = dataGridView1.Rows[e.RowIndex].Cells["Rua"].Value.ToString();
                     txtBairro.Text = dataGridView1.Rows[e.RowIndex].Cells["Bairro"].Value.ToString();
                     txtCidade.Text = dataGridView1.Rows[e.RowIndex].Cells["Cidade"].Value.ToString();
-
-
-
-
                     cbEstado.Text = dataGridView1.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
                     txtTelefone.Text = dataGridView1.Rows[e.RowIndex].Cells["Telefone"].Value.ToString();
                     txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells["Email"].Value.ToString();
                     txtCEP.Text = dataGridView1.Rows[e.RowIndex].Cells["CEP"].Value.ToString();
                     txtCNPJ.Text = dataGridView1.Rows[e.RowIndex].Cells["CNPJ"].Value.ToString();
                     txtCPF.Text = dataGridView1.Rows[e.RowIndex].Cells["CPF"].Value.ToString();
+                    lblID.Text = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+
+                    txtCPF.Enabled = false;
+                    txtCNPJ.Enabled = false;
 
 
                 }
             }
             catch
             {
-                Console.WriteLine("");
+                Messages.Aviso("");
 
             }
 
@@ -128,6 +155,17 @@ namespace Gerador_de_documentos_net
         private void btnUPD_Click(object sender, EventArgs e)
         {
             UpdateCliente();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            Limpar();
+        }
+
+        private void btnDEL_Click(object sender, EventArgs e)
+        {
+            DeletarCLiente();
+            
         }
     }
 }

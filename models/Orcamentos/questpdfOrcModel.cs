@@ -45,8 +45,8 @@ namespace Gerador_de_Documentos_net.Models
         public string Telefone { get; set; } = string.Empty;
         public string CEP { get; set; } = string.Empty;
         public string CNPJ { get; set; } = string.Empty;
-
         public string CPF { get; set; } = string.Empty;
+        public int ID { get; set; }
 
     }
 }

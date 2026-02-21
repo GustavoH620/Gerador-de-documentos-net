@@ -37,6 +37,7 @@
             // btnCarregar
             // 
             btnCarregar.Dock = DockStyle.Fill;
+            btnCarregar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCarregar.Location = new Point(3, 3);
             btnCarregar.Name = "btnCarregar";
             btnCarregar.Size = new Size(504, 559);
@@ -48,6 +49,7 @@
             // btnNovoOrc
             // 
             btnNovoOrc.Dock = DockStyle.Fill;
+            btnNovoOrc.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNovoOrc.Location = new Point(513, 3);
             btnNovoOrc.Name = "btnNovoOrc";
             btnNovoOrc.Size = new Size(505, 559);

@@ -33,7 +33,7 @@ namespace Gerador_de_Documentos_net.Services
 
         static string sqlTOrcprodutos = "CREATE TABLE IF NOT EXISTS OrcProdutos (IdOrcamento INTEGER, NomeProduto TEXT, Preco Double, QT INTEGER)";
         static string sqlTOrcamentos = "CREATE TABLE IF NOT EXISTS Orcamentos (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomeCliente TEXT, ValorT Double, Data TEXT, FormaPagamento TEXT, Template INTEGER, DescricaoT TEXT, Comentarios TEXT)";
-        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (ID INTEGER PRIMARY KEY AUTOINCREMENT CPF TEXT, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
+        static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (ID INTEGER PRIMARY KEY AUTOINCREMENT, CPF TEXT, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
 
         //ID
         public static async Task<int> DatabaseOrcID() 
@@ -125,7 +125,7 @@ namespace Gerador_de_Documentos_net.Services
             {
                 await using var connection = new SqliteConnection(dbPath);
                 await connection.OpenAsync();
-                string sqlInsertion = "INSERT INTO Clientes (CPF, NomeCliente, Rua, Bairro, Cidade, Estado, Telefone, Email, CNPJ, CEP) VALUES (@cpf, @nome, @rua, @bairro, @cidade, @estado, @telefone, @email, @cnpj, @cep)";
+                string sqlInsertion = @"INSERT INTO Clientes (CPF, NomeCliente, Rua, Bairro, Cidade, Estado, Telefone, Email, CNPJ, CEP) VALUES (@cpf, @nome, @rua, @bairro, @cidade, @estado, @telefone, @email, @cnpj, @cep)";
                 await using var cmd = new SqliteCommand(sqlInsertion, connection);
                 cmd.Parameters.AddWithValue("@cpf", cpf);
                 cmd.Parameters.AddWithValue("@nome", nome);
@@ -153,7 +153,7 @@ namespace Gerador_de_Documentos_net.Services
             }
 
         }
-        public static async Task UpdateCliente(string cpf, string nome, string rua, string bairro, string cidade, string estado, string telefone, string email, string cnpj, string cep)
+        public static async Task UpdateCliente(string cpf, string nome, string rua, string bairro, string cidade, string estado, string telefone, string email, string cnpj, string cep, int id)
         {
             if (string.IsNullOrEmpty(cpf) && string.IsNullOrEmpty(cnpj))
             {
@@ -161,7 +161,7 @@ namespace Gerador_de_Documentos_net.Services
             }
             else
             {
-                string sqlInsertion = "UPDATE ClientesSET NomeCliente = @nome,  Rua = @rua,   Bairro = @bairro,   Cidade = @cidade,    Estado = @estado,  Telefone = @telefone,  Email = @email,  CEP = @cep WHERE CPF = @cpf OR CNPJ = @cnpj;";
+                string sqlInsertion = @"UPDATE Clientes SET NomeCliente = @nome,  Rua = @rua,   Bairro = @bairro,   Cidade = @cidade,    Estado = @estado,  Telefone = @telefone,  Email = @email,  CEP = @cep WHERE ID = @id";
                 await using var connection = new SqliteConnection(dbPath);
                 await connection.OpenAsync();
 
@@ -176,21 +176,41 @@ namespace Gerador_de_Documentos_net.Services
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@cnpj", cnpj);
                 cmd.Parameters.AddWithValue("@cep", cep);
+                cmd.Parameters.AddWithValue("@id", id);
+
 
                 var validacao = await QueryCliente(cpf, cnpj);
                 if (validacao == null)
                 {
                     await cmd.ExecuteNonQueryAsync();
                     connection.Close();
-                    Messages.Confirmacao("Cliente não existente");
+                    Messages.Aviso("Cliente não existente.");
                 }
                 else
                 {
-                    Messages.Aviso("Cliente atualizado");
+                    Messages.Confirmacao("Cliente atualizado.");
                 }
 
             }
 
+        }
+        public static async Task DeletarCliente(int id)
+        {
+            if (id == null)
+            {
+                Messages.Aviso("Nenhum registro selecionado");
+            }
+            else
+            {
+                string sqlQuery = @"DELETE FROM Clientes Where ID = @id";
+                await using var connection = new SqliteConnection(dbPath);
+                await connection.OpenAsync();
+                await using var cmd = new SqliteCommand(sqlQuery, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                Messages.Confirmacao("Cliente deletado.");
+            }
         }
 
 
@@ -285,7 +305,8 @@ namespace Gerador_de_Documentos_net.Services
                     Email = Convert.ToString(reader["Email"]),
                     CEP = Convert.ToString(reader["CEP"]),
                     CNPJ = Convert.ToString(reader["CNPJ"]),
-                    CPF = Convert.ToString(reader["CPF"])
+                    CPF = Convert.ToString(reader["CPF"]),
+                    ID = Convert.ToInt32(reader["ID"])
                 };
                 list.Add(endereco);
             }
@@ -322,6 +343,26 @@ namespace Gerador_de_Documentos_net.Services
             }
             connection.Close();
             return listaOrcamento;
+
+        }
+        public static async Task DeletarOrc(int id)
+        {
+            if (id == null)
+            {
+                Messages.Aviso("Nenhum registro selecionado");
+            }
+            else
+            {
+                string sqlQuery = @"DELETE FROM Orcamentos Where ID = @id";
+                await using var connection = new SqliteConnection(dbPath);
+                await connection.OpenAsync();
+                await using var cmd = new SqliteCommand(sqlQuery, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                Messages.Confirmacao("Orçamento deletado.");
+
+            }
 
         }
 

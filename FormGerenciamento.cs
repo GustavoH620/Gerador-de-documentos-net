@@ -14,15 +14,18 @@ namespace Gerador_de_documentos_net
     {
         public void ButtonLogic(bool check)
         {
-            if (check) 
-            { 
+            if (check)
+            {
                 Gclientesform form = new Gclientesform();
-                form.Show();
+                form.ShowDialog();
                 this.Close();
             }
             else
             {
-
+                GorcamentosForm form = new GorcamentosForm();
+                form.ShowDialog();
+                this.Close();
+                
             }
 
         }
@@ -34,6 +37,11 @@ namespace Gerador_de_documentos_net
         private void btnClientes_Click(object sender, EventArgs e)
         {
             ButtonLogic(true);
+        }
+
+        private void btnOrcamentos_Click(object sender, EventArgs e)
+        {
+            ButtonLogic(false);
         }
     }
 }
