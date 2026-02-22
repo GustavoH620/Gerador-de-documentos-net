@@ -1,15 +1,5 @@
-﻿using Gerador_de_documentos_net.services;
-using Gerador_de_documentos_net.Services;
+﻿using Gerador_de_documentos_net.Services;
 using Gerador_de_Documentos_net;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Gerador_de_documentos_net
 {
@@ -44,7 +34,7 @@ namespace Gerador_de_documentos_net
         {
             DadosGlobais.LimparListaProdutos();
             this.WindowState = FormWindowState.Maximized;
-            
+
         }
 
         private void btnCarregar_Click(object sender, EventArgs e)

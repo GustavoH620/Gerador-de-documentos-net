@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Gerador_de_Documentos_net.Models;
-using QuestPDF.Drawing;
+﻿using Gerador_de_Documentos_net.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -38,7 +31,7 @@ namespace Gerador_de_documentos_net.models.Orcamentos
                 column.Item().Border(1).Padding(2).Text(Address.Email);
                 column.Item().Border(1).Padding(2).Text(Address.Telefone);
 
-                
+
             });
         }
     }

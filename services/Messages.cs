@@ -1,11 +1,4 @@
-﻿using Gerador_de_Documentos_net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Gerador_de_documentos_net.services
+﻿namespace Gerador_de_documentos_net.services
 {
     public static class Messages
     {
@@ -17,7 +10,7 @@ namespace Gerador_de_documentos_net.services
             MessageBoxIcon icon = MessageBoxIcon.Question;
             DialogResult resultado;
 
-            resultado = MessageBox.Show(mensagem, legenda, botoes, icon );
+            resultado = MessageBox.Show(mensagem, legenda, botoes, icon);
             if (resultado == DialogResult.Yes)
             {
                 return false;
@@ -34,7 +27,7 @@ namespace Gerador_de_documentos_net.services
         {
             DialogResult resultado;
             resultado = MessageBox.Show(mensagem, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(resultado == DialogResult.Yes)
+            if (resultado == DialogResult.Yes)
             {
                 return true;
             }
@@ -46,7 +39,7 @@ namespace Gerador_de_documentos_net.services
         public static void Confirmacao(string mensagem)
         {
             MessageBox.Show(mensagem, "Concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+
         }
         public static void Aviso(string mensagem)
         {

@@ -2,16 +2,7 @@
 using Gerador_de_documentos_net.Services;
 using Gerador_de_Documentos_net;
 using Gerador_de_Documentos_net.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Gerador_de_documentos_net
 {
@@ -37,7 +28,7 @@ namespace Gerador_de_documentos_net
         public async Task<ListBox> CarregarProdutos(DataGridViewCellEventArgs e, ListBox lb)
         {
 
-            var listProdutos = await DatabaseFunctionsORC.QueryProdutos(int.Parse(txtID.Text)-1);
+            var listProdutos = await DatabaseFunctionsORC.QueryProdutos(int.Parse(txtID.Text) - 1);
             foreach (var item in listProdutos)
             {
                 lb.Items.Add(item.ToString());

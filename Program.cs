@@ -1,7 +1,4 @@
 using Gerador_de_Documentos_net;
-using Gerador_de_Documentos_net.Services;
-using Microsoft.Data.Sqlite;
-using SQLitePCL;
 
 namespace Gerador_de_documentos_net
 {
@@ -19,7 +16,7 @@ namespace Gerador_de_documentos_net
             Application.Run(new HomeForm());
 
 
-            
+
 
         }
     }

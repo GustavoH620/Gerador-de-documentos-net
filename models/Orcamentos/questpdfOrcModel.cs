@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Gerador_de_Documentos_net.Models
+﻿namespace Gerador_de_Documentos_net.Models
 {
     public class modeloOrcamento
     {
@@ -14,7 +8,7 @@ namespace Gerador_de_Documentos_net.Models
         public DateTime DataEmissao { get; set; }
         public DateTime DataExp { get; set; }
         public required Endereco EnderecoCliente { get; set; }
-        public required Pagamento_Frete PagamentoCliente {get; set;}
+        public required Pagamento_Frete PagamentoCliente { get; set; }
         public required string Comentarios { get; set; }
         public required string DescricaoTecnica { get; set; }
 

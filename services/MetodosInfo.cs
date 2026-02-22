@@ -1,16 +1,6 @@
 ﻿using Gerador_de_documentos_net.services;
 using Gerador_de_Documentos_net.Models;
 using Microsoft.VisualBasic.FileIO;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Markup;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Gerador_de_Documentos_net.Services
 {
@@ -27,7 +17,7 @@ namespace Gerador_de_Documentos_net.Services
             return arquivo;
         }
         static string arquivo = CriarInfo();
-        
+
 
 
         public static void DialogBoxInfo(OpenFileDialog openFile)
@@ -79,7 +69,7 @@ namespace Gerador_de_Documentos_net.Services
                             telefone = campos[7];
                             cep = campos[8];
                             cnpj = campos[9];
-                            
+
 
                         }
 

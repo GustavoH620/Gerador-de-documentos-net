@@ -1,14 +1,7 @@
-﻿using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
-using QuestPDF.Drawing;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gerador_de_documentos_net.models.Orcamentos;
+using QuestPDF.Infrastructure;
 
 namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
@@ -42,13 +35,13 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
         {
             container.Row(row =>
             {
-                 
+
 
                 row.RelativeItem().Column(column =>
                 {
-                    if (DadosGlobais.CaminhoLogo == "") 
-                    { 
-                        column.Item().Height(150).Placeholder(); 
+                    if (DadosGlobais.CaminhoLogo == "")
+                    {
+                        column.Item().Height(150).Placeholder();
                     }
                     else
                     {

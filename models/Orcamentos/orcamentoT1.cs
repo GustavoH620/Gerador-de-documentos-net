@@ -1,14 +1,7 @@
 ﻿using Gerador_de_documentos_net.models.Orcamentos;
-using QuestPDF.Drawing;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
@@ -24,7 +17,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
         public DocumentSettings GetSettings() => DocumentSettings.Default;
 
-        public void Compose (IDocumentContainer container)
+        public void Compose(IDocumentContainer container)
         {
 
             container.Page(page =>
@@ -81,7 +74,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     row.RelativeItem().Component(new AddressComponent("Remeter para", DadosGlobais.enderecoVendedor));
                     row.ConstantItem(50);
                     row.RelativeItem().Component(new AddressComponent("Faturar para", Modelo.EnderecoCliente));
-                    
+
                 });
 
                 column.Item().Element(ComposeTable);
@@ -96,7 +89,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
         {
             container.Table(table =>
             {
-                
+
                 table.ColumnsDefinition(columns =>
                 {
                     columns.ConstantColumn(25);
@@ -104,7 +97,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     columns.RelativeColumn();
                     columns.RelativeColumn();
                     columns.RelativeColumn();
-                    
+
                 });
 
                 table.Header(header =>
@@ -114,7 +107,7 @@ namespace Gerador_de_Documentos_net.Models.Orcamentos
                     header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).AlignRight().Text("Preço unitário");
                     header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).AlignRight().Text("Quantidade");
                     header.Cell().Border(1).Background(Colors.Blue.Lighten4).Element(CellStyle).AlignRight().Text("Total");
-                    
+
 
                     static IContainer CellStyle(IContainer container)
                     {

@@ -4,15 +4,6 @@ using Gerador_de_documentos_net.Services;
 using Gerador_de_Documentos_net.Models;
 using Gerador_de_Documentos_net.Models.Orcamentos;
 using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Gerador_de_Documentos_net.Services
 {
@@ -36,15 +27,15 @@ namespace Gerador_de_Documentos_net.Services
         static string sqlTClientes = "CREATE TABLE IF NOT EXISTS Clientes (ID INTEGER PRIMARY KEY AUTOINCREMENT, CPF TEXT, NomeCliente TEXT, Rua TEXT, Bairro TEXT, Cidade TEXT, Estado TEXT, Telefone TEXT, Email TEXT, CNPJ TEXT, CEP TEXT)";
 
         //ID
-        public static async Task<int> DatabaseOrcID() 
+        public static async Task<int> DatabaseOrcID()
         {
             await using var connection = new SqliteConnection(dbPath);
-            await connection.OpenAsync(); 
+            await connection.OpenAsync();
 
             string sqlBusca = "SELECT MAX(Id) FROM Orcamentos";
             await using (var cmdBusca = new SqliteCommand(sqlBusca, connection))
             {
-                
+
                 object resultado = await cmdBusca.ExecuteScalarAsync();
 
                 if (resultado != DBNull.Value && resultado != null)
@@ -53,7 +44,7 @@ namespace Gerador_de_Documentos_net.Services
                 }
                 else
                 {
-                    return 1; 
+                    return 1;
                 }
             }
 
@@ -108,7 +99,7 @@ namespace Gerador_de_Documentos_net.Services
             }
 
 
-            
+
 
             connection.Close();
 
@@ -245,7 +236,7 @@ namespace Gerador_de_Documentos_net.Services
 
                 string sqlClienteQuery = "SELECT * FROM Clientes WHERE CPF = @cpf AND CNPJ = @cnpj";
                 await using var cmd = new SqliteCommand(sqlClienteQuery, connection);
-                var cliente = await connection.QueryFirstOrDefaultAsync<Endereco>(sqlClienteQuery, new { cpf = CPF , cnpj = CNPJ});
+                var cliente = await connection.QueryFirstOrDefaultAsync<Endereco>(sqlClienteQuery, new { cpf = CPF, cnpj = CNPJ });
                 DadosBuscaGlobal.CPFSel = CPF;
                 DadosBuscaGlobal.CPNJsel = CNPJ;
                 connection.Close();
@@ -269,8 +260,8 @@ namespace Gerador_de_Documentos_net.Services
                 await using var cmd = new SqliteCommand(sqlClienteQuery, connection);
                 cmd.Parameters.AddWithValue("nome", nome);
                 await using var reader = await cmd.ExecuteReaderAsync();
-                
-                if(await reader.ReadAsync())
+
+                if (await reader.ReadAsync())
                 {
                     DadosBuscaGlobal.CPFSel = Convert.ToString(reader["CPF"]);
                 }
@@ -289,10 +280,10 @@ namespace Gerador_de_Documentos_net.Services
             connection.OpenAsync();
             string sqlQueryListClientes = "SELECT * FROM Clientes";
 
-            await using var cmd = new SqliteCommand( sqlQueryListClientes, connection);
+            await using var cmd = new SqliteCommand(sqlQueryListClientes, connection);
             await using var reader = await cmd.ExecuteReaderAsync();
             List<Endereco> list = new List<Endereco>();
-            while(await reader.ReadAsync())
+            while (await reader.ReadAsync())
             {
                 Endereco endereco = new Endereco()
                 {
@@ -312,7 +303,7 @@ namespace Gerador_de_Documentos_net.Services
             }
             connection.Close();
             return list;
-            
+
         }
 
         public static async Task<List<DadosBuscaGlobal.modeloBuscaOrcamento>> QueryOrc()
@@ -324,7 +315,7 @@ namespace Gerador_de_Documentos_net.Services
             await using var cmd = new SqliteCommand(sqlQueryorc, connection);
             await using var reader = await cmd.ExecuteReaderAsync();
             List<DadosBuscaGlobal.modeloBuscaOrcamento> listaOrcamento = new List<DadosBuscaGlobal.modeloBuscaOrcamento>();
-            while(await reader.ReadAsync())
+            while (await reader.ReadAsync())
             {
                 DadosBuscaGlobal.modeloBuscaOrcamento Orcamento = new DadosBuscaGlobal.modeloBuscaOrcamento()
                 {
@@ -339,7 +330,7 @@ namespace Gerador_de_Documentos_net.Services
 
                 };
                 listaOrcamento.Add(Orcamento);
-                
+
             }
             connection.Close();
             return listaOrcamento;
@@ -376,14 +367,14 @@ namespace Gerador_de_Documentos_net.Services
             cmd.Parameters.AddWithValue("id", id);
             await using var reader = await cmd.ExecuteReaderAsync();
             List<ItemProduto> listaProdutos = new List<ItemProduto>();
-            while(await reader.ReadAsync())
+            while (await reader.ReadAsync())
             {
                 ItemProduto item = new ItemProduto()
-                { 
+                {
                     NomeProduto = Convert.ToString(reader["NomeProduto"]),
                     Valor = Convert.ToDecimal(reader["Preco"]),
                     QTD = Convert.ToInt32(reader["QT"])
-                    
+
                 };
                 listaProdutos.Add(item);
             }

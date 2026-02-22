@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Gerador_de_documentos_net.services
+﻿namespace Gerador_de_documentos_net.services
 {
     internal class MetodosValidacao
     {
@@ -36,16 +30,16 @@ namespace Gerador_de_documentos_net.services
 
         public static void Limpeza(params Control[] controles)
         {
-            foreach(Control control in controles)
+            foreach (Control control in controles)
             {
                 control.BackColor = Color.White;
             }
         }
         public static bool ValidacaoNumeros(params Control[] controles)
         {
-            foreach(Control control in controles)
+            foreach (Control control in controles)
             {
-                if(!int.TryParse(control.Text, out int numeros))
+                if (!int.TryParse(control.Text, out int numeros))
                 {
                     control.BackColor = Color.Pink;
                     Messages.Aviso("Apenas números.");
@@ -55,12 +49,12 @@ namespace Gerador_de_documentos_net.services
                 {
 
                     control.BackColor = Color.White;
-                    
+
                 }
             }
             return true;
         }
-        public static bool ValiddacaoBusca(params Control[] controles) 
+        public static bool ValiddacaoBusca(params Control[] controles)
         {
             foreach (Control control in controles)
             {

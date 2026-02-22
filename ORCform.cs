@@ -1,23 +1,10 @@
-﻿using Gerador_de_documentos_net.models.Orcamentos;
-using Gerador_de_documentos_net.services;
+﻿using Gerador_de_documentos_net.services;
 using Gerador_de_documentos_net.Services;
 using Gerador_de_Documentos_net.Models;
 using Gerador_de_Documentos_net.Models.Orcamentos;
 using Gerador_de_Documentos_net.Services;
-using Microsoft.Data.Sqlite;
-using QuestPDF.Companion;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using SQLitePCL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 
@@ -37,17 +24,17 @@ namespace Gerador_de_Documentos_net
             {
                 Messages.Aviso("Nome do cliente está vazio!");
             }
-            
+
         }
         public async void SalvarOrc()
         {
             if (MetodosValidacao.ValidacaoVazio(true, txtNomeCliente))
             {
-                if(!MetodosValidacao.ValidacaoVazio(false, txtCPF, txtCNPJ))
+                if (!MetodosValidacao.ValidacaoVazio(false, txtCPF, txtCNPJ))
                 {
-                    if(!Messages.Questao("Algumas informações não foram preenchidas, continuar?"))
+                    if (!Messages.Questao("Algumas informações não foram preenchidas, continuar?"))
                     {
-                        MetodosValidacao.Limpeza(txtCPF,txtCNPJ);
+                        MetodosValidacao.Limpeza(txtCPF, txtCNPJ);
                         return;
 
                     }
@@ -314,7 +301,7 @@ namespace Gerador_de_Documentos_net
         private async void btnCadastroCliente_Click(object sender, EventArgs e)
         {
             CadastrarCliente();
-            
+
         }
 
         private void btnImportarCliente_Click(object sender, EventArgs e)
