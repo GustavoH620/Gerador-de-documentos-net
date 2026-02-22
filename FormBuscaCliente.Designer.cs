@@ -31,6 +31,7 @@
             txtBusca = new TextBox();
             dataGridView1 = new DataGridView();
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnSelecionar = new Button();
             groupBox1 = new GroupBox();
             txtCNPJ = new TextBox();
             label14 = new Label();
@@ -52,7 +53,6 @@
             label2 = new Label();
             txtEmail = new TextBox();
             label3 = new Label();
-            btnSelecionar = new Button();
             lblTopico = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -103,6 +103,17 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 350F));
             tableLayoutPanel1.Size = new Size(574, 688);
             tableLayoutPanel1.TabIndex = 23;
+            // 
+            // btnSelecionar
+            // 
+            btnSelecionar.Dock = DockStyle.Fill;
+            btnSelecionar.Location = new Point(3, 341);
+            btnSelecionar.Name = "btnSelecionar";
+            btnSelecionar.Size = new Size(568, 344);
+            btnSelecionar.TabIndex = 3;
+            btnSelecionar.Text = "Selecionar e voltar";
+            btnSelecionar.UseVisualStyleBackColor = true;
+            btnSelecionar.Click += btnSelecionar_Click_1;
             // 
             // groupBox1
             // 
@@ -317,17 +328,6 @@
             label3.TabIndex = 4;
             label3.Text = "Email";
             // 
-            // btnSelecionar
-            // 
-            btnSelecionar.Dock = DockStyle.Fill;
-            btnSelecionar.Location = new Point(3, 341);
-            btnSelecionar.Name = "btnSelecionar";
-            btnSelecionar.Size = new Size(568, 344);
-            btnSelecionar.TabIndex = 3;
-            btnSelecionar.Text = "Selecionar e voltar";
-            btnSelecionar.UseVisualStyleBackColor = true;
-            btnSelecionar.Click += btnSelecionar_Click_1;
-            // 
             // lblTopico
             // 
             lblTopico.AutoSize = true;
@@ -362,7 +362,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel2);
             Name = "FormBuscaCliente";
-            Text = "FormBusca";
+            Text = "Busca de Clientes";
             FormClosed += FormBuscaCliente_FormClosed;
             Load += FormBusca_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

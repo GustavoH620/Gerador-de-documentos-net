@@ -81,7 +81,7 @@
             ClientSize = new Size(1021, 565);
             Controls.Add(tableLayoutPanel1);
             Name = "FormOrcOpcoes";
-            Text = "FormOrcOpcoes";
+            Text = "Opções de Orçamento";
             Load += FormOrcOpcoes_Load;
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);

@@ -105,7 +105,7 @@
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "HomeForm";
-            Text = "Form1";
+            Text = "Home";
             Load += HomeForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

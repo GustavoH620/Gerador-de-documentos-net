@@ -316,7 +316,7 @@
             Controls.Add(groupBox1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "Formconfig";
-            Text = "config";
+            Text = "Configurações";
             Load += config_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

@@ -32,7 +32,9 @@
             txtBusca = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
+            lblID = new Label();
             label6 = new Label();
+            lblID1 = new Label();
             lbProdutos = new ListBox();
             txtCPF = new TextBox();
             txtNome = new TextBox();
@@ -43,8 +45,6 @@
             btnCarregar = new Button();
             btnDEL = new Button();
             dataGridView1 = new DataGridView();
-            lblID = new Label();
-            lblID1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -106,6 +106,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados do cliente";
             // 
+            // lblID
+            // 
+            lblID.AutoSize = true;
+            lblID.Location = new Point(27, 226);
+            lblID.Name = "lblID";
+            lblID.Size = new Size(0, 15);
+            lblID.TabIndex = 31;
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -114,6 +122,15 @@
             label6.Size = new Size(133, 15);
             label6.TabIndex = 20;
             label6.Text = "Produtos do orçamento";
+            // 
+            // lblID1
+            // 
+            lblID1.AutoSize = true;
+            lblID1.Location = new Point(6, 226);
+            lblID1.Name = "lblID1";
+            lblID1.Size = new Size(21, 15);
+            lblID1.TabIndex = 30;
+            lblID1.Text = "ID:";
             // 
             // lbProdutos
             // 
@@ -205,23 +222,6 @@
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // lblID
-            // 
-            lblID.AutoSize = true;
-            lblID.Location = new Point(27, 226);
-            lblID.Name = "lblID";
-            lblID.Size = new Size(0, 15);
-            lblID.TabIndex = 31;
-            // 
-            // lblID1
-            // 
-            lblID1.AutoSize = true;
-            lblID1.Location = new Point(6, 226);
-            lblID1.Name = "lblID1";
-            lblID1.Size = new Size(21, 15);
-            lblID1.TabIndex = 30;
-            lblID1.Text = "ID:";
-            // 
             // GorcamentosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -232,7 +232,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(dataGridView1);
             Name = "GorcamentosForm";
-            Text = "FormGorcamentos";
+            Text = "Gestão de Orçamentos";
             WindowState = FormWindowState.Maximized;
             Load += GorcamentosForm_Load;
             tableLayoutPanel1.ResumeLayout(false);

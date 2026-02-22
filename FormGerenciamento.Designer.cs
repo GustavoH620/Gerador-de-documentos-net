@@ -80,7 +80,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
             Name = "FormGerenciamento";
-            Text = "FormGerenciamento";
+            Text = "Gerenciamento";
             WindowState = FormWindowState.Maximized;
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);

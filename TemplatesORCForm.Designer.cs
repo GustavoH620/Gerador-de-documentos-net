@@ -100,7 +100,7 @@
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "TemplatesORCForm";
-            Text = "TemplatesORCForm";
+            Text = "Templates";
             Load += TemplatesORCForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);

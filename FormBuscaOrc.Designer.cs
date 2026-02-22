@@ -230,7 +230,7 @@
             Controls.Add(btnSelecionar);
             Controls.Add(tableLayoutPanel1);
             Name = "FormBuscaOrc";
-            Text = "FormBuscaOrc";
+            Text = "Busca de Orçamentos";
             Load += FormBuscaOrc_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

@@ -784,7 +784,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(4, 3, 4, 3);
             Name = "ORCform";
-            Text = "ORCform";
+            Text = "Geração de Orçamento";
             Load += ORCform_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
