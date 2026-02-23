@@ -15,13 +15,13 @@ Esse projeto utiliza a biblioeca QuestPDF para geração dos PDFs,
 ## Tecnologias Utilizadas
 
 - **Linguagem:** C#
-- **Framework:** .NET (Windows Forms)
+- **Framework:** .NET 8 (Windows Forms)
 - **Banco de Dados:** SQLite (com biblioteca `Microsoft.Data.Sqlite`)
 - **Geração de PDF:** QuestPDF
 - **Deploy:** Visual Studio Installer Projects
 
 ## Instruções de instalação:
-### Vá até releases e baixe o instalar "Setup.msi"
+### Vá até releases e baixe o instalador "Setup.msi"
 
 ## Autor
 ### Gustavo Henrique Copette
