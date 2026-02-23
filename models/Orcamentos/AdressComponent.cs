@@ -1,5 +1,4 @@
-﻿using Gerador_de_Documentos_net.Models;
-using QuestPDF.Fluent;
+﻿using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 

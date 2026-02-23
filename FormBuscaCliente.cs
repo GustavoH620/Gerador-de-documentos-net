@@ -1,7 +1,7 @@
-﻿using Gerador_de_documentos_net.services;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
+using Gerador_de_documentos_net.services;
 using Gerador_de_documentos_net.Services;
 using Gerador_de_Documentos_net;
-using Gerador_de_Documentos_net.Models;
 using Gerador_de_Documentos_net.Services;
 using System.Data;
 

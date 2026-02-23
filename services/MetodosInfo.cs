@@ -77,7 +77,7 @@ namespace Gerador_de_Documentos_net.Services
                     }
                     DadosGlobais.CaminhoLogo = logo;
                     DadosGlobais.NomeVendedor = nome;
-                    DadosGlobais.enderecoVendedor = new Endereco
+                    DadosGlobais.enderecoVendedor = new Gerador_de_documentos_net.models.Orcamentos.Endereco
                     {
                         NomeCliente = nome,
                         Rua = rua,
@@ -151,7 +151,7 @@ namespace Gerador_de_Documentos_net.Services
 
             DadosGlobais.CaminhoLogo = caminho;
             DadosGlobais.NomeVendedor = nome;
-            DadosGlobais.enderecoVendedor = new Endereco
+            DadosGlobais.enderecoVendedor = new Gerador_de_documentos_net.models.Orcamentos.Endereco
             {
                 NomeCliente = nome,
                 Rua = rua,

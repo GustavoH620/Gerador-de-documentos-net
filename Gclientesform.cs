@@ -1,5 +1,5 @@
-﻿using Gerador_de_documentos_net.services;
-using Gerador_de_Documentos_net.Models;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
+using Gerador_de_documentos_net.services;
 using Gerador_de_Documentos_net.Services;
 using System.Data;
 
@@ -35,7 +35,7 @@ namespace Gerador_de_documentos_net
         }
         public async void UpdateCliente()
         {
-            if (MetodosValidacao.ValidacaoVazio(false, txtNomeCliente))
+            if (MetodosValidacao.ValidacaoVazio(false, lblID))
             {
                 await DatabaseFunctionsORC.UpdateCliente(txtCPF.Text, txtNomeCliente.Text, txtRua.Text, txtBairro.Text, txtCidade.Text, cbEstado.Text, txtTelefone.Text, txtEmail.Text, txtCNPJ.Text, txtCEP.Text, int.Parse(lblID.Text));
                 CarregarClientes();
@@ -48,7 +48,7 @@ namespace Gerador_de_documentos_net
         }
         public async void DeletarCLiente()
         {
-            if (MetodosValidacao.ValidacaoVazio(false, txtNomeCliente))
+            if (MetodosValidacao.ValidacaoVazio(false, lblID))
             {
                 await DatabaseFunctionsORC.DeletarCliente(int.Parse(lblID.Text));
                 CarregarClientes();

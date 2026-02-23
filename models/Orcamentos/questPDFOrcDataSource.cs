@@ -1,4 +1,6 @@
-﻿namespace Gerador_de_Documentos_net.Models.Orcamentos
+﻿using Gerador_de_documentos_net.models.Orcamentos;
+
+namespace Gerador_de_Documentos_net.Models.Orcamentos
 {
     public static class questPDFOrcDataSource
     {

@@ -1,4 +1,5 @@
 ﻿using Gerador_de_documentos_net.models.Orcamentos;
+using Gerador_de_documentos_net.services;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;

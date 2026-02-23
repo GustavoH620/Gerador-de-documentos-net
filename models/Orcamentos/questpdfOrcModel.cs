@@ -1,4 +1,4 @@
-﻿namespace Gerador_de_Documentos_net.Models
+﻿namespace Gerador_de_documentos_net.models.Orcamentos
 {
     public class modeloOrcamento
     {

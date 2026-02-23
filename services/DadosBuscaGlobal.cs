@@ -1,4 +1,5 @@
-﻿using Gerador_de_Documentos_net.Models;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
+
 namespace Gerador_de_documentos_net.Services
 {
     public static class DadosBuscaGlobal

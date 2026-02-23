@@ -1,6 +1,6 @@
-﻿using Gerador_de_documentos_net.services;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
+using Gerador_de_documentos_net.services;
 using Gerador_de_documentos_net.Services;
-using Gerador_de_Documentos_net.Models;
 using Gerador_de_Documentos_net.Models.Orcamentos;
 using Gerador_de_Documentos_net.Services;
 using QuestPDF.Fluent;
@@ -108,25 +108,34 @@ namespace Gerador_de_Documentos_net
                 Parcelas: Parcelas
             );
             IDocument documento;
-            switch (DadosGlobais.OrcTemplateSelected)
+            try
             {
-                case 1:
-                    documento = new OrcamentoT1(model);
-                    documento.GeneratePdfAndShow();
-                    break;
-                case 2:
-                    documento = new OrcamentoT2(model);
-                    documento.GeneratePdfAndShow();
-                    break;
-                case 3:
-                    documento = new OrcamentoT3(model);
-                    documento.GeneratePdfAndShow();
-                    break;
+                switch (DadosGlobais.OrcTemplateSelected)
+                {
+                    case 1:
+                        documento = new OrcamentoT1(model);
+                        documento.GeneratePdfAndShow();
+                        break;
+                    case 2:
+                        documento = new OrcamentoT2(model);
+                        documento.GeneratePdfAndShow();
+                        break;
+                    case 3:
+                        documento = new OrcamentoT3(model);
+                        documento.GeneratePdfAndShow();
+                        break;
 
 
 
+
+                }
 
             }
+            catch
+            {
+                Console.WriteLine("!GeneratePDF");
+            }
+
 
         }
 

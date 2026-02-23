@@ -1,4 +1,6 @@
-﻿namespace Gerador_de_Documentos_net
+﻿using Gerador_de_documentos_net.services;
+
+namespace Gerador_de_Documentos_net
 {
     public partial class TemplatesORCForm : Form
     {

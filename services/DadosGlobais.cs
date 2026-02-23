@@ -1,7 +1,7 @@
-﻿using Gerador_de_Documentos_net.Models;
+﻿using Gerador_de_documentos_net.models.Orcamentos;
 using Gerador_de_Documentos_net.Models.Orcamentos;
 
-namespace Gerador_de_Documentos_net
+namespace Gerador_de_documentos_net.services
 {
     public static class DadosGlobais
     {
