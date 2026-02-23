@@ -4,7 +4,7 @@ Um programa desktop feito para otimizar a criação de orçamentos e gerenciar u
 
 ## Demonstração
 
-Esse projeto utiliza a biblioeca QuestPDF para geração dos PDFs,
+(https://youtu.be/bb5mB4T-i7c)
 
 ## Funcionalidades
 
