@@ -108,7 +108,7 @@ namespace Gerador_de_documentos_net
             }
             catch
             {
-                Messages.Aviso("");
+                Console.Write("");
 
             }
 
